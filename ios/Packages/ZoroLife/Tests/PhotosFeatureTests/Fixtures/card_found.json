@@ -1,0 +1,63 @@
+{
+  "kind": "photo_query",
+  "payload": {
+    "asset_ids": [
+      "B84E8479-475C-4727-A4A4-B77AA9980897/L0/001",
+      "9F1C2A10-0000-4000-8000-000000000002/L0/001"
+    ],
+    "chips": [
+      {
+        "kind": "date",
+        "label": "2026-11-12"
+      },
+      {
+        "kind": "color",
+        "label": "blue"
+      },
+      {
+        "kind": "label",
+        "label": "cap"
+      },
+      {
+        "kind": "label",
+        "label": "hat"
+      }
+    ],
+    "hits": [
+      {
+        "asset_id": "B84E8479-475C-4727-A4A4-B77AA9980897/L0/001",
+        "captured_at": "2026-11-12T12:00:00Z",
+        "labels": [
+          "cap",
+          "hat"
+        ],
+        "score": 0.91
+      },
+      {
+        "asset_id": "9F1C2A10-0000-4000-8000-000000000002/L0/001",
+        "captured_at": null,
+        "labels": [],
+        "score": 0.5
+      }
+    ],
+    "indexed_count": 1204,
+    "limited_library": true,
+    "query": {
+      "colors": [
+        "blue"
+      ],
+      "contains_text": null,
+      "date_from": "2026-11-12",
+      "date_to": "2026-11-12",
+      "labels": [
+        "cap",
+        "hat"
+      ],
+      "limit": 30,
+      "media": "any",
+      "text": "photo from yesterday with my blue cap"
+    },
+    "state": "found"
+  },
+  "title": "Photos"
+}

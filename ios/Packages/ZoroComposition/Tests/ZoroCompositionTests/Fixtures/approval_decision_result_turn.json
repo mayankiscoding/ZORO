@@ -1,0 +1,15 @@
+{
+ "approval_id": "apr_2",
+ "owner": "turn",
+ "approved": false,
+ "status": "completed",
+ "turn_id": "turn_9",
+ "run_id": null,
+ "events": [
+  {
+   "type": "turn_completed",
+   "turn_id": "turn_9"
+  }
+ ],
+ "result": null
+}

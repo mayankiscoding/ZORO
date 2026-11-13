@@ -1,0 +1,10 @@
+# Copy to config/home_assistant.yaml to allowlist Home Assistant entities ZORO may control.
+# Read by app/devices/homeassistant.py together with HOME_ASSISTANT_ENTITIES. Only entities listed
+# here (or in that variable) can be called; locks and alarm panels are never callable.
+entities:
+  - id: light.living_room
+    name: Living room light
+    aliases: [baithak ki light]
+  - id: switch.bedroom_fan
+    name: Bedroom fan
+    aliases: [pankha]

@@ -1,0 +1,29 @@
+{
+  "load_up": {
+    "en": "Your exercise minutes this week are 140 percent of your recent weekly average; a lighter day or two is a common way to absorb a jump like that.",
+    "values": {
+      "ratio_pct": 140
+    }
+  },
+  "rhr_above_baseline": {
+    "en": "Your resting heart rate over the last 3 days is 6 bpm above your recent average. That often goes with a hard training week or short sleep; an easy day is a common choice.",
+    "values": {
+      "days": 3,
+      "delta": 6
+    }
+  },
+  "rhr_below_baseline": {
+    "en": "Your resting heart rate over the last 3 days is 4 bpm below your recent average, which often goes with good recovery between sessions.",
+    "values": {
+      "days": 3,
+      "delta": 4
+    }
+  },
+  "short_sleep_run": {
+    "en": "You logged under 6 hours of sleep on each of the last 3 nights; shorter sleep usually makes hard sessions feel harder.",
+    "values": {
+      "hours": 6,
+      "nights": 3
+    }
+  }
+}

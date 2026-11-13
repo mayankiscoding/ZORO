@@ -1,0 +1,62 @@
+{
+  "available": true,
+  "current_end": "2026-11-13",
+  "current_start": "2026-11-07",
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "metrics": [
+    {
+      "change_pct": 20.1,
+      "current_avg": 8421.5,
+      "current_total": 58950.0,
+      "days_current": 7,
+      "days_previous": 7,
+      "enough_data": true,
+      "metric": "steps",
+      "previous_avg": 7010.25,
+      "previous_total": 49072.0,
+      "unit": "steps"
+    },
+    {
+      "change_pct": -5.6,
+      "current_avg": 6.7,
+      "current_total": null,
+      "days_current": 7,
+      "days_previous": 7,
+      "enough_data": true,
+      "metric": "sleep_hours",
+      "previous_avg": 7.1,
+      "previous_total": null,
+      "unit": "hours"
+    },
+    {
+      "change_pct": null,
+      "current_avg": null,
+      "current_total": null,
+      "days_current": 1,
+      "days_previous": 0,
+      "enough_data": false,
+      "metric": "body_mass_kg",
+      "previous_avg": null,
+      "previous_total": null,
+      "unit": "kg"
+    }
+  ],
+  "observations": [],
+  "previous_end": "2026-11-06",
+  "previous_start": "2026-10-31",
+  "reason": null,
+  "workouts_current": 4,
+  "workouts_previous": 3
+}

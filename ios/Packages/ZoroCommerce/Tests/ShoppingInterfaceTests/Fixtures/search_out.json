@@ -1,0 +1,80 @@
+{
+  "query": "milk",
+  "products": [
+    {
+      "index": 1,
+      "ref": "swiggy_instamart:p-101",
+      "provider": "swiggy_instamart",
+      "product_id": "p-101",
+      "name": "Test toned milk",
+      "brand": "Test dairy",
+      "url": null,
+      "variants": [
+        {
+          "variant_id": "v-1",
+          "sku_id": null,
+          "label": "500 ml",
+          "price": "29.00",
+          "mrp": "30.00",
+          "unit_price": "₹5.80 per 100 ml",
+          "in_stock": true
+        },
+        {
+          "variant_id": "v-2",
+          "sku_id": null,
+          "label": "1 l",
+          "price": "56.50",
+          "mrp": null,
+          "unit_price": null,
+          "in_stock": null
+        }
+      ],
+      "attributes": {
+        "fat_content": "3%"
+      },
+      "source": "swiggy_instamart:search_products",
+      "retrieved_at": "2026-11-13T09:25:00Z"
+    },
+    {
+      "index": 2,
+      "ref": "swiggy_instamart:p-102",
+      "provider": "swiggy_instamart",
+      "product_id": "p-102",
+      "name": "Test curd",
+      "brand": null,
+      "url": null,
+      "variants": [
+        {
+          "variant_id": "v-9",
+          "sku_id": null,
+          "label": "400 g",
+          "price": "45.00",
+          "mrp": null,
+          "unit_price": null,
+          "in_stock": false
+        }
+      ],
+      "attributes": {
+        "fat_content": "3%"
+      },
+      "source": "swiggy_instamart:search_products",
+      "retrieved_at": "2026-11-13T09:25:00Z"
+    }
+  ],
+  "unavailable": [
+    {
+      "kind": "unavailable",
+      "provider": "zepto",
+      "method": "search_products",
+      "reason": "requires_partnership",
+      "message": "Zepto has no public search API.",
+      "handoff": {
+        "provider": "zepto",
+        "title": "Open Zepto",
+        "url": "https://www.zepto.com/",
+        "verified": false,
+        "note": ""
+      }
+    }
+  ]
+}

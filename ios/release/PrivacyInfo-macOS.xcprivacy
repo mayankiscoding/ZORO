@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  ZORO Mac app privacy manifest (template: copy into the ZOROMac target as PrivacyInfo.xcprivacy).
+  Apple's required-reason rules name iOS, iPadOS, tvOS, visionOS and watchOS; the Mac app ships the
+  same declarations so the two apps describe themselves the same way.
+
+  - UserDefaults: CA92.1 (app-only preferences, as on iOS).
+  - File timestamps: 3B52.1 "files or directories that the user specifically granted access to".
+    ZoroDevice/Sources/NativeActionBroker/Mac/FileHandlers.swift (#if os(macOS)) reads
+    URLResourceKey.contentModificationDateKey only inside folders the owner picked with an open panel.
+  No tracking, no collected data types (see the iOS manifest for the reasoning).
+-->
+<plist version="1.0">
+<dict>
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>3B52.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

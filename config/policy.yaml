@@ -1,0 +1,19 @@
+# ZORO policy toggles. Read by app/security/policy.py; reloaded when this file changes.
+# The risk rules themselves are code (design spec section 4) and cannot be loosened here.
+# A missing or malformed file means every toggle is off.
+version: 1
+
+toggles:
+  # Strict private mode normally sends nothing to external model providers. When true, content
+  # classified PUBLIC only (for example a product search query) may go to an external provider.
+  strict_allow_public_external: false
+
+  # "Face ID for high-risk": HIGH-risk actions always ask for the user-presence (biometric) key,
+  # not only when the turn is tainted. CRITICAL actions always do, whatever this says.
+  biometric_for_high_risk: false
+
+approvals:
+  # How long a confirm / biometric request for a MEDIUM or HIGH action stays answerable.
+  default_expiry_seconds: 300
+  # CRITICAL actions: at most 120 seconds (values above 120 are rejected).
+  critical_expiry_seconds: 120

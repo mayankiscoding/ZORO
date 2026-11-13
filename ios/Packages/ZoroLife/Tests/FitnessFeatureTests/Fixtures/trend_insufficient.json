@@ -1,0 +1,24 @@
+{
+  "available": false,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [],
+  "direction": "insufficient_data",
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": null,
+    "age_value": null,
+    "last_synced_at": null,
+    "latest_data_date": null,
+    "stale": true
+  },
+  "mean": null,
+  "metric": "body_mass_kg",
+  "min_points": 7,
+  "observations": [],
+  "points_used": 2,
+  "reason": "not_enough_data",
+  "slope_per_week": null,
+  "unit": "kg",
+  "window_end": null,
+  "window_start": null
+}

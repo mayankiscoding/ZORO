@@ -1,0 +1,222 @@
+{
+  "kind": "basket_comparison",
+  "title": "Basket comparison",
+  "payload": {
+    "computed_at": "2026-11-13T09:30:00Z",
+    "total_items": 2,
+    "providers": [
+      {
+        "provider": "store_b",
+        "title": "Store B",
+        "status": "ranked",
+        "rank": 1,
+        "item_total": "121.00",
+        "fees": [
+          {
+            "kind": "delivery_fee",
+            "label": "Delivery fee",
+            "amount": "0.00",
+            "waived": true
+          }
+        ],
+        "fees_known": true,
+        "fee_total": "0.00",
+        "discounts": [],
+        "discount_total": "0.00",
+        "final_payable": "121.00",
+        "exact_items": 2,
+        "total_items": 2,
+        "coverage_pct": 100,
+        "match_confidence": 0.9,
+        "lines": [
+          {
+            "item_id": "bi-1",
+            "name": "Test toned milk",
+            "quantity": 2,
+            "unit_price": "28.00",
+            "line_total": "56.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          },
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "quantity": 1,
+            "unit_price": "65.00",
+            "line_total": "65.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          }
+        ],
+        "substitutes": [],
+        "missing": [],
+        "stale_items": [],
+        "handoff": null,
+        "notes": []
+      },
+      {
+        "provider": "store_a",
+        "title": "Store A",
+        "status": "ranked",
+        "rank": 2,
+        "item_total": "118.00",
+        "fees": [
+          {
+            "kind": "delivery_fee",
+            "label": "Delivery fee",
+            "amount": "25.00",
+            "waived": false
+          }
+        ],
+        "fees_known": true,
+        "fee_total": "25.00",
+        "discounts": [],
+        "discount_total": "0.00",
+        "final_payable": "143.00",
+        "exact_items": 2,
+        "total_items": 2,
+        "coverage_pct": 100,
+        "match_confidence": 0.9,
+        "lines": [
+          {
+            "item_id": "bi-1",
+            "name": "Test toned milk",
+            "quantity": 2,
+            "unit_price": "29.00",
+            "line_total": "58.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          },
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "quantity": 1,
+            "unit_price": "60.00",
+            "line_total": "60.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          }
+        ],
+        "substitutes": [],
+        "missing": [],
+        "stale_items": [],
+        "handoff": {
+          "provider": "store_a",
+          "title": "Open Store A",
+          "url": "https://example.invalid/a",
+          "verified": true,
+          "note": ""
+        },
+        "notes": []
+      },
+      {
+        "provider": "store_c",
+        "title": "Store C",
+        "status": "partial",
+        "rank": null,
+        "item_total": "54.00",
+        "fees": [],
+        "fees_known": false,
+        "fee_total": "0.00",
+        "discounts": [],
+        "discount_total": "0.00",
+        "final_payable": null,
+        "exact_items": 1,
+        "total_items": 2,
+        "coverage_pct": 50,
+        "match_confidence": 0.9,
+        "lines": [
+          {
+            "item_id": "bi-1",
+            "name": "Test toned milk",
+            "quantity": 2,
+            "unit_price": "27.00",
+            "line_total": "54.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          }
+        ],
+        "substitutes": [
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "offer_label": "Test brown eggs 6 pcs",
+            "unit_price": "52.00",
+            "line_total": "52.00",
+            "confidence": 0.6,
+            "reasons": [
+              "same size"
+            ],
+            "allowed": true
+          }
+        ],
+        "missing": [
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "reason": "stale_price"
+          }
+        ],
+        "stale_items": [
+          "bi-2"
+        ],
+        "handoff": null,
+        "notes": []
+      },
+      {
+        "provider": "store_d",
+        "title": "Store D",
+        "status": "unavailable",
+        "rank": null,
+        "item_total": "0.00",
+        "fees": [],
+        "fees_known": false,
+        "fee_total": "0.00",
+        "discounts": [],
+        "discount_total": "0.00",
+        "final_payable": null,
+        "exact_items": 0,
+        "total_items": 2,
+        "coverage_pct": 0,
+        "match_confidence": null,
+        "lines": [],
+        "substitutes": [],
+        "missing": [
+          {
+            "item_id": "bi-1",
+            "name": "Test toned milk",
+            "reason": "no_offer"
+          },
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "reason": "no_offer"
+          }
+        ],
+        "stale_items": [],
+        "handoff": {
+          "provider": "store_d",
+          "title": "Open Store D",
+          "url": null,
+          "verified": false,
+          "note": ""
+        },
+        "notes": [
+          "Cannot be queried through an official route; open the provider instead."
+        ]
+      }
+    ],
+    "cheapest_provider": "store_b",
+    "cheapest_reason": "cheapest"
+  }
+}

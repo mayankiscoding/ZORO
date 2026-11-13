@@ -1,0 +1,250 @@
+{
+  "available": true,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "observations": [],
+  "plan": {
+    "assumptions": [
+      "Your current running volume is 10 km a week, as you told me.",
+      "Your recent average pace is 6:32 per km; easy runs should feel no harder than that.",
+      "You can run 3 days a week and rest on the other days."
+    ],
+    "days_per_week": 3,
+    "goal": "first_5k",
+    "notes": [
+      "This is a training outline, not medical advice. Adjust it to how you feel.",
+      "If something hurts, stop and rest; repeat a week instead of adding distance."
+    ],
+    "race_km": 5.0,
+    "reaches_target_distance": true,
+    "rules": [
+      "Weekly distance rises by at most 10% compared with the last regular week.",
+      "Every 4th week is a lighter week at 80% of the previous regular week.",
+      "The long run is about 35 to 40 percent of the week, capped for the goal."
+    ],
+    "start_basis": "user_provided",
+    "start_weekly_km": 10.0,
+    "weeks": [
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 3.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 3.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 4.0,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 10.0,
+        "week": 1
+      },
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 3.5,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 3.5,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 4.0,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 11.0,
+        "week": 2
+      },
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 3.5,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 3.5,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 4.5,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 12.0,
+        "week": 3
+      },
+      {
+        "down_week": true,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 3.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 3.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 3.5,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 9.5,
+        "week": 4
+      },
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 4.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 4.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 5.0,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 13.0,
+        "week": 5
+      },
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 4.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 4.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 5.5,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 14.0,
+        "week": 6
+      },
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 4.5,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 4.5,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 6.0,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 15.0,
+        "week": 7
+      },
+      {
+        "down_week": false,
+        "sessions": [
+          {
+            "day": "tue",
+            "distance_km": 5.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "thu",
+            "distance_km": 5.0,
+            "effort": "easy, you can hold a conversation",
+            "kind": "easy"
+          },
+          {
+            "day": "sun",
+            "distance_km": 6.5,
+            "effort": "easy and even, walk breaks are fine",
+            "kind": "long"
+          }
+        ],
+        "taper": false,
+        "total_km": 16.5,
+        "week": 8
+      }
+    ]
+  },
+  "reason": null
+}

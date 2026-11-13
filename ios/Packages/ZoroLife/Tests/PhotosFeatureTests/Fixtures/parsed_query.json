@@ -1,0 +1,78 @@
+{
+  "assumptions": [],
+  "matched": {
+    "colors": [
+      "blue"
+    ],
+    "date": "yesterday",
+    "objects": [
+      "cap"
+    ]
+  },
+  "plan": {
+    "steps": [
+      {
+        "args": {
+          "query": {
+            "colors": [
+              "blue"
+            ],
+            "contains_text": null,
+            "date_from": "2026-11-12",
+            "date_to": "2026-11-12",
+            "labels": [
+              "cap",
+              "hat"
+            ],
+            "limit": 30,
+            "media": "any",
+            "text": "photo from yesterday with my blue cap"
+          }
+        },
+        "args_from_previous": {},
+        "tool": "device.photos.search"
+      },
+      {
+        "args": {
+          "query": {
+            "colors": [
+              "blue"
+            ],
+            "contains_text": null,
+            "date_from": "2026-11-12",
+            "date_to": "2026-11-12",
+            "labels": [
+              "cap",
+              "hat"
+            ],
+            "limit": 30,
+            "media": "any",
+            "text": "photo from yesterday with my blue cap"
+          }
+        },
+        "args_from_previous": {
+          "hits": "hits",
+          "indexed_count": "indexed_count",
+          "limited_library": "limited_library"
+        },
+        "tool": "vision.show_photo_results"
+      }
+    ]
+  },
+  "query": {
+    "colors": [
+      "blue"
+    ],
+    "contains_text": null,
+    "date_from": "2026-11-12",
+    "date_to": "2026-11-12",
+    "labels": [
+      "cap",
+      "hat"
+    ],
+    "limit": 30,
+    "media": "any",
+    "text": "photo from yesterday with my blue cap"
+  },
+  "text_source": "original"
+}

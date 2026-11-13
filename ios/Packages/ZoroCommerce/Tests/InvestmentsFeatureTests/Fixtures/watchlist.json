@@ -1,0 +1,25 @@
+{
+  "list_name": "default",
+  "items": [
+    {
+      "symbol": "TESTA",
+      "exchange": "NSE",
+      "note": "",
+      "added_at": "2026-11-10T09:30:00Z",
+      "last_close": "120.50",
+      "close_day": "2026-11-12",
+      "change_percent": "1.25",
+      "price_source": "csv"
+    },
+    {
+      "symbol": "TESTD",
+      "exchange": "NSE",
+      "note": "results due",
+      "added_at": "2026-11-13T09:30:00Z",
+      "last_close": null,
+      "close_day": null,
+      "change_percent": null,
+      "price_source": null
+    }
+  ]
+}

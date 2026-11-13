@@ -1,0 +1,183 @@
+/* ZORO design tokens for the web, mirroring ios/Packages/ZoroDesign (docs/design/design-system.md).
+   Hue values are exactly the spec's; neutrals follow the system semantic colours of iOS.
+   Feature CSS uses these names, never raw values. */
+
+:root {
+  color-scheme: light dark;
+
+  /* hues: fills, strokes and the orb */
+  --neel: #2a2f8f;
+  --mor: #0b7f86;
+  --genda: #d98a00;
+  --lac: #b5302a;
+  --moonstone: #6e7a8a;
+
+  /* text-safe forms (4.5:1 on the neutrals below); the plain hue where it already passes */
+  --neel-text: #2a2f8f;
+  --mor-text: #08737a; /* mor itself is 4.3:1 on the grouped background, so text is a step deeper */
+  --genda-text: #8a5600;
+  --lac-text: #b5302a;
+  --moonstone-text: #4a5462;
+
+  /* label on a filled hue, chosen by measured contrast */
+  --on-neel: #ffffff;
+  --on-mor: #ffffff;
+  --on-genda: #000000;
+  --on-lac: #ffffff;
+
+  /* neutrals */
+  --bg: #f2f2f7;
+  --raised: #ffffff;
+  --inset: #e9e9ee;
+  --label: #000000;
+  --label-2: #5c5c61;
+  --label-3: #66666b;
+  --hairline: rgba(60, 60, 67, 0.29);
+  --rekha: rgba(0, 0, 0, 0.32);
+  --scrim: rgba(0, 0, 0, 0.32);
+  --orb-surface: #f2f2f7;
+
+  /* tints for badges and banners: the hue at low strength over the surface */
+  --neel-tint: rgba(42, 47, 143, 0.1);
+  --mor-tint: rgba(11, 127, 134, 0.12);
+  --genda-tint: rgba(217, 138, 0, 0.16);
+  --lac-tint: rgba(181, 48, 42, 0.1);
+  --moonstone-tint: rgba(110, 122, 138, 0.16);
+
+  /* space: 2 (hair), 4, 8, 12, 16, 24, 32, 48 */
+  --s-hair: 0.125rem;
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --gutter: 16px;
+
+  /* radius grows with the surface; chips and badges are capsules */
+  --r-inset: 8px;
+  --r-control: 12px;
+  --r-card: 20px;
+  --r-sheet: 28px;
+  --r-capsule: 999px;
+
+  /* stroke */
+  --w-rekha: 1px;
+  --w-hairline: 0.5px;
+
+  /* motion: answers the owner, never decorates */
+  --m-quick: 0.15s cubic-bezier(0.3, 0, 0.2, 1);
+  --m-standard: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --m-emphasized: 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.06);
+  --m-settle: 0.8s ease-out;
+
+  /* type families: SF Pro for the interface, New York for ZORO's own words. Devanagari falls
+     back to the system face, which hangs from its own headline. */
+  --font-ui: system-ui, -apple-system, 'SF Pro Text', 'Helvetica Neue', 'Kohinoor Devanagari', 'Noto Sans Devanagari', sans-serif;
+  --font-zoro: ui-serif, 'New York', 'Iowan Old Style', 'Palatino Linotype', 'Kohinoor Devanagari', 'Noto Serif Devanagari', Georgia, serif;
+
+  /* type scale on the 17-point body (Dynamic Type sizes at the default setting) */
+  --t-title: 2rem; /* largeTitle 34 */
+  --t-zoro: 1.294rem; /* title2 22 */
+  --t-owner: 1.176rem; /* title3 20 */
+  --t-amount: 1.176rem;
+  --t-body: 1rem; /* body 17 */
+  --t-detail: 0.882rem; /* subheadline 15 */
+  --t-caption: 0.765rem; /* footnote 13 */
+
+  --tap: 44px;
+  --control: 50px;
+  --content: 40rem;
+  --tabbar: 56px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neel: #5b62e0;
+    --mor: #19b5b0;
+    --genda: #ffb321;
+    --lac: #ff6b5e;
+    --moonstone: #a9b4c2;
+
+    --neel-text: #9ca1ff;
+    --mor-text: #1fc0bb;
+    --genda-text: #ffb321;
+    --lac-text: #ff8a7f; /* lac itself is 4.1:1 on the inset fill, where Decline sits */
+    --moonstone-text: #d0d7e0;
+
+    --on-neel: #ffffff;
+    --on-mor: #000000;
+    --on-genda: #000000;
+    --on-lac: #000000;
+
+    --bg: #1c1c1e;
+    --raised: #2c2c2e;
+    --inset: #3a3a3c;
+    --label: #ffffff;
+    --label-2: #b4b4ba;
+    --label-3: #a6a6ad;
+    --hairline: rgba(120, 120, 128, 0.5);
+    --rekha: rgba(255, 255, 255, 0.32);
+    --scrim: rgba(0, 0, 0, 0.55);
+    --orb-surface: #1c1c1e;
+
+    --neel-tint: rgba(91, 98, 224, 0.22);
+    --mor-tint: rgba(25, 181, 176, 0.18);
+    --genda-tint: rgba(255, 179, 33, 0.18);
+    --lac-tint: rgba(255, 107, 94, 0.18);
+    --moonstone-tint: rgba(169, 180, 194, 0.18);
+  }
+}
+
+/* Increase Contrast: the stronger hue variants and a 2-point rekha at 70 %. */
+@media (prefers-contrast: more) {
+  :root {
+    --neel: #1d2170;
+    --mor: #065c61;
+    --genda: #8a5600;
+    --lac: #8c1e19;
+    --moonstone: #4a5462;
+    --neel-text: #1d2170;
+    --mor-text: #065c61;
+    --genda-text: #8a5600;
+    --lac-text: #8c1e19;
+    --moonstone-text: #4a5462;
+    --on-genda: #ffffff;
+    --label-2: #3a3a3e;
+    --label-3: #4a4a4f;
+    --hairline: rgba(0, 0, 0, 0.6);
+    --rekha: rgba(0, 0, 0, 0.7);
+    --w-rekha: 2px;
+    --w-hairline: 1px;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --neel: #9ca1ff;
+    --mor: #5fdcd6;
+    --genda: #ffcb66;
+    --lac: #ff9d94;
+    --moonstone: #d0d7e0;
+    --neel-text: #9ca1ff;
+    --mor-text: #5fdcd6;
+    --genda-text: #ffcb66;
+    --lac-text: #ff9d94;
+    --moonstone-text: #d0d7e0;
+    --on-neel: #000000;
+    --on-mor: #000000;
+    --on-genda: #000000;
+    --on-lac: #000000;
+    --label-2: #dcdce2;
+    --label-3: #c8c8ce;
+    --hairline: rgba(255, 255, 255, 0.6);
+    --rekha: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (min-width: 56.25rem) {
+  :root {
+    --gutter: 24px;
+  }
+}

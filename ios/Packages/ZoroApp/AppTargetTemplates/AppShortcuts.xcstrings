@@ -1,0 +1,296 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "${applicationName} basket compare karo": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} बास्केट की तुलना करो"
+          }
+        }
+      }
+    },
+    "${applicationName} gaana chalao": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} गाना चलाओ"
+          }
+        }
+      }
+    },
+    "${applicationName} mein ${section} kholo": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में ${section} खोलो"
+          }
+        }
+      }
+    },
+    "${applicationName} photo dhoondo": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} फ़ोटो ढूँढो"
+          }
+        }
+      }
+    },
+    "${applicationName} private mode on karo": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} प्राइवेट मोड चालू करो"
+          }
+        }
+      }
+    },
+    "${applicationName} se baat karo": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से बात करो"
+          }
+        }
+      }
+    },
+    "${applicationName} se kuch poochna hai": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से कुछ पूछना है"
+          }
+        }
+      }
+    },
+    "${applicationName} se poochho": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से पूछो"
+          }
+        }
+      }
+    },
+    "${applicationName} se poochho ${period} kitna kharch hua": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से पूछो ${period} कितना खर्च हुआ"
+          }
+        }
+      }
+    },
+    "${applicationName} yaad rakhna": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} याद रखना"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से पूछें"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName} how much I spent ${period}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से पूछें ${period} कितना खर्च हुआ"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName} how much I spent on ${category}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से पूछें ${category} पर कितना खर्च हुआ"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName} something": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से कुछ पूछें"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName} to compare my basket": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से बास्केट की कीमतें मिलाएँ"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName} to play something": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से कुछ चलवाएँ"
+          }
+        }
+      }
+    },
+    "Ask ${applicationName} to remember something": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से कुछ याद रखने को कहें"
+          }
+        }
+      }
+    },
+    "Check my spending in ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में मेरा खर्च देखें"
+          }
+        }
+      }
+    },
+    "Compare my basket with ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से मेरी बास्केट की तुलना करें"
+          }
+        }
+      }
+    },
+    "Find a photo with ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से फ़ोटो ढूँढें"
+          }
+        }
+      }
+    },
+    "Open ${section} in ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में ${section} खोलें"
+          }
+        }
+      }
+    },
+    "Play music with ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से गाना चलाएँ"
+          }
+        }
+      }
+    },
+    "Remember this with ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} यह याद रखें"
+          }
+        }
+      }
+    },
+    "Search photos in ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में फ़ोटो खोजें"
+          }
+        }
+      }
+    },
+    "Show ${applicationName} ${section}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} का ${section} दिखाएँ"
+          }
+        }
+      }
+    },
+    "Start ${applicationName} voice": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} वॉइस शुरू करें"
+          }
+        }
+      }
+    },
+    "Switch ${applicationName} to private mode": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} को प्राइवेट मोड में करें"
+          }
+        }
+      }
+    },
+    "Talk to ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} से बात करें"
+          }
+        }
+      }
+    },
+    "Turn on private mode in ${applicationName}": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} में प्राइवेट मोड चालू करें"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

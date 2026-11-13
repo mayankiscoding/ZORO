@@ -1,0 +1,16 @@
+{
+  "kind": "music",
+  "payload": {
+    "now_playing": {
+      "album": "Example album",
+      "artists": [
+        "Example artist"
+      ],
+      "played_at": "2026-11-13T11:55:00Z",
+      "title": "Example title",
+      "uri": "spotify:track:4uLU6hMCjMI75M1A2tKUQC"
+    },
+    "provider": "spotify"
+  },
+  "title": "Now playing"
+}

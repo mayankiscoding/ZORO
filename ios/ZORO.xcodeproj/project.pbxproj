@@ -1,0 +1,905 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02346D852AEDFBFDDA7E29D9 /* ZOROShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAF9E545F70BA4C77489ACD /* ZOROShortcuts.swift */; };
+		0F6F1A3B540829AA2BB9CA80 /* ZOROUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5A10084ADB1BDE5FC92E2 /* ZOROUITests.swift */; };
+		14F7660A571CDDD05579B3A6 /* ConversationManager in Frameworks */ = {isa = PBXBuildFile; productRef = DE6391D9642BE8C790EA9981 /* ConversationManager */; };
+		15710BB773E0A9AC3BA8A191 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EA21C6217A59E14E1818A3 /* SwiftUI.framework */; };
+		1B0BB897D1955A34DBE0B606 /* ZoroComposition in Frameworks */ = {isa = PBXBuildFile; productRef = E8A8239101F0CC26B722297E /* ZoroComposition */; };
+		1D629D4B4439A6900FDC6457 /* UITestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F22342F0F24CEFDA1B8A3A /* UITestSupport.swift */; };
+		2BC9D7D70B95C2D1762F4CF8 /* ZOROApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C7292C798BB9A18B06CA2 /* ZOROApp.swift */; };
+		4F771ECB76A838FB072CD305 /* ZOROVoiceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB23E9BA2330843BD6E6F69 /* ZOROVoiceControl.swift */; };
+		5A8A170BE86225A87523779A /* AgentTaskLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10A24B6FF49426BA8517258 /* AgentTaskLiveActivity.swift */; };
+		610EAD264C3E687BEDAB3A1D /* ZoroAppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 98118699E73B0F2EC86CE20F /* ZoroAppUI */; };
+		6AAB3C438D25CEE7B453A086 /* ZOROAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F85695F86914535FDC9D9F /* ZOROAppTests.swift */; };
+		761AF11E448254EE27EE7B37 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = EF693599D9672F594C1F2B7D /* AppShortcuts.xcstrings */; };
+		7EC4472880DF3B08AAB5599B /* ZoroAlarmCountdownActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7B48F3D4393A574CA31FDC /* ZoroAlarmCountdownActivity.swift */; };
+		88F5006BC6FAE8BC7A7F4E36 /* ZoroDesign in Frameworks */ = {isa = PBXBuildFile; productRef = C54C3AF0AAC3439E3E1DEBA1 /* ZoroDesign */; };
+		8BD701F7409A931FFF521476 /* ZoroTaskActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A20F64783ED68877A3F03B /* ZoroTaskActivityAttributes.swift */; };
+		969D440BE9DD98C330B22C13 /* ZoroCore in Frameworks */ = {isa = PBXBuildFile; productRef = B92AAFA3793856AD0F525E5B /* ZoroCore */; };
+		BE331148F75680C3C2228523 /* ZOROWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E608A8E4E2B2D007D1842B8 /* ZOROWidgetsBundle.swift */; };
+		BF0AE606AF40B4E2CAA6B4D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BBC736C295D18ED4869176F1 /* README.md */; };
+		D14E7A2F45FDC155824D688B /* AgentTaskActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42580179EDEA12ABA832E732 /* AgentTaskActivityController.swift */; };
+		DAE0DD87E9D8F11FDC18F390 /* ZoroTaskActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A20F64783ED68877A3F03B /* ZoroTaskActivityAttributes.swift */; };
+		DD74954CDC3A86A5179EB710 /* ZoroAppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2E14BBA0025512EF9748BDDC /* ZoroAppUI */; };
+		E14B9958A7797DEE9DA62B50 /* ZOROWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2A5166AEF137B45B06D2275E /* ZOROWidgets.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F08C3FA776102A5E740050AF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D54A93BFE931F4EF59F58C87 /* Localizable.xcstrings */; };
+		F24FB31ECCA9715F4DB93C5A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951E012DC01CB094EE8FF4C4 /* WidgetKit.framework */; };
+		F4E9BC799D73264A218FAC7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59AB83A100FEEB8C45DA4C61 /* Assets.xcassets */; };
+		F72063239E6DC0AEBD61B380 /* PhotoIndexingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771D29428962C05BF1191650 /* PhotoIndexingTask.swift */; };
+		F729351B0C80F0408866E97F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1DBE67818EE10EA678E76AAD /* README.md */; };
+		F7E7936490930E4AB63D5CAE /* NativeActionBroker in Frameworks */ = {isa = PBXBuildFile; productRef = 2A05CD69A24CDFD137FB2816 /* NativeActionBroker */; };
+		F9B1811F73A793742725EB54 /* ZoroComposition in Frameworks */ = {isa = PBXBuildFile; productRef = 62B397268B082943334F875F /* ZoroComposition */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		70C17AA8663282DDBFC6EA5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49978A262B99AE2FB3023DCE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E7A35845832BC8DB06336FD;
+			remoteInfo = ZORO;
+		};
+		D43C740823C4ED13ADA42E9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49978A262B99AE2FB3023DCE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99F7EC350C98AFF2F0415FED;
+			remoteInfo = ZOROWidgets;
+		};
+		F88705BE6120190BF8E21A02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49978A262B99AE2FB3023DCE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E7A35845832BC8DB06336FD;
+			remoteInfo = ZORO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3E18EF14561707594EF2BF81 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E14B9958A7797DEE9DA62B50 /* ZOROWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		16A20F64783ED68877A3F03B /* ZoroTaskActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoroTaskActivityAttributes.swift; sourceTree = "<group>"; };
+		1DBE67818EE10EA678E76AAD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2175B2E55041F0E96E27864F /* ZoroKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroKit; path = Packages/ZoroKit; sourceTree = SOURCE_ROOT; };
+		2A5166AEF137B45B06D2275E /* ZOROWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ZOROWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		324AD790FF243006F93A7AB0 /* ZoroCommerce */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroCommerce; path = Packages/ZoroCommerce; sourceTree = SOURCE_ROOT; };
+		38A3BC3CFCA8FFD8FF513809 /* ZoroComposition */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroComposition; path = Packages/ZoroComposition; sourceTree = SOURCE_ROOT; };
+		42580179EDEA12ABA832E732 /* AgentTaskActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTaskActivityController.swift; sourceTree = "<group>"; };
+		59AB83A100FEEB8C45DA4C61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		658AC1870ED77DF69C16A27D /* ZoroDevice */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroDevice; path = Packages/ZoroDevice; sourceTree = SOURCE_ROOT; };
+		6BAF9E545F70BA4C77489ACD /* ZOROShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZOROShortcuts.swift; sourceTree = "<group>"; };
+		6DAF250F0CA137A8478BF757 /* ZOROTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ZOROTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		771D29428962C05BF1191650 /* PhotoIndexingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoIndexingTask.swift; sourceTree = "<group>"; };
+		83C5A10084ADB1BDE5FC92E2 /* ZOROUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZOROUITests.swift; sourceTree = "<group>"; };
+		852176B2A8160AA77A9B906F /* ZoroLife */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroLife; path = Packages/ZoroLife; sourceTree = SOURCE_ROOT; };
+		8CB23E9BA2330843BD6E6F69 /* ZOROVoiceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZOROVoiceControl.swift; sourceTree = "<group>"; };
+		951E012DC01CB094EE8FF4C4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		97F85695F86914535FDC9D9F /* ZOROAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZOROAppTests.swift; sourceTree = "<group>"; };
+		9E608A8E4E2B2D007D1842B8 /* ZOROWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZOROWidgetsBundle.swift; sourceTree = "<group>"; };
+		A0F7A1073F5BC667D20D7C42 /* ZoroApp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroApp; path = Packages/ZoroApp; sourceTree = SOURCE_ROOT; };
+		A7F22342F0F24CEFDA1B8A3A /* UITestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestSupport.swift; sourceTree = "<group>"; };
+		AC7B48F3D4393A574CA31FDC /* ZoroAlarmCountdownActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoroAlarmCountdownActivity.swift; sourceTree = "<group>"; };
+		B10A24B6FF49426BA8517258 /* AgentTaskLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTaskLiveActivity.swift; sourceTree = "<group>"; };
+		BBC736C295D18ED4869176F1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C4368B52FD6ECF2430EBE0C5 /* ZOROUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ZOROUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA3C7292C798BB9A18B06CA2 /* ZOROApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZOROApp.swift; sourceTree = "<group>"; };
+		D54A93BFE931F4EF59F58C87 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D73D397693B0E29151EF06D9 /* ZoroSystem */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroSystem; path = Packages/ZoroSystem; sourceTree = SOURCE_ROOT; };
+		E5EA21C6217A59E14E1818A3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E83807BC7E298522FB4C3774 /* ZoroDesign */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroDesign; path = Packages/ZoroDesign; sourceTree = SOURCE_ROOT; };
+		ECE1BFF92BDBB6466F95E5CE /* ZORO.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ZORO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF693599D9672F594C1F2B7D /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
+		F5429DB6DE65B2C1B1C85927 /* ZoroVoice */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroVoice; path = Packages/ZoroVoice; sourceTree = SOURCE_ROOT; };
+		F9CCF92661D75B14BEE99340 /* ZoroPhotos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZoroPhotos; path = Packages/ZoroPhotos; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04973251E8CA27CA0111E53B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B1811F73A793742725EB54 /* ZoroComposition in Frameworks */,
+				DD74954CDC3A86A5179EB710 /* ZoroAppUI in Frameworks */,
+				969D440BE9DD98C330B22C13 /* ZoroCore in Frameworks */,
+				14F7660A571CDDD05579B3A6 /* ConversationManager in Frameworks */,
+				88F5006BC6FAE8BC7A7F4E36 /* ZoroDesign in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		919BF1D02717050874DC5968 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B0BB897D1955A34DBE0B606 /* ZoroComposition in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE3895F819493473BD783B0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				610EAD264C3E687BEDAB3A1D /* ZoroAppUI in Frameworks */,
+				F7E7936490930E4AB63D5CAE /* NativeActionBroker in Frameworks */,
+				F24FB31ECCA9715F4DB93C5A /* WidgetKit.framework in Frameworks */,
+				15710BB773E0A9AC3BA8A191 /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		153D9ED30F86A9D27C87A0E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5EA21C6217A59E14E1818A3 /* SwiftUI.framework */,
+				951E012DC01CB094EE8FF4C4 /* WidgetKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1833BCF5DEE3283287171D63 /* ZOROTests */ = {
+			isa = PBXGroup;
+			children = (
+				1DBE67818EE10EA678E76AAD /* README.md */,
+				97F85695F86914535FDC9D9F /* ZOROAppTests.swift */,
+			);
+			path = ZOROTests;
+			sourceTree = "<group>";
+		};
+		2EF963F81A853F8E15943518 /* ZORO */ = {
+			isa = PBXGroup;
+			children = (
+				42580179EDEA12ABA832E732 /* AgentTaskActivityController.swift */,
+				59AB83A100FEEB8C45DA4C61 /* Assets.xcassets */,
+				771D29428962C05BF1191650 /* PhotoIndexingTask.swift */,
+				A7F22342F0F24CEFDA1B8A3A /* UITestSupport.swift */,
+				CA3C7292C798BB9A18B06CA2 /* ZOROApp.swift */,
+				6BAF9E545F70BA4C77489ACD /* ZOROShortcuts.swift */,
+				C573DC99BE6E8032D0A120FB /* Localization */,
+			);
+			path = ZORO;
+			sourceTree = "<group>";
+		};
+		48F5C5DF9312AF6C526D6008 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				16A20F64783ED68877A3F03B /* ZoroTaskActivityAttributes.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		6B0B7E699056AE424091A85C = {
+			isa = PBXGroup;
+			children = (
+				80255FC5C8B1B0E198B83F03 /* Packages */,
+				2EF963F81A853F8E15943518 /* ZORO */,
+				1833BCF5DEE3283287171D63 /* ZOROTests */,
+				7B67FB8EAC1B65F3B96D55C5 /* ZOROUITests */,
+				DE83257256BD5740041B8359 /* ZOROWidgets */,
+				153D9ED30F86A9D27C87A0E5 /* Frameworks */,
+				957E205713B0955CCA7CA0E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B67FB8EAC1B65F3B96D55C5 /* ZOROUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BBC736C295D18ED4869176F1 /* README.md */,
+				83C5A10084ADB1BDE5FC92E2 /* ZOROUITests.swift */,
+			);
+			path = ZOROUITests;
+			sourceTree = "<group>";
+		};
+		80255FC5C8B1B0E198B83F03 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A0F7A1073F5BC667D20D7C42 /* ZoroApp */,
+				324AD790FF243006F93A7AB0 /* ZoroCommerce */,
+				38A3BC3CFCA8FFD8FF513809 /* ZoroComposition */,
+				E83807BC7E298522FB4C3774 /* ZoroDesign */,
+				658AC1870ED77DF69C16A27D /* ZoroDevice */,
+				2175B2E55041F0E96E27864F /* ZoroKit */,
+				852176B2A8160AA77A9B906F /* ZoroLife */,
+				F9CCF92661D75B14BEE99340 /* ZoroPhotos */,
+				D73D397693B0E29151EF06D9 /* ZoroSystem */,
+				F5429DB6DE65B2C1B1C85927 /* ZoroVoice */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		957E205713B0955CCA7CA0E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ECE1BFF92BDBB6466F95E5CE /* ZORO.app */,
+				6DAF250F0CA137A8478BF757 /* ZOROTests.xctest */,
+				C4368B52FD6ECF2430EBE0C5 /* ZOROUITests.xctest */,
+				2A5166AEF137B45B06D2275E /* ZOROWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C573DC99BE6E8032D0A120FB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				EF693599D9672F594C1F2B7D /* AppShortcuts.xcstrings */,
+				D54A93BFE931F4EF59F58C87 /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		DE83257256BD5740041B8359 /* ZOROWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				B10A24B6FF49426BA8517258 /* AgentTaskLiveActivity.swift */,
+				AC7B48F3D4393A574CA31FDC /* ZoroAlarmCountdownActivity.swift */,
+				8CB23E9BA2330843BD6E6F69 /* ZOROVoiceControl.swift */,
+				9E608A8E4E2B2D007D1842B8 /* ZOROWidgetsBundle.swift */,
+				48F5C5DF9312AF6C526D6008 /* Shared */,
+			);
+			path = ZOROWidgets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0BC80BA01D5A3672BE89150E /* ZOROTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D50EB7C0C0BCBB5D984CC8F /* Build configuration list for PBXNativeTarget "ZOROTests" */;
+			buildPhases = (
+				38111ED04CB9B4C14A3CF664 /* Sources */,
+				AB29475880E7BEA59D544676 /* Resources */,
+				919BF1D02717050874DC5968 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9F8C946BF89F4A66BD00F27 /* PBXTargetDependency */,
+			);
+			name = ZOROTests;
+			packageProductDependencies = (
+				E8A8239101F0CC26B722297E /* ZoroComposition */,
+			);
+			productName = ZOROTests;
+			productReference = 6DAF250F0CA137A8478BF757 /* ZOROTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5E7A35845832BC8DB06336FD /* ZORO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C35E944FB221216D42B6C488 /* Build configuration list for PBXNativeTarget "ZORO" */;
+			buildPhases = (
+				0085A724A2A921FCC3E050EB /* Sources */,
+				967A616555E657186735B93D /* Resources */,
+				04973251E8CA27CA0111E53B /* Frameworks */,
+				3E18EF14561707594EF2BF81 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29F94AFD5F685CC201895584 /* PBXTargetDependency */,
+			);
+			name = ZORO;
+			packageProductDependencies = (
+				62B397268B082943334F875F /* ZoroComposition */,
+				2E14BBA0025512EF9748BDDC /* ZoroAppUI */,
+				B92AAFA3793856AD0F525E5B /* ZoroCore */,
+				DE6391D9642BE8C790EA9981 /* ConversationManager */,
+				C54C3AF0AAC3439E3E1DEBA1 /* ZoroDesign */,
+			);
+			productName = ZORO;
+			productReference = ECE1BFF92BDBB6466F95E5CE /* ZORO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63E203B094FC0D9D6370B443 /* ZOROUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16C3797DA09B778980A38875 /* Build configuration list for PBXNativeTarget "ZOROUITests" */;
+			buildPhases = (
+				D39E0F701370E4222B7920C3 /* Sources */,
+				DD3F6F14B490F2BE5BECDA17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F747A9626CA0FECDD7DD9A1 /* PBXTargetDependency */,
+			);
+			name = ZOROUITests;
+			packageProductDependencies = (
+			);
+			productName = ZOROUITests;
+			productReference = C4368B52FD6ECF2430EBE0C5 /* ZOROUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		99F7EC350C98AFF2F0415FED /* ZOROWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B82164A73B60873813DCA3EC /* Build configuration list for PBXNativeTarget "ZOROWidgets" */;
+			buildPhases = (
+				0B9215E649573FC1B56550BF /* Sources */,
+				AE3895F819493473BD783B0A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZOROWidgets;
+			packageProductDependencies = (
+				98118699E73B0F2EC86CE20F /* ZoroAppUI */,
+				2A05CD69A24CDFD137FB2816 /* NativeActionBroker */,
+			);
+			productName = ZOROWidgets;
+			productReference = 2A5166AEF137B45B06D2275E /* ZOROWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49978A262B99AE2FB3023DCE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					0BC80BA01D5A3672BE89150E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					5E7A35845832BC8DB06336FD = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					63E203B094FC0D9D6370B443 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5E7A35845832BC8DB06336FD;
+					};
+					99F7EC350C98AFF2F0415FED = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 14990FB5A4440ADC59FB71D7 /* Build configuration list for PBXProject "ZORO" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				hi,
+			);
+			mainGroup = 6B0B7E699056AE424091A85C;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0F7DA581F1E154A39B8142C8 /* XCLocalSwiftPackageReference "Packages/ZoroApp" */,
+				476AD3756E1DF13ABC9C71DD /* XCLocalSwiftPackageReference "Packages/ZoroCommerce" */,
+				3069C291C5F6788FB49FB4A3 /* XCLocalSwiftPackageReference "Packages/ZoroComposition" */,
+				C80934A9BD7CEEC4EF54D303 /* XCLocalSwiftPackageReference "Packages/ZoroDesign" */,
+				702E56E80A21EC464F5CDFAC /* XCLocalSwiftPackageReference "Packages/ZoroDevice" */,
+				2BAD85F4367EB5521598BCD0 /* XCLocalSwiftPackageReference "Packages/ZoroKit" */,
+				AD934D343828416A5713DB78 /* XCLocalSwiftPackageReference "Packages/ZoroLife" */,
+				200126D9C1D4B84F3E3CC227 /* XCLocalSwiftPackageReference "Packages/ZoroPhotos" */,
+				8AB1F13DF9F8AD4F5F0286D5 /* XCLocalSwiftPackageReference "Packages/ZoroSystem" */,
+				4A7310CCBE573E4A974F5DD6 /* XCLocalSwiftPackageReference "Packages/ZoroVoice" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 957E205713B0955CCA7CA0E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E7A35845832BC8DB06336FD /* ZORO */,
+				99F7EC350C98AFF2F0415FED /* ZOROWidgets */,
+				0BC80BA01D5A3672BE89150E /* ZOROTests */,
+				63E203B094FC0D9D6370B443 /* ZOROUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		967A616555E657186735B93D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761AF11E448254EE27EE7B37 /* AppShortcuts.xcstrings in Resources */,
+				F4E9BC799D73264A218FAC7B /* Assets.xcassets in Resources */,
+				F08C3FA776102A5E740050AF /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB29475880E7BEA59D544676 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F729351B0C80F0408866E97F /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD3F6F14B490F2BE5BECDA17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF0AE606AF40B4E2CAA6B4D9 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0085A724A2A921FCC3E050EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D14E7A2F45FDC155824D688B /* AgentTaskActivityController.swift in Sources */,
+				F72063239E6DC0AEBD61B380 /* PhotoIndexingTask.swift in Sources */,
+				1D629D4B4439A6900FDC6457 /* UITestSupport.swift in Sources */,
+				2BC9D7D70B95C2D1762F4CF8 /* ZOROApp.swift in Sources */,
+				02346D852AEDFBFDDA7E29D9 /* ZOROShortcuts.swift in Sources */,
+				8BD701F7409A931FFF521476 /* ZoroTaskActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B9215E649573FC1B56550BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A8A170BE86225A87523779A /* AgentTaskLiveActivity.swift in Sources */,
+				4F771ECB76A838FB072CD305 /* ZOROVoiceControl.swift in Sources */,
+				BE331148F75680C3C2228523 /* ZOROWidgetsBundle.swift in Sources */,
+				7EC4472880DF3B08AAB5599B /* ZoroAlarmCountdownActivity.swift in Sources */,
+				DAE0DD87E9D8F11FDC18F390 /* ZoroTaskActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38111ED04CB9B4C14A3CF664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AAB3C438D25CEE7B453A086 /* ZOROAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D39E0F701370E4222B7920C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F6F1A3B540829AA2BB9CA80 /* ZOROUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		29F94AFD5F685CC201895584 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99F7EC350C98AFF2F0415FED /* ZOROWidgets */;
+			targetProxy = D43C740823C4ED13ADA42E9D /* PBXContainerItemProxy */;
+		};
+		8F747A9626CA0FECDD7DD9A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E7A35845832BC8DB06336FD /* ZORO */;
+			targetProxy = F88705BE6120190BF8E21A02 /* PBXContainerItemProxy */;
+		};
+		A9F8C946BF89F4A66BD00F27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E7A35845832BC8DB06336FD /* ZORO */;
+			targetProxy = 70C17AA8663282DDBFC6EA5B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0679C55AF67A11DF22A48708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ZORO;
+			};
+			name = Debug;
+		};
+		45A7B40755278B780956F0A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZORO.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZORO";
+			};
+			name = Release;
+		};
+		5DF4D19CA0844699CA95A7A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_STRICT_CONCURRENCY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		85A388B40F0884461222C358 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZORO.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZORO";
+			};
+			name = Debug;
+		};
+		89A1F4DB972CDD083BABF0F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZORO/ZORO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ZORO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				ZORO_HOMEKIT_ENTITLED = YES;
+			};
+			name = Release;
+		};
+		9EE09FAE8E84D0BE07377FF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ZORO;
+			};
+			name = Release;
+		};
+		B727D8F130BB1E0679180EA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ZOROWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C8C7D981983AB51991EB5A3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZORO/ZORO.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ZORO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				ZORO_HOMEKIT_ENTITLED = YES;
+			};
+			name = Debug;
+		};
+		D9C4AE92A5EB7C95C63CE1B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ZOROWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.zoro.ios.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F220C84E1F4CF946776599EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_STRICT_CONCURRENCY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14990FB5A4440ADC59FB71D7 /* Build configuration list for PBXProject "ZORO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DF4D19CA0844699CA95A7A6 /* Debug */,
+				F220C84E1F4CF946776599EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		16C3797DA09B778980A38875 /* Build configuration list for PBXNativeTarget "ZOROUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0679C55AF67A11DF22A48708 /* Debug */,
+				9EE09FAE8E84D0BE07377FF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7D50EB7C0C0BCBB5D984CC8F /* Build configuration list for PBXNativeTarget "ZOROTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A388B40F0884461222C358 /* Debug */,
+				45A7B40755278B780956F0A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B82164A73B60873813DCA3EC /* Build configuration list for PBXNativeTarget "ZOROWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B727D8F130BB1E0679180EA0 /* Debug */,
+				D9C4AE92A5EB7C95C63CE1B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C35E944FB221216D42B6C488 /* Build configuration list for PBXNativeTarget "ZORO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8C7D981983AB51991EB5A3C /* Debug */,
+				89A1F4DB972CDD083BABF0F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0F7DA581F1E154A39B8142C8 /* XCLocalSwiftPackageReference "Packages/ZoroApp" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroApp;
+		};
+		200126D9C1D4B84F3E3CC227 /* XCLocalSwiftPackageReference "Packages/ZoroPhotos" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroPhotos;
+		};
+		2BAD85F4367EB5521598BCD0 /* XCLocalSwiftPackageReference "Packages/ZoroKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroKit;
+		};
+		3069C291C5F6788FB49FB4A3 /* XCLocalSwiftPackageReference "Packages/ZoroComposition" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroComposition;
+		};
+		476AD3756E1DF13ABC9C71DD /* XCLocalSwiftPackageReference "Packages/ZoroCommerce" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroCommerce;
+		};
+		4A7310CCBE573E4A974F5DD6 /* XCLocalSwiftPackageReference "Packages/ZoroVoice" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroVoice;
+		};
+		702E56E80A21EC464F5CDFAC /* XCLocalSwiftPackageReference "Packages/ZoroDevice" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroDevice;
+		};
+		8AB1F13DF9F8AD4F5F0286D5 /* XCLocalSwiftPackageReference "Packages/ZoroSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroSystem;
+		};
+		AD934D343828416A5713DB78 /* XCLocalSwiftPackageReference "Packages/ZoroLife" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroLife;
+		};
+		C80934A9BD7CEEC4EF54D303 /* XCLocalSwiftPackageReference "Packages/ZoroDesign" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ZoroDesign;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2A05CD69A24CDFD137FB2816 /* NativeActionBroker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NativeActionBroker;
+		};
+		2E14BBA0025512EF9748BDDC /* ZoroAppUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoroAppUI;
+		};
+		62B397268B082943334F875F /* ZoroComposition */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoroComposition;
+		};
+		98118699E73B0F2EC86CE20F /* ZoroAppUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoroAppUI;
+		};
+		B92AAFA3793856AD0F525E5B /* ZoroCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoroCore;
+		};
+		C54C3AF0AAC3439E3E1DEBA1 /* ZoroDesign */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoroDesign;
+		};
+		DE6391D9642BE8C790EA9981 /* ConversationManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ConversationManager;
+		};
+		E8A8239101F0CC26B722297E /* ZoroComposition */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ZoroComposition;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 49978A262B99AE2FB3023DCE /* Project object */;
+}

@@ -1,0 +1,49 @@
+# ZORO MCP gateway. Read by backend/app/mcp/config.py; reloaded when this file changes (the
+# `expose` mappings become tools at startup, so changing those needs a restart).
+# A missing or malformed file means: no device may use any MCP group, no external server is used.
+version: 1
+
+# ---------------------------------------------------------------- server side
+# ZORO serves one MCP server per tool group at /v1/mcp/<group> (Streamable HTTP). Callers send the
+# same bearer device session token as the REST API. Every call goes through the tool executor and
+# the policy engine as a call the owner did not make in a turn, so anything above low risk waits for
+# the owner's signed approval in the app.
+gateway:
+  # Tools above this risk are not served over MCP at all (low | medium | high | critical).
+  max_risk: high
+  call_timeout_s: 60
+  requests_per_minute: 120        # per device and group
+  max_result_bytes: 262144
+  max_request_bytes: 1048576
+  # Groups every paired device may use ("*" = all groups). Empty: grant per device below.
+  default_groups: []
+  # Per-device scopes: device id (see Security and privacy > Devices) -> groups.
+  devices: {}
+  #   dev_0123456789abcdef: [memory-mcp, calendar-mcp]
+
+# ---------------------------------------------------------------- client side
+# External MCP servers ZORO may call. Results are always untrusted: wrapped, size-limited, and they
+# taint the turn. Arguments pass the egress decision for the server's locality and the data classes
+# listed here. Nothing is registered for any agent unless an `expose` mapping names the agents.
+clients:
+  # Absolute commands that may be launched as stdio MCP servers (no shell). Empty: stdio is off.
+  stdio_command_allowlist: []
+  servers: []
+  # Swiggy Instamart, official MCP server (OAuth 2.1 + PKCE + dynamic client registration).
+  # Localhost development needs no approval; staging and production access are invite-based
+  # (builders@swiggy.in). Disabled until the owner has access and signs in from the app.
+  # - name: swiggy-instamart
+  #   title: Swiggy Instamart
+  #   transport: http
+  #   url: https://mcp.swiggy.com/im
+  #   auth:
+  #     kind: oauth
+  #     redirect_uri: http://localhost:8000/oauth/callback
+  #     scopes: []
+  #   allowed_tools: []            # list the Instamart tool names you allow, e.g. product search
+  #   data_classes: [public]       # what Swiggy may receive from ZORO
+  #   locality: external
+  #   enabled: false
+  #   timeout_s: 20
+  #   max_result_bytes: 65536
+  #   expose: []                   # e.g. {tool: <name>, name: search, description: ..., agents: [shopping], risk: low}

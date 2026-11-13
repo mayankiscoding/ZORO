@@ -1,0 +1,10 @@
+{
+  "status": "recorded",
+  "observation_id": "ob-1",
+  "provider": "store_b",
+  "kind": "item",
+  "price": "31.50",
+  "provenance": "user_reported",
+  "observed_at": "2026-11-13T09:30:00Z",
+  "clarification": null
+}

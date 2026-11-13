@@ -1,0 +1,9 @@
+{
+  "apple_music": "Played by the device through device.music.control (needs a device online).",
+  "provider_in_use": "spotify",
+  "recommendations": "Unavailable: Spotify removed recommendations for new apps; similar songs use search.",
+  "spotify": {
+    "detail": "Signed in. Spotify checks Premium and the app's allowed-user list when playback is used.",
+    "state": "connected"
+  }
+}

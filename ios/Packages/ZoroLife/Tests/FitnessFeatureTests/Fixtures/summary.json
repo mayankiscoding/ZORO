@@ -1,0 +1,54 @@
+{
+  "active_energy_kcal": 412,
+  "available": true,
+  "avg_heart_rate_bpm": 74,
+  "body_mass_kg": null,
+  "cycling_km": null,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "date": "2026-11-13",
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "distance_km": 6.1,
+  "exercise_minutes": 38,
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "observations": [
+    {
+      "code": "rhr_above_baseline",
+      "values": {
+        "days": 3.0,
+        "delta": 6.0
+      }
+    },
+    {
+      "code": "load_up",
+      "values": {
+        "ratio_pct": 140.0
+      }
+    }
+  ],
+  "reason": null,
+  "resting_heart_rate_bpm": 58,
+  "sleep_hours": 6.7,
+  "steps": 8421,
+  "workouts": [
+    {
+      "avg_heart_rate_bpm": 152,
+      "distance_km": 5.02,
+      "duration_min": 32.2,
+      "id": "w1",
+      "origin": "healthkit",
+      "pace_text": "6:24",
+      "start_at": "2026-11-13T06:10:00+05:30",
+      "type": "running"
+    }
+  ]
+}

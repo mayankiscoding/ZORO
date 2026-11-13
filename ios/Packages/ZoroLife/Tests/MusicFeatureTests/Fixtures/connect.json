@@ -1,0 +1,6 @@
+{
+  "authorize_url": "https://accounts.spotify.com/authorize?client_id=x&state=s",
+  "expires_at": "2026-11-13T12:10:00Z",
+  "redirect_uri": "https://zoro.example/v1/music/callback",
+  "state": "s"
+}

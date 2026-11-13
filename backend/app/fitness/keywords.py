@@ -1,0 +1,218 @@
+"""Keyword tables for the fitness intents (en / hi / hinglish)."""
+
+from __future__ import annotations
+
+KW: dict[str, dict[str, tuple[str, ...]]] = {
+    "plan": {
+        "en": (
+            "running plan",
+            "training plan",
+            "plan for a 5k",
+            "plan for a 10k",
+            "couch to 5k",
+            "5k plan",
+            "10k plan",
+            "train for a 5k",
+            "train for a 10k",
+            "plan for my first 5k",
+            "half marathon plan",
+        ),
+        "hi": ("रनिंग प्लान", "दौड़ की योजना", "दौड़ का प्लान", "रनिंग की योजना"),
+        "hinglish": (
+            "running plan",
+            "daud ka plan",
+            "training plan",
+            "5k ka plan",
+            "10k ka plan",
+            "running plan banao",
+        ),
+    },
+    "routine": {
+        "en": (
+            "workout plan",
+            "exercise routine",
+            "gym routine",
+            "strength routine",
+            "workout routine",
+            "gym plan",
+            "exercise plan",
+        ),
+        "hi": ("वर्कआउट प्लान", "एक्सरसाइज़ रूटीन", "जिम रूटीन", "कसरत की योजना", "वर्कआउट रूटीन"),
+        "hinglish": (
+            "workout plan",
+            "exercise routine",
+            "gym routine",
+            "kasrat ka plan",
+            "workout routine",
+            "gym ka plan",
+        ),
+    },
+    "music": {
+        "en": (
+            "workout music",
+            "running playlist",
+            "gym playlist",
+            "music for my run",
+            "music for my workout",
+            "songs for running",
+            "songs for my workout",
+            "playlist for my run",
+            "playlist for my workout",
+        ),
+        "hi": ("वर्कआउट म्यूज़िक", "दौड़ के लिए गाने", "वर्कआउट के लिए गाने", "जिम के गाने", "रनिंग के गाने"),
+        "hinglish": (
+            "workout music",
+            "run ke liye gaane",
+            "workout ke liye gaane",
+            "gym ke gaane",
+            "running ke gaane",
+            "run ke liye music",
+        ),
+    },
+    "records": {
+        "en": (
+            "personal best",
+            "personal bests",
+            "personal record",
+            "personal records",
+            "my pr",
+            "my prs",
+            "best run",
+            "longest run",
+            "fastest run",
+            "records",
+        ),
+        "hi": ("रिकॉर्ड", "पर्सनल बेस्ट", "सबसे लंबी दौड़", "सबसे तेज़ दौड़", "सबसे तेज दौड़"),
+        "hinglish": (
+            "personal best",
+            "records",
+            "record",
+            "sabse lambi run",
+            "sabse tez run",
+            "best run",
+            "pr",
+        ),
+    },
+    "weekly": {
+        "en": (
+            "compare this week",
+            "this week vs",
+            "vs last week",
+            "than last week",
+            "week over week",
+            "weekly comparison",
+            "compared to last week",
+            "compared with last week",
+            "last week versus",
+        ),
+        "hi": (
+            "हफ़्ते की तुलना",
+            "हफ्ते की तुलना",
+            "पिछले हफ़्ते से तुलना",
+            "पिछले हफ्ते से तुलना",
+            "हफ़्ते से तुलना",
+            "सप्ताह की तुलना",
+        ),
+        "hinglish": (
+            "hafte ki tulna",
+            "pichhle hafte se",
+            "pichle hafte se",
+            "hafte se compare",
+            "week compare",
+            "compare this week",
+            "tulna",
+        ),
+    },
+    "trend": {
+        "en": ("trend", "trending", "over time", "going up", "going down", "has changed"),
+        "hi": ("ट्रेंड", "रुझान", "बदलाव"),
+        "hinglish": ("trend", "kaisa chal raha", "badh raha", "ghat raha", "badlav"),
+    },
+    "running": {
+        "en": (
+            "running progress",
+            "my running",
+            "running pace",
+            "run pace",
+            "pace trend",
+            "am i getting faster",
+            "how am i running",
+            "running improving",
+            "running performance",
+        ),
+        "hi": ("दौड़ की प्रगति", "रनिंग की प्रगति", "मेरी रनिंग", "दौड़ का पेस", "दौड़ की रफ़्तार", "रनिंग पेस"),
+        "hinglish": (
+            "running progress",
+            "meri running",
+            "running ka pace",
+            "run ka pace",
+            "daud ki progress",
+            "running kaisi",
+            "running sudhar",
+        ),
+    },
+    "consistency": {
+        "en": (
+            "streak",
+            "consistency",
+            "consistent",
+            "how often do i work out",
+            "sessions per week",
+            "workouts per week",
+            "how many days did i work out",
+            "how many days have i worked out",
+        ),
+        "hi": ("स्ट्रीक", "लगातार", "कितने दिन वर्कआउट", "कितने दिन एक्सरसाइज़", "नियमित"),
+        "hinglish": (
+            "streak",
+            "consistency",
+            "kitne din workout",
+            "lagatar",
+            "kitni baar workout",
+            "kitne din exercise",
+            "regular",
+        ),
+    },
+    "daily": {
+        "en": (
+            "steps",
+            "step count",
+            "fitness summary",
+            "how active",
+            "calories burned",
+            "my sleep",
+            "sleep last night",
+            "how did i sleep",
+            "how many steps",
+            "activity summary",
+            "heart rate today",
+        ),
+        "hi": ("कदम", "स्टेप्स", "नींद", "कैलोरी", "फ़िटनेस", "फिटनेस"),
+        "hinglish": ("kadam", "steps", "neend", "kitna chala", "calories", "fitness summary", "kitne kadam"),
+    },
+}
+ORDER = ("plan", "routine", "music", "records", "weekly", "trend", "running", "consistency", "daily")
+WEEKLY_PAIR = (
+    (("compare", "compared", "versus", "vs", "than last", "comparison"), ("week",)),
+    (("तुलना", "बनाम"), ("हफ़्त", "हफ्त", "सप्ताह")),
+    (("compare", "tulna", "banam", "vs"), ("hafte", "hafta", "week")),
+)
+ANY_KW = {group: tuple(w for words in langs.values() for w in words) for group, langs in KW.items()}
+
+
+METRIC_WORDS: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("resting_heart_rate_bpm", ("resting heart", "heart rate", "dhadkan", "धड़कन", "हार्ट रेट", "pulse")),
+    ("sleep_hours", ("sleep", "neend", "नींद")),
+    ("body_mass_kg", ("weight", "wazan", "vajan", "वज़न", "वजन")),
+    ("active_energy_kcal", ("calories", "calorie", "कैलोरी")),
+    ("exercise_minutes", ("exercise", "workout minutes", "kasrat", "कसरत", "एक्सरसाइज़")),
+    ("distance_km", ("distance", "doori", "दूरी")),
+    ("steps", ("steps", "kadam", "कदम", "स्टेप्स")),
+)
+
+GOAL_WORDS: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("half_marathon", ("half marathon", "हाफ मैराथन", "21k", "half-marathon")),
+    ("10k", ("10k", "10 k", "10 km race", "10 किमी")),
+    ("first_5k", ("first 5k", "couch to 5k", "pehli 5k", "पहली 5k", "beginner")),
+    ("5k", ("5k", "5 k", "5 km race")),
+)

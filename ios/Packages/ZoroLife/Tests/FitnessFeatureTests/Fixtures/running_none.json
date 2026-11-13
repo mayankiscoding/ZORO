@@ -1,0 +1,26 @@
+{
+  "available": false,
+  "avg_pace_s_per_km": null,
+  "avg_pace_text": null,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [],
+  "direction": "insufficient_data",
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": null,
+    "age_value": null,
+    "last_synced_at": null,
+    "latest_data_date": null,
+    "stale": true
+  },
+  "min_runs": 4,
+  "observations": [],
+  "pace_change_s_per_km_per_week": null,
+  "reason": "no_running_data",
+  "recent_pace_text": null,
+  "runs": 0,
+  "total_km": 0.0,
+  "weekly": [],
+  "window_end": null,
+  "window_start": null
+}

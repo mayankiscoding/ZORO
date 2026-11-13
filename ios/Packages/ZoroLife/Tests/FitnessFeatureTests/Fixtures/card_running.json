@@ -1,0 +1,34 @@
+{
+  "kind": "fitness_summary",
+  "payload": {
+    "data_source": "Apple Health (synced from your iPhone)",
+    "external_model_allowed": true,
+    "freshness": {
+      "age_unit": "hours",
+      "age_value": 2,
+      "last_synced_at": "2026-11-13T10:00:00Z",
+      "latest_data_date": "2026-11-13",
+      "stale": false
+    },
+    "metrics": [
+      {
+        "label": "Runs",
+        "unit": "",
+        "value": 14
+      },
+      {
+        "label": "Distance",
+        "unit": "km",
+        "value": 71.3
+      },
+      {
+        "label": "Average pace",
+        "unit": "per km",
+        "value": "6:32"
+      }
+    ],
+    "observations": [],
+    "stale": false
+  },
+  "title": "Running"
+}

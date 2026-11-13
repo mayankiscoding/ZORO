@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ZORO">
+  <defs>
+    <radialGradient id="ground" cx="50%" cy="50%" r="72%"><stop offset="0" stop-color="rgb(21,22,66)"/><stop offset="1" stop-color="rgb(14,15,46)"/></radialGradient>
+    <radialGradient id="halo" gradientUnits="userSpaceOnUse" cx="256" cy="256" r="240.64"><stop offset="0.426" stop-color="rgb(91,98,224)" stop-opacity="0.34"/><stop offset="0.75" stop-color="rgb(91,98,224)" stop-opacity="0.075"/><stop offset="1" stop-color="rgb(91,98,224)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="eye" gradientUnits="userSpaceOnUse" cx="256" cy="256" r="145.92" fx="244.736" fy="240.64"><stop offset="0" stop-color="rgb(52,62,150)"/><stop offset="0.2" stop-color="rgb(105,106,228)"/><stop offset="0.44" stop-color="rgb(58,140,200)"/><stop offset="0.6" stop-color="rgb(25,181,176)"/><stop offset="0.675" stop-color="rgb(25,181,176)"/><stop offset="0.71" stop-color="rgb(214,190,92)"/><stop offset="0.745" stop-color="rgb(38,160,190)"/><stop offset="0.88" stop-color="rgb(79,110,218)"/><stop offset="1" stop-color="rgb(91,98,224)"/></radialGradient>
+    <radialGradient id="light" gradientUnits="userSpaceOnUse" cx="204.8" cy="197.12" r="133.12"><stop offset="0" stop-color="#fff" stop-opacity="0.2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <clipPath id="body"><circle cx="256" cy="256" r="145.92"/></clipPath>
+  </defs>
+  <rect width="512" height="512" fill="url(#ground)"/>
+  <circle cx="256" cy="256" r="240.64" fill="url(#halo)"/>
+  <circle cx="256" cy="256" r="145.92" fill="url(#eye)"/>
+  <rect width="512" height="512" fill="url(#light)" clip-path="url(#body)"/>
+</svg>

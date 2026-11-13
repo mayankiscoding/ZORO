@@ -1,0 +1,172 @@
+{
+  "basket": {
+    "basket_id": "bk-1",
+    "name": "Groceries",
+    "customer_location_reference": "home",
+    "original_provider": "swiggy_instamart",
+    "items": [
+      {
+        "item_id": "bi-1",
+        "name": "Test toned milk",
+        "brand": "Test dairy",
+        "size": "500 ml",
+        "identity_key": "milk-500ml",
+        "gtin": null,
+        "sku": "v-1",
+        "selected_variant": {
+          "variant_id": "v-1",
+          "label": "500 ml"
+        },
+        "quantity": 2,
+        "preferred_brand": null,
+        "substitutions_allowed": false,
+        "equivalence_confidence_pct": 100,
+        "unit_price": "29.00",
+        "price_at": "2026-11-13T09:25:00Z",
+        "price_source": "swiggy_instamart:search_products",
+        "available_retailers": [
+          {
+            "provider": "swiggy_instamart"
+          }
+        ]
+      },
+      {
+        "item_id": "bi-2",
+        "name": "Test eggs",
+        "brand": null,
+        "size": "6 pcs",
+        "identity_key": "eggs-6",
+        "gtin": null,
+        "sku": null,
+        "selected_variant": null,
+        "quantity": 1,
+        "preferred_brand": null,
+        "substitutions_allowed": true,
+        "equivalence_confidence_pct": 80,
+        "unit_price": null,
+        "price_at": null,
+        "price_source": null,
+        "available_retailers": []
+      }
+    ],
+    "priced_items": 1,
+    "known_total": "58.00",
+    "created_at": "2026-11-13T08:30:00Z",
+    "updated_at": "2026-11-13T09:30:00Z"
+  },
+  "comparison": {
+    "computed_at": "2026-11-13T09:30:00Z",
+    "total_items": 2,
+    "providers": [
+      {
+        "provider": "store_a",
+        "title": "Store A",
+        "status": "ranked",
+        "rank": 1,
+        "item_total": "118.00",
+        "fees": [],
+        "fees_known": false,
+        "fee_total": "0.00",
+        "discounts": [],
+        "discount_total": "0.00",
+        "final_payable": "118.00",
+        "exact_items": 2,
+        "total_items": 2,
+        "coverage_pct": 100,
+        "match_confidence": 0.9,
+        "lines": [
+          {
+            "item_id": "bi-1",
+            "name": "Test toned milk",
+            "quantity": 2,
+            "unit_price": "29.00",
+            "line_total": "58.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          },
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "quantity": 1,
+            "unit_price": "60.00",
+            "line_total": "60.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          }
+        ],
+        "substitutes": [],
+        "missing": [],
+        "stale_items": [],
+        "handoff": {
+          "provider": "store_a",
+          "title": "Open Store A",
+          "url": "https://example.invalid/a",
+          "verified": true,
+          "note": ""
+        },
+        "notes": [
+          "Fees not known; the payable may be higher."
+        ]
+      },
+      {
+        "provider": "store_b",
+        "title": "Store B",
+        "status": "ranked",
+        "rank": 2,
+        "item_total": "121.00",
+        "fees": [
+          {
+            "kind": "delivery_fee",
+            "label": "Delivery fee",
+            "amount": "0.00",
+            "waived": true
+          }
+        ],
+        "fees_known": true,
+        "fee_total": "0.00",
+        "discounts": [],
+        "discount_total": "0.00",
+        "final_payable": "121.00",
+        "exact_items": 2,
+        "total_items": 2,
+        "coverage_pct": 100,
+        "match_confidence": 0.9,
+        "lines": [
+          {
+            "item_id": "bi-1",
+            "name": "Test toned milk",
+            "quantity": 2,
+            "unit_price": "28.00",
+            "line_total": "56.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          },
+          {
+            "item_id": "bi-2",
+            "name": "Test eggs",
+            "quantity": 1,
+            "unit_price": "65.00",
+            "line_total": "65.00",
+            "provenance": "provider_api",
+            "source": "test:search_products",
+            "observed_at": "2026-11-13T09:20:00Z",
+            "confidence": 0.9
+          }
+        ],
+        "substitutes": [],
+        "missing": [],
+        "stale_items": [],
+        "handoff": null,
+        "notes": []
+      }
+    ],
+    "cheapest_provider": null,
+    "cheapest_reason": "fees_unknown"
+  }
+}

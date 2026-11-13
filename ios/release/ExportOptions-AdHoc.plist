@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  ZORO export options: AdHoc (release-testing).
+  Used by scripts/build_ios.sh and .github/workflows/ios-build.yml with
+  "xcodebuild -exportArchive -exportOptionsPlist <this file>".
+  No team ID is stored here: the scripts add "teamID" from the ZORO_TEAM_ID / APPLE_TEAM_ID
+  environment variable into a temporary copy. Method names are the ones Xcode 15.3 and later use
+  ("debugging", "release-testing", "app-store-connect").
+-->
+<plist version="1.0">
+<dict>
+	<key>method</key>
+	<string>release-testing</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>destination</key>
+	<string>export</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
+</dict>
+</plist>

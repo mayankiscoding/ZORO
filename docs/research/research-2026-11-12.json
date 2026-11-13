@@ -1,0 +1,697 @@
+[
+ {
+  "key": "gemini",
+  "topic": "Gemini API state as of 2026-11-12 (docs now at aistudio.google.com/docs; ai.google.dev 301-redirects there)",
+  "findings": [
+   {
+    "claim": "Models page labels Flash IDs gemini-3.8-flash and gemini-3.6-flash as Stable; gemini-3-flash-preview is Preview. Flash-Lite: gemini-3.5-flash-lite and gemini-3.1-flash-lite Stable; gemini-2.5-flash-lite still served. Page uses 'Stable', not 'GA'.",
+    "source_url": "https://aistudio.google.com/docs/models",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Pro class: only gemini-3.1-pro-preview is listed (unlabeled, effectively preview by name). gemini-2.5-pro is deprecated and routes to gemini-3.8-flash on Dec 1, 2026; gemini-3-pro-preview already shut down.",
+    "source_url": "https://aistudio.google.com/docs/models",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Live native-audio IDs: gemini-3.8-live (default for voice agents), gemini-3.8-live-extended-thinking, gemini-3.5-live-translate-preview (Preview). Legacy gemini-3.1-flash-live-preview and gemini-2.5-flash-native-audio-preview-12-2025 both shut down Nov 17, 2026.",
+    "source_url": "https://aistudio.google.com/docs/deprecations",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "TTS IDs: gemini-3.8-flash-tts and gemini-3.8-flash-lite-tts (new). gemini-3.1-flash-tts-preview, gemini-2.5-flash-preview-tts and gemini-2.5-pro-preview-tts all shut down Nov 17, 2026. Embeddings: gemini-embedding-2 (replacement for all older ones); gemini-embedding-001 until May 14, 2028.",
+    "source_url": "https://aistudio.google.com/docs/deprecations",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Price per 1M tokens, Gemini 3.8 Flash: $0.75 in / $3.75 out through Dec 31, 2026; $1.50 / $7.50 from Jan 1, 2027. Free tier available. 3.6 Flash same pricing. 3.5 Flash-Lite: $0.30 in / $2.50 out; 3.1 Flash-Lite $0.25 (audio $0.50) / $1.50.",
+    "source_url": "https://aistudio.google.com/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Gemini 3.1 Pro Preview: $2.00 in / $12.00 out (<=200k tokens); $4.00 / $18.00 above 200k. No free tier.",
+    "source_url": "https://aistudio.google.com/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Gemini 3.8 Live per 1M: text in $0.75, audio in $3.00 (~$0.005/min), text out $4.50, audio out $12.00 (~$0.018/min); free tier listed. 3.5 Live Translate: $3.50 in / $21.00 out audio.",
+    "source_url": "https://aistudio.google.com/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "TTS per 1M: 3.8 Flash TTS text in $0.50, audio out $9.00 through Dec 31, 2026 (then $1.00 / $18.00). 3.8 Flash-Lite TTS $0.50 in / $6.00 out (then $1.00 / $12.00). Free tier listed.",
+    "source_url": "https://aistudio.google.com/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Embeddings per 1M: gemini-embedding-2 text $0.20 (batch $0.10), audio $6.50, image $0.45, video $12.00; gemini-embedding-001 $0.15 (batch $0.075). Standard usage free of charge on free tier for both.",
+    "source_url": "https://aistudio.google.com/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Live API is a stateful WebSocket (WSS). Input audio raw 16-bit PCM 16kHz little-endian; output raw 16-bit PCM 24kHz; video as JPEG up to 1 fps. Function calling and Google Search supported as tools.",
+    "source_url": "https://aistudio.google.com/docs/live-api",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Live API VAD is automatic by default (tunable: start/end_of_speech_sensitivity, prefix_padding_ms, silence_duration_ms; 500-800ms recommended). Barge-in cancels generation, sends an 'interrupted' message, and discards pending function calls. Manual activityStart/activityEnd supported.",
+    "source_url": "https://aistudio.google.com/docs/live-api/capabilities",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Live API supports 99 languages incl. Hindi (hi). Native-audio models switch languages naturally mid-conversation and take no explicit language code. Mixed-language-in-one-utterance code-switching is not documented as a distinct feature.",
+    "source_url": "https://aistudio.google.com/docs/live-api/capabilities",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Live function calling: 3.8 Live supports async NON_BLOCKING (default) or BLOCKING, with scheduling SILENT/WHEN_IDLE/INTERRUPTED. 3.8 Live Extended Thinking is NON_BLOCKING only. Affective dialog removed in 3.8 Live.",
+    "source_url": "https://aistudio.google.com/docs/live-api/capabilities",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Session limits without compression: audio-only 15 min, audio+video 2 min; one connection lasts ~10 min. Context window compression (sliding window) gives unlimited sessions; session resumption tokens valid 2 hours; server sends GoAway before closing.",
+    "source_url": "https://aistudio.google.com/docs/live-api/session-management",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Ephemeral tokens: backend POSTs to https://generativelanguage.googleapis.com/v1beta/auth_tokens with x-goog-api-key; token is in 'name'. Defaults: expireTime 30 min, newSessionExpireTime 1 min, uses configurable. Client passes it as access_token query param or 'Authorization: Token ...'. Live API and v1beta only. Can lock model/config via liveConnectConstraints.",
+    "source_url": "https://aistudio.google.com/docs/live-api/ephemeral-tokens",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "REST: base https://generativelanguage.googleapis.com, version v1beta or v1, auth header x-goog-api-key. POST /v1beta/models/{model}:generateContent and :streamGenerateContent are now labeled legacy; Interactions API (POST /v1beta/interactions) recommended for new projects.",
+    "source_url": "https://aistudio.google.com/docs/api-reference",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Other shutdowns: gemini-2.5-flash Dec 1, 2026 (auto-routes to gemini-3.5-flash-lite); gemini-3.1-flash-lite May 7, 2027; gemini-2.0-flash(-lite) Jun 1, 2026 (already gone); gemini-embedding-2-preview Nov 6, 2026. Dates are earliest possible.",
+    "source_url": "https://aistudio.google.com/docs/deprecations",
+    "verified": "official_doc_fetched"
+   }
+  ],
+  "recommendation": "Build against gemini-3.8-flash (or 3.5-flash-lite for cheapest) for chat with function calling, gemini-3.1-pro-preview only for hard reasoning behind a config switch, gemini-3.8-live for voice, gemini-3.8-flash-lite-tts for TTS, and gemini-embedding-2. Keep every model ID in config, since IDs churn monthly and legacy ones shut down Nov 17 and Dec 1, 2026. Mobile voice can connect directly using ephemeral tokens minted by your Python backend (lock model and config, short expiry), with context compression and session resumption enabled. Note 3.8 pricing doubles on Jan 1, 2027. Check Hindi code-switching quality empirically.",
+  "risks": [
+   "Exact Live WebSocket URL (expected wss://generativelanguage.googleapis.com/ws/...BidiGenerateContent) was not shown on fetched pages; verify via SDK source or the API reference.",
+   "Free-tier rate limits (RPM/RPD/TPM) were not fetched; only 'free of charge' availability per model.",
+   "Hindi/English code-switching within one utterance is not documented; only natural language switching is claimed.",
+   "Models page does not use 'GA'; Stable is assumed equal to GA. gemini-3.1-pro-preview, gemini-embedding-2 and 3.8 Live/TTS have no explicit status label in the fetch.",
+   "WebFetch summarizes pages with a small model; numbers could contain transcription errors, so recheck prices before budgeting.",
+   "Structured output (responseSchema/responseMimeType) and generateContent tool-calling details were not confirmed on a fetched page.",
+   "The 'gemini-4-*' IDs appear on the models page but were not investigated.",
+   "Models page says 3.1-flash-live and 2.5 native audio are limited or legacy, consistent with the Nov 17, 2026 shutdown; that date is 5 days away."
+  ]
+ },
+ {
+  "key": "other-llms",
+  "topic": "Non-Google LLM APIs (OpenAI, xAI, DeepSeek, Qwen, Kimi, Groq, Together, Ollama) as of 2026-11-12",
+  "findings": [
+   {
+    "claim": "OpenAI text pricing per 1M (Standard, short ctx): gpt-6-astra $10/$50; gpt-6.1-sol and gpt-6-sol $2/$10; gpt-6.1-terra $1/$5; gpt-5.5 $5/$30. Cheap tier: gpt-6-luna $0.10/$0.50, gpt-5-nano $0.05/$0.40, gpt-5.4-mini $0.75/$4.50.",
+    "source_url": "https://developers.openai.com/api/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "OpenAI Realtime models and prices per 1M: gpt-realtime-2.1 and gpt-realtime-2 audio $32 in/$64 out, text $4/$24; gpt-realtime-2.1-mini and gpt-realtime-mini audio $10/$20, text $0.60/$2.40. Also GPT-Live-1 voice sessions at $0.05 per minute plus backend usage.",
+    "source_url": "https://developers.openai.com/api/docs/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "OpenAI Realtime guide uses model gpt-realtime-2.1 and describes the interface as GA. Beta users should migrate and drop the OpenAI-Beta: realtime=v1 header. GA events use session.type and response.output_audio.delta.",
+    "source_url": "https://developers.openai.com/api/docs/guides/realtime",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "OpenAI Realtime transports: WebRTC (browser; sessions via /v1/realtime/calls) and WebSocket (server). A server mints ephemeral credentials for browser/mobile clients with POST /v1/realtime/client_secrets. Set the OpenAI-Safety-Identifier header on that server request.",
+    "source_url": "https://developers.openai.com/api/docs/guides/realtime",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "xAI: base URL https://api.x.ai/v1, Bearer Authorization header, works via the OpenAI SDK with base_url override (the docs example uses the Responses API). Function calling supported: JSON Schema tools, tool_choice, parallel calls, up to 350 tools.",
+    "source_url": "https://docs.x.ai/docs/guides/function-calling",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "xAI models/prices per 1M (under 200k prompts): grok-4.7 and grok-4.6 $2.00 in/$6.00 out; grok-4.3 $1.25/$2.50; grok-build-0.1 $1.00/$2.00. At 200k+ tokens grok-4.7 is $4/$12. Docs didn't state which model is a cheap/fast option.",
+    "source_url": "https://docs.x.ai/docs/models",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "DeepSeek: OpenAI-format base URL https://api.deepseek.com (Anthropic-format at /anthropic). Models: deepseek-flash (V4.1-Flash-1017) and deepseek-v4-pro. Tool calls supported by both; Responses API also listed. Auth header not stated on the page (Bearer assumed).",
+    "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "DeepSeek prices per 1M, peak/off-peak (off-peak is half): deepseek-flash miss in $0.30/$0.15, out $1.20/$0.60; deepseek-v4-pro miss in $1.32/$0.66, out $3.96/$1.98. Peak is 01-04 and 06-10 UTC, Mon-Fri.",
+    "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Qwen international OpenAI-compatible base URL is workspace-specific: https://{WorkspaceId}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1 (Singapore; also us-east-1 and ap-northeast-1). Auth is Bearer, and keys are region-bound (a mismatch gives 401). Tools use the standard function schema.",
+    "source_url": "https://www.alibabacloud.com/help/en/model-studio/compatibility-of-openai-with-dashscope",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Qwen Singapore prices per 1M: qwen3.8-max $2 in/$6 out; qwen-plus $0.4/$1.2 (non-thinking, up to 256K); qwen-flash $0.05/$0.4. Docs say tools cannot be combined with stream=True in compatible mode, and list only qwen-plus and qwen-max as tool-capable.",
+    "source_url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Moonshot Kimi: base URL https://api.moonshot.ai/v1; supports OpenAI Chat Completions and Responses plus Anthropic Messages; Bearer auth. Recommended kimi-k3.1-pro, faster kimi-k3.1-pro-highspeed (about 2-3x faster). Tool calling supported. Function tools listed for Responses.",
+    "source_url": "https://platform.kimi.ai/docs/overview",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Kimi pricing table came back empty, so no per-1M price was verified. kimi-k3 and kimi-k3.1-pro have a 1,048,576-token context. K2 models are closed to new users from 2026-10-31 and retired by end of December 2026.",
+    "source_url": "https://platform.kimi.ai/docs/pricing/chat",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Groq: base URL https://api.groq.com/openai/v1 (inferred from the models endpoint). Production models: llama-3.1-8b-instant and llama-3.3-70b-versatile (price listed as 'Contact sales'), openai/gpt-oss-120b $0.15/$0.60, openai/gpt-oss-20b $0.075/$0.30 per 1M.",
+    "source_url": "https://console.groq.com/docs/models",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Together AI: base URL https://api.together.ai/v1, Bearer auth, OpenAI-compatible (chat with function calling, embeddings, Responses API). Model IDs are <provider>/<name> (e.g. openai/gpt-oss-120b). Serverless catalog listed no Llama; Meta Muse Glimmer 30B costs $0.35/$1.50 and supports function calling.",
+    "source_url": "https://docs.together.ai/docs/openai-api-compatibility",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Ollama: local base URL http://localhost:11434/v1/ (placeholder key such as 'ollama', ignored); cloud base URL https://ollama.com/v1 with OLLAMA_API_KEY. /v1/chat/completions supports tools but not tool_choice. Example models: gpt-oss:20b, qwen3:8b.",
+    "source_url": "https://docs.ollama.com/api/openai-compatibility",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "OpenAI auth is a Bearer API key. Base URL https://api.openai.com/v1 and tool support were not shown on the fetched pages, and docs have moved to developers.openai.com.",
+    "source_url": "https://developers.openai.com/api/docs/guides/realtime",
+    "verified": "from_memory_unverified"
+   }
+  ],
+  "recommendation": "Build the backend on one OpenAI-compatible client with per-provider base_url, key and model ID in config. Default cheap/fast: deepseek-flash or qwen-flash. Default flagship: gpt-6.1-sol ($2/$10) or deepseek-v4-pro as the low-cost option. For voice, use gpt-realtime-2.1-mini (or gpt-realtime-2.1) over WebRTC, with the Python backend minting ephemeral keys via POST /v1/realtime/client_secrets. Use Groq or Ollama for Llama-class and offline work. Keep Kimi and Grok behind the same adapter as optional providers. Re-verify prices and IDs at integration time, because the model catalogs change often.",
+  "risks": [
+   "OpenAI base URL and tool calling support were not directly verified on a fetched page; the OpenAI flagship/cheap pick is my judgement from the price table (no vendor 'recommended' label was seen).",
+   "Kimi per-1M prices could not be read (tables empty in fetch).",
+   "Groq Llama prices are 'Contact sales'; no Groq tool-use page was fetched.",
+   "Together serverless catalog showed no Llama models; Llama availability there is unverified (dedicated catalog not fetched).",
+   "Qwen compatible-mode page says tools cannot be combined with streaming and lists only qwen-plus/qwen-max as tool-capable, which may be stale versus newer models like qwen3.8-max.",
+   "Qwen docs show workspace-specific endpoints; the older dashscope-intl.aliyuncs.com URL was not verified.",
+   "DeepSeek auth header not stated on the fetched page; Bearer is an assumption.",
+   "Prices were extracted by a summarizing fetch tool and may contain errors."
+  ]
+ },
+ {
+  "key": "apple-platform",
+  "topic": "Apple platform facts for iPhone + Mac personal AI assistant (as of 2026-11-12)",
+  "findings": [
+   {
+    "claim": "Apple's developer news says Xcode 27 RC ships with iOS/iPadOS/macOS/tvOS/visionOS/watchOS 27 SDKs; from April 2027 App Store uploads must use the iOS 27 SDK or later. macOS 26 is the last release supporting Intel; macOS 27 is Apple silicon only.",
+    "source_url": "https://developer.apple.com/news/?id=k1mtkt1k",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Press reports say iOS 27 / macOS 27 (Golden Gate) launched 14 Sep 2026; Xcode 27 minimum macOS is conflicting (26.4 in beta, 26.6 per one blog). Xcode 26 needed macOS Sequoia 15.6+ (secondary).",
+    "source_url": "https://www.mactech.com/2026/09/10/app-store-submissions-now-open-for-the-latest-os-releases/",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "iPhone 17 uses Apple A19 (3nm); Apple's announcement did not state RAM. It shipped with iOS 26 (free update 15 Sep 2025; on sale 19 Sep 2025).",
+    "source_url": "https://www.apple.com/newsroom/2025/09/apple-debuts-iphone-17/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "AlarmKit: iOS 26.0+, iPadOS 26, Mac Catalyst 26 (not native macOS). Types: AlarmManager, Alarm, AlarmAttributes, AlarmPresentation, AlarmButton, AlarmMetadata. Alarms and timers, one-time or repeating, countdown, snooze.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/alarmkit.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "AlarmKit flow: Info.plist NSAlarmKitUsageDescription (required); optional `try await AlarmManager.requestAuthorization()` returns AuthorizationState (.authorized); auto-prompts on first schedule. Schedule via schedule(id:configuration:) with AlarmConfiguration(countdownDuration:schedule:attributes:stopIntent:secondaryIntent:); Alarm.Schedule.relative(.never or .weekly); pause(id:)/cancel(id:).",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/alarmkit/scheduling-an-alarm-with-alarmkit.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "AppIntentsPackage protocol (iOS 17+, macOS 14+) lets intents live in a shared framework/package: declare a struct conforming in the shared module, and the app's package lists it in static includedPackages. Intents otherwise belong to the app bundle.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/appintents/appintentspackage.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Controls (ControlWidget, iOS 18+; Control Center, Lock Screen, Action Button): ControlWidgetButton runs an AppIntent; openAppWhenRun=true launches the app; OpenIntent opens a target entity. NOTE: the official page fetch 404'd, so this is from the fetch model's memory, not Apple's page.",
+    "source_url": "https://developer.apple.com/documentation/widgetkit/creating-controls-to-perform-actions-across-the-system",
+    "verified": "from_memory_unverified"
+   },
+   {
+    "claim": "SpeechTranscriber: iOS/iPadOS/macOS/visionOS 26.0+. Use static isAvailable, supportedLocales, installedLocales, supportedLocale(equivalentTo:). Falls back to DictationTranscriber. Apple docs page doesn't enumerate locales; check at runtime.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/speech/speechtranscriber.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "A third-party guide lists en_IN in SpeechTranscriber.supportedLocales; hi_IN was not shown in the truncated excerpt. DictationTranscriber excludes locales SFSpeechRecognizer only supports over network.",
+    "source_url": "https://antongubarenko.substack.com/p/ios-26-speechanalyzer-guide",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "Foundation Models framework: iOS/iPadOS/macOS/visionOS 26.0+ (watchOS 27). Needs Apple Intelligence device. SystemLanguageModel on-device; PrivateCloudComputeLanguageModel needs entitlement com.apple.developer.private-cloud-compute. Guided generation via @Generable and @Guide; tool calling via Tool protocol.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Foundation Models supports languages Apple Intelligence supports. Check with SystemLanguageModel.default.supportsLocale(Locale(identifier:\"hi_IN\")) or supportedLanguages. Unsupported language throws LanguageModelError.unsupportedLanguageOrLocale.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/foundationmodels/supporting-languages-and-locales-with-foundation-models.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Apple Intelligence language support page lists only 'English' generally; Hindi is not listed. English (India) appears only in footnotes for voicemail and Notes transcription summaries (iOS 26+).",
+    "source_url": "https://support.apple.com/en-us/121115",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Vision RecognizeTextRequest (iOS 18+/macOS 15+) exposes supportedRecognitionLanguages, recognitionLanguages, automaticallyDetectsLanguage. Page does not list Hindi/Devanagari; must be checked at runtime on the target OS.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/vision/recognizetextrequest.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "apple/ml-mobileclip: code is MIT; model weights are under Apple ML Research Model TOU (LICENSE_MODELS, text not read); data CC-BY-NC-ND. MobileCLIP2 released 2025-08-28 (S0,S2,B,S3,L-14,S4). Core ML export not mentioned on page.",
+    "source_url": "https://github.com/apple/ml-mobileclip",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "HealthKit: iOS 8.0+, macOS 14.0+, watchOS 2+, visionOS 1+. MusicKit: iOS 15+, macOS 12+. MusicKit needs MusicAuthorization plus NSAppleMusicUsageDescription; check MusicSubscription capabilities; developer token is handled automatically; entitlement not documented on page.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/musickit.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "ActivityKit: iOS 16.1+, macOS 27.3+ (beta), no visionOS. Activity request/update/end; UI in widget extension; Info.plist NSSupportsLiveActivities; updates via app or ActivityKit push, no timeline.",
+    "source_url": "https://developer.apple.com/tutorials/data/documentation/activitykit.json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Background mic: an Apple DTS forum reply says audio recording is not in the documented background activities for third-party apps; the audio background mode with an active AVAudioSession is the only route. No OS-level custom wake-word API found (third-party claim).",
+    "source_url": "https://developer.apple.com/forums/thread/106415",
+    "verified": "secondary_source"
+   }
+  ],
+  "recommendation": "Target iOS 26 minimum, built with Xcode 27 on macOS 26.6 or later (confirm in the Xcode 27 release notes). Use AlarmKit for alarms and ControlWidget/App Intents for Action Button and Lock Screen entry points. Put shared intents in a package using AppIntentsPackage. Do not rely on Foundation Models for Hindi: Apple's language list excludes it, so use a server LLM and keep Foundation Models for English. Test SpeechTranscriber for hi-IN on a real device; fall back to SFSpeechRecognizer or a server STT. Vision OCR for Devanagari must be tested before committing to it. Design voice as push-to-talk or Action Button started, with no always-on wake word. Get a legal read of the MobileCLIP weights licence before shipping.",
+  "risks": [
+   "Xcode 27 minimum macOS conflicts between sources (26.4 in beta, 26.6 per one blog); not verified on Apple's release notes.",
+   "iPhone 17 RAM not verified (Apple did not state it).",
+   "hi-IN SpeechTranscriber support, SFSpeechRecognizer Hindi on-device support, and Vision Hindi/Devanagari support not verified; each needs a runtime check on a device.",
+   "ControlWidget how-to-open-app details came from the fetch model's memory, since Apple's page returned 404 or only a title list.",
+   "Apple ML Research Model TOU text (MobileCLIP weights) not read, so commercial-use terms are unknown; Core ML conversion not confirmed.",
+   "Background mic and wake-word limits rest on a forum reply and third-party sources, not an official Apple policy page.",
+   "MusicKit entitlement and subscription requirement not confirmed from official pages; Live Activity limits (duration, payload) not fetched.",
+   "Current shipping versions come from news and secondary reports (iOS 27, macOS 27, Xcode 27); the Apple news page fetched covered only the Xcode 27 RC announcement."
+  ]
+ },
+ {
+  "key": "oss-agent-stack",
+  "topic": "OSS evaluation: LangGraph, Agno, Letta, PydanticAI, Mem0, LiveKit Agents, Pipecat, MCP SDK and servers (as of 2026-11-12)",
+  "findings": [
+   {
+    "claim": "langgraph 1.2.21 on PyPI, uploaded 2026-11-12. MIT licence, Python >=3.10. Deps: langchain-core>=1.4.7, langgraph-checkpoint>=4.3.0, langgraph-prebuilt, langgraph-sdk, pydantic>=2.7.4, xxhash.",
+    "source_url": "https://pypi.org/pypi/langgraph/1.2.21/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "LangGraph interrupt(value) pauses a node. Resume with graph.invoke(Command(resume=...)), the only Command pattern intended as input. A checkpointer and the same thread_id are required. The node restarts from the top on resume. Interrupts surface under result['__interrupt__']. Docs mention no deprecation.",
+    "source_url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "LangGraph persistence docs: PostgresSaver and AsyncPostgresSaver (from langgraph.checkpoint.postgres) need setup() on first use. SqliteSaver is described as local dev storage. InMemorySaver is lost on restart.",
+    "source_url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "PyPI package langgraph-checkpoint-postgres 3.2.0 (uploaded 2026-10-14, MIT, Python >=3.10) depends on psycopg>=3.2.0, psycopg-pool and orjson. langgraph-checkpoint-sqlite 3.1.3 (MIT) depends on aiosqlite and sqlite-vec.",
+    "source_url": "https://pypi.org/pypi/langgraph-checkpoint-postgres/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "mcp (modelcontextprotocol/python-sdk) is at 2.3.0 on PyPI, uploaded 2026-10-02. MIT licence, Python >=3.10. Deps include pydantic>=2.12, starlette, uvicorn, sse-starlette>=3.0, pyjwt[crypto], jsonschema, opentelemetry-api, httpx2.",
+    "source_url": "https://pypi.org/pypi/mcp/2.3.0/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "MCP Python SDK v2 renamed FastMCP to MCPServer (mcp.server.mcpserver). The old mcp.server.fastmcp path raises ModuleNotFoundError. Streamable HTTP, stdio and SSE are supported. WebSocket was removed. The default POST body limit is 4 MiB (HTTP 413). Mounted apps must run session_manager.run() in their lifespan.",
+    "source_url": "https://py.sdk.modelcontextprotocol.io/migration/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "MCP SDK auth: the auth, token_verifier and auth_server_provider server parameters are unchanged in v2. get_access_token() exists. The client-side RFC7523OAuthClientProvider was removed. The resource-server details were not read.",
+    "source_url": "https://py.sdk.modelcontextprotocol.io/migration/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "modelcontextprotocol/servers active references: Everything, Fetch, Filesystem, Git, Memory, Sequential Thinking, Time. Archived: PostgreSQL, SQLite, GitHub, GitLab, Google Drive, Slack, Redis, Puppeteer, Sentry, Brave Search, Google Maps, EverArt, AWS KB. Described as educational examples, not production-ready. Apache-2.0 for new code, MIT for existing.",
+    "source_url": "https://github.com/modelcontextprotocol/servers",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "mem0ai 2.2.1 on PyPI, uploaded 2026-09-25. Apache-2.0, Python >=3.10. Core deps: openai, posthog, qdrant-client, sqlalchemy, protobuf, pydantic. Postgres/pgvector is covered by the vector-stores extra (psycopg, psycopg-pool, vecs).",
+    "source_url": "https://pypi.org/pypi/mem0ai/2.2.1/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Mem0 self-host server is a Docker Compose stack in server/ (make bootstrap) with a dashboard, per-user API keys and an audit log. It defaults to Postgres+pgvector and to OpenAI gpt-5-mini and text-embedding-3-small. Anthropic and Gemini are bundled providers. Library mode defaults to local Qdrant plus a SQLite history store.",
+    "source_url": "https://docs.mem0.ai/open-source/overview",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Mem0 telemetry is ON by default (MEM0_TELEMETRY='True'). It sends to PostHog (us.i.posthog.com): version, Python and OS info, and vector store, LLM and embedder class paths. The user ID is anonymous, or the email if one is supplied. Hot-path events are sampled at 0.1. Set MEM0_TELEMETRY=false to disable.",
+    "source_url": "https://raw.githubusercontent.com/mem0ai/mem0/main/mem0/memory/telemetry.py",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "pipecat-ai 1.16.0 uploaded 2026-11-12. BSD-2-Clause, Python >=3.11. Core deps: openai, pydantic, aiohttp, numpy, onnxruntime, websockets, protobuf, Pillow. Providers (anthropic, deepgram, daily, google-genai) are optional extras.",
+    "source_url": "https://pypi.org/pypi/pipecat-ai/1.16.0/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "livekit-agents 1.8.11 uploaded 2026-11-05. Apache-2.0, Python >=3.10,<3.15. Deps: livekit==1.2.0, livekit-api, openai, pydantic, aiohttp, opentelemetry-sdk, numpy. Designed around the LiveKit server/SFU (self-hostable or Cloud).",
+    "source_url": "https://pypi.org/pypi/livekit-agents/1.8.11/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "pydantic-ai 2.68.0 uploaded 2026-11-12, MIT, Python >=3.11. agno 3.2.0 uploaded 2026-11-12, Apache-2.0, Python >=3.9. Both are very actively released.",
+    "source_url": "https://pypi.org/pypi/pydantic-ai/2.68.0/json",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "letta PyPI is at 0.34.12 (uploaded 2026-10-12, Apache-2.0). The GitHub README says current source moved to letta-code (npm @letta-ai/letta-code, `letta server`). The retired Letta V1 API server sits on an `archive` branch.",
+    "source_url": "https://github.com/letta-ai/letta",
+    "verified": "official_doc_fetched"
+   }
+  ],
+  "recommendation": "Adopt: langgraph plus langgraph-checkpoint-postgres (supervisor graph, interrupt()/Command(resume=...), durable state on your Postgres); mcp 2.x SDK (MCPServer plus Streamable HTTP) for the gateway; pipecat-ai for voice (Python-only, provider-agnostic; use LiveKit only if you need WebRTC rooms or SFU scaling). Memory: take ideas from mem0, or use it self-hosted with MEM0_TELEMETRY=false. Writing your own thin pgvector layer is the safer minimal option. Ideas only: pydantic-ai (typed tool and output validation), Letta (memory blocks). Skip: agno (overlaps LangGraph), the archived reference servers (write your own Postgres MCP tools), langgraph-checkpoint-sqlite beyond local dev. Pin versions and run pip-audit.",
+  "risks": [
+   "Not verified: StateGraph and Send API status. The interrupts page did not mention Send, and I did not fetch the Graph API docs.",
+   "Not verified: GitHub last-commit dates and open security advisories for all repos. WebFetch pages gave no commit dates, and I did not check SECURITY.md or GHSA.",
+   "Not verified: MCP SDK v2 resource-server OAuth details (TokenVerifier, protected-resource metadata). Read the SDK Authorization docs before relying on them.",
+   "Not verified: Mem0's licence on GitHub (only the PyPI Apache-2.0 expression), and whether telemetry also fires in the Docker server.",
+   "Not verified: PyPI version history (cadence), langgraph-checkpoint-sqlite release date, and agno/letta dependency lists. The agno 3.2.0 and pydantic-ai 2.68.0 mapping came from the version-specific JSON, which I did confirm.",
+   "Letta 0.34.12 on PyPI may be stale relative to the letta-code pivot. Treat the Letta server API as unstable.",
+   "The fetch tool summarises pages with a small model, so exact values should be re-checked before pinning."
+  ]
+ },
+ {
+  "key": "finance-markets-india",
+  "topic": "Indian retail investment tooling: OSS agents, broker APIs, SEBI algo rules, data licensing, charges and tax",
+  "findings": [
+   {
+    "claim": "TradingAgents: Apache-2.0, Python >=3.11, built on LangGraph, ~122k stars, releases roughly monthly (v0.2.0 2026-02 to v0.7.1 2026-10), so actively maintained. Data from Yahoo Finance and SEC EDGAR, which are US-centric. Moderate dependency weight (LangGraph plus LLM SDKs).",
+    "source_url": "https://github.com/TauricResearch/TradingAgents",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "FinGPT: MIT licence, but the newest dated 'What's New' item is Nov 2023 and the Python badge is stale (3.6/3.8). Base models are Llama-2, Falcon and others, and local use needs a GPU. Heavy to embed, so take ideas only.",
+    "source_url": "https://github.com/AI4Finance-Foundation/FinGPT",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "FinRobot: Apache-2.0. V0 (AutoGen) states 'not intended for production use'. V2 desktop is a Tauri/React/FastAPI/PydanticAI app (macOS Apple Silicon only, not notarized). Uses FMP/Finnhub/yfinance, which are US-centric. Take architecture ideas only.",
+    "source_url": "https://github.com/AI4Finance-Foundation/FinRobot",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "FinRL: MIT licence (name/logo trademark FinRL LLC). README says it is for education, benchmarking and research prototyping, and points production users to FinRL-X. Depends on Stable-Baselines3, ElegantRL, RLlib and PyTorch. 287 open issues. Heavy; use for ideas only.",
+    "source_url": "https://github.com/AI4Finance-Foundation/FinRL",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Kite Connect: Zerodha's product page lists Personal at Rs 0 (orders, GTT, alerts, margins, portfolio) and Connect at Rs 500/month (full API suite, realtime WebSocket streaming, historical candles). The page does not say whether Personal includes streaming or historical data.",
+    "source_url": "https://zerodha.com/products/api/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Kite Connect auth: you get an api_key/api_secret and register a redirect URL; the user logs in via the Kite login flow. The api_secret must stay on a backend, never in a mobile app, and the API cannot be called directly from browsers. A Zerodha account with TOTP 2FA is required.",
+    "source_url": "https://kite.trade/docs/connect/v3/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Zerodha says it applies a 10 orders/second limit on its APIs. Retail API users need a broker-whitelisted static IP. Retail users below the exchange threshold need no strategy registration. Strategy sharing is allowed only with family. (Dated to the 2025 circular.)",
+    "source_url": "https://zerodha.com/z-connect/business-updates/explaining-the-latest-sebi-algo-trading-regulations",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Upstox guide: framework originally effective 1 Oct 2025, user hard-stop deadline extended to 1 Apr 2026. Static IP is required at all OPS levels. At 10 OPS or below, orders are auto-tagged with generic Algo ID 99999 and need no registration. Above 10 OPS, exchange registration and a unique Algo ID are required.",
+    "source_url": "https://community.upstox.com/t/a-guide-for-our-api-algo-partners-and-clients/11826",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Upstox: OAuth with 2FA is required for all API sessions. Only one app per user stays active. The IP can be changed once a week. Upstox says orders above 10 OPS are rejected for direct users. A staff forum reply says API trades cost a flat Rs 10; this is not a published fee schedule.",
+    "source_url": "https://community.upstox.com/t/a-guide-for-our-api-algo-partners-and-clients/11826",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Fyers (broker KB): new rules effective 1 Apr 2026. Orders are accepted only from a registered App ID mapped to a whitelisted static IP. The 10 OPS cap applies. Static IPs can come from an ISP or a cloud provider such as AWS or GCP. A common IP for family members can be requested.",
+    "source_url": "https://support.fyers.in/portal/en/kb/articles/what-are-the-new-sebi-rules-for-retail-algo-trading-from-april-01-2026",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Dhan: per Dhan support, Trading APIs carry no additional cost; Data APIs are Rs 499 + taxes per month, auto-debited every 30 days. The earlier free-with-trades waiver is discontinued. A third party says Data APIs include 5 years of historical data; not confirmed from the Dhan docs.",
+    "source_url": "https://dhan.freshdesk.com/support/solutions/articles/82000891151-are-dhan-apis-free-",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "DhanHQ v2 docs: requests need an access token plus the Dhan client ID. Endpoints include POST /marketfeed/ohlc covering NSE_EQ, NSE_FNO and BSE_EQ by integer security ID. Token validity and static IP pages were not read.",
+    "source_url": "https://docs.dhanhq.co/api/v2/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "NSE real-time domestic vendor tariff took effect 1 Apr 2025. Redistribution of market data needs an NSE licence under its Data Sharing & Usage Policy. Search snippets say delayed (15 min) display by licensed vendors has lower fees. Price figures were not verified.",
+    "source_url": "https://nsearchives.nseindia.com/web/sites/default/files/inline-files/NSE_Data_Sharing%26Usage_Policy.pdf",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "Zerodha charges page, equity delivery: brokerage Rs 0; STT 0.1% on buy and sell; NSE transaction charge 0.00307%; BSE 0.00375%; SEBI Rs 10/crore; stamp duty 0.015% on buy; GST 18% on brokerage, SEBI and transaction charges; DP Rs 15.34 per scrip on sell (CDSL 3.5 + Zerodha 9.5 + GST 2.34).",
+    "source_url": "https://zerodha.com/charges",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Zerodha charges page, equity intraday: brokerage is the lower of 0.03% or Rs 20 per order; STT 0.025% on sell only; stamp duty 0.003% on buy; exchange, SEBI and GST charges are the same as for delivery. No DP charge is listed for intraday.",
+    "source_url": "https://zerodha.com/charges",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Budget 2024 (23 Jul 2024): STCG on listed equity (STT paid) is 20%, up from 15%. LTCG is 12.5%, up from 10%, with an annual exemption of Rs 1.25 lakh. Budget 2026 (1 Feb 2026) raised STT on futures and options only; delivery STT stayed at 0.1%.",
+    "source_url": "https://zerodha.com/z-connect/business-updates/what-changes-for-investors-after-budget-2024",
+    "verified": "secondary_source"
+   }
+  ],
+  "recommendation": "Do not embed any of the four repos. Copy TradingAgents' multi-agent research architecture (Apache-2.0, active, but US-data oriented) and build a thin Python layer of your own. Start with read-only broker data via Kite Personal (free) or Dhan, and keep order placement human-confirmed. Autonomous orders need a static IP on the backend, daily 2FA login, and staying under 10 OPS. Use delayed or broker-supplied data only, and never redistribute NSE/BSE data. Show estimated charges and tax (STCG 20%, LTCG 12.5% above Rs 1.25 lakh) using config values re-checked against the broker charges page each quarter.",
+  "risks": [
+   "Kite Connect Personal-tier details are unverified: whether it includes streaming or historical data, and whether it is limited to order management. The 2025-2026 Zerodha pricing may have changed; check the Kite developer portal.",
+   "The Kite docs page fetched did not cover access-token expiry, rate limits or algo rules. Daily login and token expiry around 6 AM are from memory and unverified.",
+   "Dhan access-token validity, static IP setup and rate limits were not verified from official docs. The Dhan Rs 499 price comes from a Dhan support snippet reached via search, not a fetched page.",
+   "The original SEBI circular (4 Feb 2025) and the NSE implementation circular were not fetched. Effective dates (1 Oct 2025, extended to 1 Apr 2026) come from broker pages. Whether registration or tagging applies below 10 OPS differs across sources; Upstox says generic Algo ID 99999.",
+   "NSE tariff figures and free official data endpoints (for example bhavcopy, NSE delayed quotes) were not verified. NSE website scraping is likely restricted by its terms; get a licensed data source.",
+   "Exchange transaction charge rates for NSE and BSE and the SEBI fee should be re-checked against the exchange circulars. Zerodha's page also does not show the date of its last update.",
+   "STCG/LTCG rates were taken from secondary sources (Zerodha blog and search snippets), not the Income Tax Act or Finance Act text. Check for any Budget 2026 changes to capital gains rates.",
+   "GitHub last-commit dates were not visible in the fetches. Maintenance status is inferred from releases and README text. FinGPT and FinRL have no confirmed recent release."
+  ]
+ },
+ {
+  "key": "india-commerce-payments",
+  "topic": "Official integration paths for Indian shopping and payment-data services (as of 2026-11-12)",
+  "findings": [
+   {
+    "claim": "Swiggy publishes official MCP servers: Food mcp.swiggy.com/food (20 tools), Instamart mcp.swiggy.com/im (16 tools), Dineout mcp.swiggy.com/dineout (11 tools), Scenes /scenes (15 tools); 62 tools total. Each server is independent, with separate carts, orders and sessions.",
+    "source_url": "https://mcp.swiggy.com/builders/docs/start/what-is-swiggy-mcp/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Swiggy MCP auth is OAuth 2.1 with PKCE with session auth; clients self-register through Dynamic Client Registration (no client ID application). Redirect URIs must exact-match over HTTPS, and http://localhost is allowed for development.",
+    "source_url": "https://mcp.swiggy.com/builders/docs/start/developer/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Swiggy MCP: localhost development needs no approval. Production requires an application (use case, redirect URIs, servers, volume, demo video; builders@swiggy.in) and gives staging first. Production access is invite-based. The docs do not state a personal-use path.",
+    "source_url": "https://mcp.swiggy.com/builders/docs/start/developer/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Swiggy launched Builders Club in April 2026 (MCP servers plus APIs for approved participants, built on AWS). This is from press and secondary coverage, not the docs.",
+    "source_url": "https://yourstory.com/2026/04/swiggy-opens-ai-commerce-stack-to-external-developers-with-builders-club",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "No official Zepto public API or MCP server was found. Listed Zepto MCPs (Apify actor axlymxp/zepto-mcp-server, MCP Market, Zepto Cafe Playwright project) are third-party scrapers or automation. Zepto reportedly open-sourced a Cafe ordering tool but said it is for internal experimentation.",
+    "source_url": "https://www.cxodigitalpulse.com/?p=41815",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "PA-API 5.0 is deprecated and replaced by the Creators API (REST). Calls to PA-API 5 return HTTP 403 AccessDeniedException. The page gives no dates. Third-party sources cite April 30 or May 15, 2026. Old PA-API keys do not work; new credentials are made in Associates Central.",
+    "source_url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Creators API eligibility per Amazon docs: Associates enrollment for the target marketplace, at least 10 qualifying sales in the past 30 days, and registration in Associates Central. Operations: SearchItems, GetItems, GetVariations, GetBrowseNodes. Whether amazon.in is supported was not confirmed on the page.",
+    "source_url": "https://affiliate-program.amazon.com/creatorsapi/docs/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Flipkart Affiliate API docs are live. Access is only for registered affiliates, using a tracking ID plus a dashboard token. Product APIs cover keyword search and lookup by product ID. Offer APIs and Report APIs also exist. Responses are JSON or XML over HTTPS.",
+    "source_url": "https://affiliate.flipkart.com/api-docs/af_overview.html",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "ONDC: buyer apps register in the staging, pre-prod and prod registry through a subscribe call (subscriber_id, subscriber_url, domain, signing public key). Staging subscriber ID whitelisting is needed first, and end-to-end tests run against reference seller apps. No individual-developer exemption was found.",
+    "source_url": "https://github.com/ONDC-Official/developer-docs/blob/main/registry/Onboarding%20of%20Participants.md",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "Account Aggregator FIUs must be regulated entities (RBI, SEBI, IRDAI, PFRDA or Dept. of Revenue). Unregulated fintechs cannot be FIUs, and individuals appear only as consenting customers. An unregulated TSP can build the technical stack, but only a regulated FIU receives and decrypts data.",
+    "source_url": "https://sahamati.org.in/faq/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "FIU onboarding via Sahamati: implement the AA standards (in-house or through a TSP), integrate the Central Registry and Token Service, test in UAT (services@sahamati.org.in), pass certification, then request production credentials and sign commercial terms with AAs. The TSP list is at sahamati.org.in/tsp/.",
+    "source_url": "https://sahamati.org.in/faq/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "RBI letter of 26 Oct 2023 applies to RBI regulated entities joining AA as FIUs. They must also join as FIPs if they hold the specified information. FIU eligibility itself is defined in the 2016 NBFC-AA Master Direction.",
+    "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12558",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Gmail restricted scopes include mail.google.com, gmail.readonly, gmail.modify, gmail.metadata, gmail.compose, gmail.insert and gmail.settings.*. Apps that store or transmit restricted-scope data must pass a security assessment. gmail.addons.current.message.readonly is only sensitive.",
+    "source_url": "https://developers.google.com/workspace/gmail/api/auth/scopes",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Unverified or Testing OAuth app limits: up to 100 test users, and a lifetime cap of 100 new users for unverified apps that cannot be reset. Test-user authorizations and refresh tokens expire after 7 days, except for basic email/profile/openid scopes only.",
+    "source_url": "https://support.google.com/cloud/answer/15549945",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Google refresh tokens: 100 per account per client ID (the oldest is silently invalidated). Tokens also lapse after 6 months unused, on user revocation, or on a password change when Gmail scopes are held.",
+    "source_url": "https://developers.google.com/identity/protocols/oauth2#expiration",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Google Pay has an official export route, Google Pay help 'Find, export, or delete Google Pay info' (Takeout). Paytm statements are downloadable in PDF, and Excel per a 2025 guide. PhonePe and BHIM export formats were not verified. Only secondary search snippets were seen.",
+    "source_url": "https://support.google.com/googlepay/answer/9015738",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "Amazon's quick-commerce service in India is called 'Amazon Now'. It launched as a Bengaluru pilot in June 2025 and has plans for 100 and then 300+ cities. No public API or MCP was found.",
+    "source_url": "https://yourstory.com/2026/09/amazon-now-1b-annualised-sales-as-quick-commerce-moves-beyond-metros",
+    "verified": "secondary_source"
+   }
+  ],
+  "recommendation": "Make Swiggy Instamart the only official quick-commerce integration. Use mcp.swiggy.com/im with OAuth 2.1 and PKCE, and start on localhost while applying for staging and production access. Treat Blinkit, Zepto, BigBasket, Flipkart Minutes and Amazon Now as handoff-only. Use their public web search URLs (to be verified) rather than scrapers or unofficial MCPs. Do not rely on Amazon's Creators API (10 qualifying sales in 30 days). Use Flipkart Affiliate only if you register as an affiliate. For spending data, use user-initiated exports (Google Pay Takeout, Paytm and bank statements) because an Account Aggregator FIU must be a regulated entity. For Gmail receipts, keep the app in Testing with you as the only test user and plan for 7-day token expiry, or use gmail.readonly with full verification and a security assessment, which is impractical for a personal app.",
+  "risks": [
+   "Unverified: official APIs or MCPs for Blinkit, BigBasket, Flipkart Minutes and Amazon Now. Searches found none, but no official pages were fetched, so absence is not proven.",
+   "Unverified: documented deep-link or universal-link formats for any shopping app. No official source was found, so do not rely on any format until checked.",
+   "Unverified: Creators API support and eligibility specifically for amazon.in, and the exact PA-API shutdown date (sources conflict: April 30 vs May 15, 2026). Confirm in Associates Central India.",
+   "Unverified: Flipkart Affiliate API current health. The docs carry no dates and sample data is old. Test a token to check.",
+   "Unverified: ONDC details come from a GitHub summary and community docs. Whether an individual can get registry whitelisting is not documented.",
+   "Unverified: Setu and OneMoney AA/TSP onboarding requirements. Only Sahamati's generic FAQ was fetched, so check each vendor.",
+   "Unverified: PhonePe and BHIM statement export steps and formats, and Google Takeout output format for Google Pay. Bank statement formats were not researched.",
+   "Swiggy Instamart tool names and the exact tool count (16 per the official page vs 13 and 19 in third-party sources) were not confirmed. Personal-use access is unclear, and production is invite-based.",
+   "Zepto's Feb 2026 Business Today agentic-payments announcement was seen only as a headline, so Zepto's role in it is unclear."
+  ]
+ },
+ {
+  "key": "lifestyle-voice-comms",
+  "topic": "Spotify, fitness APIs, messaging, Home Assistant, voice, Tailscale: capabilities and limits as of 2026-11-12",
+  "findings": [
+   {
+    "claim": "Spotify dev-mode apps: the app owner must have Premium for the app to work. Max 5 allowlisted users (Dashboard > Users Management). Non-allowlisted users can log in but API calls return 403.",
+    "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Spotify extended quota: since 2025-05-15 only organizations can apply. Requires a registered business, a launched service, 250,000+ MAU, key-market availability and commercial viability. Review takes up to 6 weeks. Individuals cannot get it.",
+    "source_url": "https://developer.spotify.com/documentation/web-api/concepts/quota-modes",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Since 2024-11-27, new apps (and dev-mode apps without extended access) lose Related Artists, Recommendations, Audio Features, Audio Analysis, Featured Playlists, Category Playlists, 30s previews in multi-get, and algorithmic/editorial playlists.",
+    "source_url": "https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Spotify device transfer: PUT https://api.spotify.com/v1/me/player, body {\"device_ids\":[one id],\"play\":bool}. Scope user-modify-playback-state. Premium only. More than one device id returns 400. Success is 204.",
+    "source_url": "https://developer.spotify.com/documentation/web-api/reference/transfer-a-users-playback",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Spotify PKCE: GET accounts.spotify.com/authorize with response_type=code, code_challenge_method=S256, code_challenge, redirect_uri, state. Then POST accounts.spotify.com/api/token with grant_type=authorization_code and code_verifier (43-128 chars). Redirect URI must match the allowlist exactly.",
+    "source_url": "https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Spotify iOS SDK page lists no deprecation. It requires iOS 12+ and the Spotify app installed on a physical device. The page does not mention Premium. Remote playback control needs user permission.",
+    "source_url": "https://developer.spotify.com/documentation/ios",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Strava default rate limits: 200 requests/15 min and 2,000/day overall, with non-upload limited to 100/15 min and 1,000/day. After upgrade: 200/15 min and 2,000/day for reads, 400/15 min and 4,000/day overall. Exceeding returns 429.",
+    "source_url": "https://developers.strava.com/docs/rate-limits/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Strava API agreement: a user's data may be displayed only to that user, and sharing with others needs explicit consent. The fetched page showed no AI wording. News and forum reports say Nov 2024 terms bar AI/model training, and inference-only use is unresolved.",
+    "source_url": "https://www.strava.com/legal/api",
+    "verified": "secondary_source"
+   },
+   {
+    "claim": "Garmin Health API is under Business tiers. Starter is push-only, with no historical data and limited users. Enterprise adds pull and ping delivery, 1+ month of history, and unlimited users. Business access requires applying. A Personal tier exists with an own-key, pull-only JSON health data option.",
+    "source_url": "https://developer.garmin.com/gc-developer-program/overview/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Fitbit Web API: support ended 2026-09-30. Turn-off was 2026-11-02, after which Fitbit OAuth and API endpoints return HTTP 410. Integrations must move to Google Health API with Google OAuth 2.0. All Health API scopes are Restricted, requiring a privacy and security review.",
+    "source_url": "https://developers.google.com/health/about",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "WhatsApp click-to-chat formats: https://wa.me/<intl-number> (digits only), https://wa.me/<number>/?text=<urlencoded>, and https://wa.me/?text=<urlencoded> (user picks a contact). They work on mobile and web.",
+    "source_url": "https://faq.whatsapp.com/5913398998672934",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "WhatsApp Cloud API requires a business portfolio, a WhatsApp business account, a business app and a business phone number. Templates are the only way to message outside the service window, and they need opt-in. The page does not address personal accounts.",
+    "source_url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Home Assistant REST: send 'Authorization: Bearer <long-lived token>'. Create tokens under Profile > Security. Call services with POST /api/services/<domain>/<service> and a JSON body such as {\"entity_id\":\"light.kitchen\"}. Add ?return_response only for actions that return data, otherwise 400.",
+    "source_url": "https://contributors.home-assistant.io/core/internals/rest-api/",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "ElevenLabs models fetched: eleven_v4 (10k char limit), eleven_v4_turbo (~100ms median), eleven_flash_v2_5 (~100ms, 32 languages incl. Hindi, 40k chars), eleven_multilingual_v2 (Hindi), eleven_v3. eleven_flash_v2 is English only. Per-1K-char API rates: $0.08 for v4/v3/v2, $0.04 for turbo/flash. Plans: Starter $6/month, Creator $22/month.",
+    "source_url": "https://elevenlabs.io/docs/overview/models",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Google Cloud TTS Chirp 3 HD supports hi-IN and en-IN. Voice names follow <locale>-Chirp3-HD-<voice>, e.g. en-US-Chirp3-HD-Kore. Streaming synthesis outputs PCM, OGG_OPUS, ALAW and MULAW. SSML is not supported in streaming. Pace range is 0.25-2.0.",
+    "source_url": "https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Gemini API TTS models listed: gemini-3.8-flash-tts and gemini-3.8-flash-lite-tts (Hindi marked supported), plus gemini-3.1-flash-tts-preview and gemini-2.5-pro-preview-tts. stream:true returns raw 24kHz 16-bit PCM mono. GA status for 3.8 is not stated.",
+    "source_url": "https://aistudio.google.com/docs/speech-generation",
+    "verified": "official_doc_fetched"
+   },
+   {
+    "claim": "Tailscale Personal plan is $0, up to 6 users, unlimited user devices, non-commercial use only. 'tailscale serve --https=<port> <target>' terminates HTTPS in the device's tailscaled with an automatically provisioned TLS cert.",
+    "source_url": "https://tailscale.com/kb/1242/tailscale-serve",
+    "verified": "official_doc_fetched"
+   }
+  ],
+  "recommendation": "Spotify: a 5-user, owner-Premium dev-mode app is fine for personal use, but plan without Recommendations or Audio Features. Control playback through Web API player endpoints with PKCE. Skip the iOS App Remote unless needed. Fitness: use Strava only for the user's own data and keep it out of model training or LLM prompts unless Strava confirms in writing. Treat Fitbit as dead, and use Apple Health on-device instead. Messaging: use wa.me links and MFMessageComposeViewController, which always needs a user tap. Voice: Chirp 3 HD hi-IN/en-IN streaming or ElevenLabs flash_v2_5. Tailscale serve gives HTTPS for the backend.",
+  "risks": [
+   "Strava AI-use terms were not found on the fetched agreement page. Only secondary reports (including claimed June 2026 changes) exist, so read the live agreement.",
+   "Apple's MFMessageComposeViewController page fetch returned only a title, so its behavior comes from general knowledge (user must tap Send) and is unverified. iMessage has no separate compose API.",
+   "Tailscale HTTPS prerequisites (MagicDNS and HTTPS enabled in the admin console) and iOS/macOS client support were not verified on the page. Tailscale serve is tailnet-only, unlike funnel.",
+   "Garmin Personal tier details are thin, and Health API approval criteria and fees were not found.",
+   "The Google Health API onboarding status for new projects is unverified. A secondary source claims no new projects were onboarded as of 2026-10-13.",
+   "Spotify iOS SDK maintenance status and Premium need for App Remote were not stated on the page. Web API playback endpoints need Premium.",
+   "Google 'Gemini 3.8' model IDs come from a fetched summary and should be rechecked before use. The ElevenLabs TTS WebSocket model support list was not given, and the v4 'Text to Dialogue' mentions may not apply to plain TTS streaming.",
+   "The Spotify Nov 2024 blog fetch used a guessed slug and returned content, but later 2025-2026 changes to endpoints may exist that were not checked.",
+   "WhatsApp: no official statement found on personal-account API access. The Cloud API needs a business portfolio and number."
+  ]
+ }
+]

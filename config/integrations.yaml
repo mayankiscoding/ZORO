@@ -1,0 +1,49 @@
+# ZORO integration endpoints. Read only through app/core/runtime_config.py (`integration_urls`).
+#
+# CLAUDE.md rule 7: provider URLs live in config/*.yaml, never in package code. Every URL here is an
+# official, documented endpoint; nothing is scraped. Credentials are NOT here: they come from the
+# environment variables named in `credentials_env` (see .env.example). A missing variable disables
+# that integration and shows as "needs credentials" in the capability registry.
+version: 1
+
+integrations:
+  spotify:
+    title: Spotify Web API
+    docs_url: https://developer.spotify.com/documentation/web-api
+    credentials_env: [SPOTIFY_CLIENT_ID]
+    # Redirect URI to register with Spotify: ZORO_PUBLIC_BASE_URL + /v1/music/callback
+    urls:
+      authorize: https://accounts.spotify.com/authorize
+      token: https://accounts.spotify.com/api/token
+      api: https://api.spotify.com/v1
+    scopes:
+      - user-read-playback-state
+      - user-modify-playback-state
+      - user-read-currently-playing
+      - user-read-recently-played
+      - playlist-modify-private
+      - playlist-modify-public
+
+  google:
+    title: Google OAuth and Gmail API
+    docs_url: https://developers.google.com/identity/protocols/oauth2/native-app
+    credentials_env: [GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET]
+    # Redirect URI to register with Google: ZORO_PUBLIC_BASE_URL + /v1/communications/gmail/callback
+    urls:
+      authorize: https://accounts.google.com/o/oauth2/v2/auth
+      token: https://oauth2.googleapis.com/token
+      revoke: https://oauth2.googleapis.com/revoke
+      gmail: https://gmail.googleapis.com/gmail/v1/users/me
+    scopes:
+      - https://www.googleapis.com/auth/gmail.readonly
+      - https://www.googleapis.com/auth/gmail.compose
+
+  strava:
+    title: Strava API v3
+    docs_url: https://developers.strava.com/docs/reference/
+    credentials_env: [STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET]
+    urls:
+      api: https://www.strava.com/api/v3
+      authorize: https://www.strava.com/oauth/authorize
+      token: https://www.strava.com/oauth/token
+    scopes: ["read,activity:read_all"]

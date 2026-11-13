@@ -1,0 +1,70 @@
+{
+  "active_days": 31,
+  "available": true,
+  "avg_sessions_per_week": 3.4,
+  "current_streak_days": 3,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "days_with_data": 50,
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "longest_streak_days": 6,
+  "min_active_minutes": 20,
+  "observations": [],
+  "reason": null,
+  "target_sessions_per_week": 3,
+  "weeks": [
+    {
+      "active_days": 2,
+      "sessions": 2,
+      "week_start": "2026-09-25"
+    },
+    {
+      "active_days": 3,
+      "sessions": 3,
+      "week_start": "2026-10-02"
+    },
+    {
+      "active_days": 4,
+      "sessions": 4,
+      "week_start": "2026-10-09"
+    },
+    {
+      "active_days": 3,
+      "sessions": 3,
+      "week_start": "2026-10-16"
+    },
+    {
+      "active_days": 3,
+      "sessions": 3,
+      "week_start": "2026-10-23"
+    },
+    {
+      "active_days": 4,
+      "sessions": 4,
+      "week_start": "2026-10-30"
+    },
+    {
+      "active_days": 2,
+      "sessions": 2,
+      "week_start": "2026-11-06"
+    },
+    {
+      "active_days": 3,
+      "sessions": 3,
+      "week_start": "2026-11-13"
+    }
+  ],
+  "weeks_meeting_target": 5,
+  "window_end": "2026-11-13",
+  "window_start": "2026-09-19"
+}

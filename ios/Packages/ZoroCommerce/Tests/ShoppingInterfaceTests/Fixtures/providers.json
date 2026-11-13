@@ -1,0 +1,43 @@
+[
+  {
+    "id": "swiggy_instamart",
+    "title": "Swiggy Instamart",
+    "category": "quick_commerce",
+    "status": "working_integration",
+    "methods": [
+      {
+        "method": "search_products",
+        "level": "official_api",
+        "note": ""
+      },
+      {
+        "method": "prepare_checkout",
+        "level": "deep_link_handoff",
+        "note": "Payment in the Instamart app"
+      }
+    ],
+    "handoff": null,
+    "note": ""
+  },
+  {
+    "id": "zepto",
+    "title": "Zepto",
+    "category": "quick_commerce",
+    "status": "requires_partnership",
+    "methods": [
+      {
+        "method": "search_products",
+        "level": "unavailable",
+        "note": ""
+      }
+    ],
+    "handoff": {
+      "provider": "zepto",
+      "title": "Open Zepto",
+      "url": "https://www.zepto.com/",
+      "verified": false,
+      "note": ""
+    },
+    "note": "No public API."
+  }
+]

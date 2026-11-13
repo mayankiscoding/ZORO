@@ -1,0 +1,182 @@
+# Finance categorisation rules (read by app/finance/categories.py, reloaded when this file changes).
+#
+# Rules only: no transactions, balances or amounts live here.
+# - categories: id, spoken names per language, intent words (en / hi / hinglish), and match rules.
+#   `merchants` match the normalised merchant key (lower case, words separated by single spaces);
+#   `keywords` match anywhere in the lower-cased narration. `direction` limits a category to
+#   debits or credits. `channels` map a payment channel (atm, cash, ...) to the category.
+# - merchants: canonical display names for merchant keys and VPA handles (alias -> name).
+# Owner overrides (finance.recategorize with apply_to_merchant) are stored in the database and
+# always win over these rules.
+
+version: 1
+default_debit: uncategorised
+default_credit: other_income
+
+categories:
+  - id: food
+    names: {en: food and dining, hi: खाना, hinglish: khana}
+    words:
+      en: [food, dining, restaurant, restaurants, eating out]
+      hi: [खाना, भोजन, खाने]
+      hinglish: [khana, khaana, khane]
+    merchants: [swiggy, zomato, dominos, mcdonalds, kfc, starbucks, eatsure, box8, haldiram]
+    keywords: [restaurant, cafe, dhaba, food]
+    direction: debit
+  - id: groceries
+    names: {en: groceries, hi: राशन, hinglish: ration}
+    words:
+      en: [groceries, grocery]
+      hi: [राशन, किराना, सब्ज़ी]
+      hinglish: [ration, kirana, sabzi, grocery]
+    merchants: [blinkit, zepto, bigbasket, instamart, swiggy instamart, dmart, jiomart, more retail, reliance fresh]
+    keywords: [grocery, kirana, supermarket, mart]
+    direction: debit
+  - id: shopping
+    names: {en: shopping, hi: ख़रीदारी, hinglish: shopping}
+    words:
+      en: [shopping]
+      hi: [ख़रीदारी, खरीदारी]
+      hinglish: [shopping, kharidari]
+    merchants: [amazon, flipkart, myntra, ajio, nykaa, meesho, croma, decathlon]
+    keywords: [amazon, flipkart]
+    direction: debit
+  - id: transport
+    names: {en: transport, hi: यातायात, hinglish: transport}
+    words:
+      en: [transport, travel, cab, cabs, taxi, fuel, petrol]
+      hi: [यातायात, सफ़र, पेट्रोल, टैक्सी]
+      hinglish: [safar, petrol, cab, gaadi]
+    merchants: [uber, ola, rapido, irctc, indigo, redbus, makemytrip, fastag, indian oil, bharat petroleum, hpcl]
+    keywords: [fuel, petrol, fastag, metro]
+    direction: debit
+  - id: bills
+    names: {en: bills and utilities, hi: बिल, hinglish: bill}
+    words:
+      en: [bills, bill, utilities, electricity, recharge]
+      hi: [बिल, बिजली, रिचार्ज]
+      hinglish: [bill, bijli, recharge]
+    merchants: [jio, airtel, vi, bescom, tata power, adani electricity, act fibernet, bsnl, mahanagar gas]
+    keywords: [electricity, recharge, broadband, billpay, bill pay, gas bill]
+    direction: debit
+  - id: subscriptions
+    names: {en: subscriptions, hi: सदस्यता, hinglish: subscription}
+    words:
+      en: [subscriptions, subscription, ott]
+      hi: [सदस्यता, सब्सक्रिप्शन]
+      hinglish: [subscription, subscriptions]
+    merchants: [netflix, spotify, hotstar, jiohotstar, prime video, youtube premium, google one, apple, sonyliv, zee5]
+    keywords: [subscription, netflix, spotify]
+    direction: debit
+  - id: health
+    names: {en: health, hi: स्वास्थ्य, hinglish: health}
+    words:
+      en: [health, medical, medicine, pharmacy]
+      hi: [स्वास्थ्य, दवा, दवाई]
+      hinglish: [dawai, dawa, health]
+    merchants: [apollo pharmacy, pharmeasy, 1mg, netmeds, practo, cult fit]
+    keywords: [pharmacy, hospital, clinic, medical, diagnostics]
+    direction: debit
+  - id: rent
+    names: {en: rent, hi: किराया, hinglish: kiraya}
+    words:
+      en: [rent, housing]
+      hi: [किराया]
+      hinglish: [kiraya, rent]
+    merchants: [nobroker, cred rent]
+    keywords: [rent]
+    direction: debit
+  - id: education
+    names: {en: education, hi: पढ़ाई, hinglish: padhai}
+    words:
+      en: [education, school, fees, course]
+      hi: [पढ़ाई, फ़ीस, फीस]
+      hinglish: [padhai, fees]
+    merchants: [byjus, unacademy, coursera, udemy]
+    keywords: [school, college, tuition, fees]
+    direction: debit
+  - id: cash
+    names: {en: cash withdrawals, hi: नकद निकासी, hinglish: cash nikasi}
+    words:
+      en: [cash, atm]
+      hi: [नकद, एटीएम]
+      hinglish: [cash, atm, nakad]
+    channels: [atm]
+    direction: debit
+  - id: transfers
+    names: {en: transfers, hi: ट्रांसफ़र, hinglish: transfer}
+    words:
+      en: [transfers, transfer]
+      hi: [ट्रांसफ़र, ट्रांसफर]
+      hinglish: [transfer]
+    keywords: [self transfer, own account]
+  - id: salary
+    names: {en: salary, hi: वेतन, hinglish: salary}
+    words:
+      en: [salary, income, pay]
+      hi: [वेतन, तनख़्वाह, आय]
+      hinglish: [salary, tankhwah, kamai]
+    keywords: [salary, sal credit, payroll]
+    direction: credit
+  - id: interest
+    names: {en: interest, hi: ब्याज, hinglish: byaaj}
+    words:
+      en: [interest]
+      hi: [ब्याज]
+      hinglish: [byaaj, interest]
+    keywords: [int pd, interest paid, int.pd, int credit]
+    direction: credit
+  - id: refunds
+    names: {en: refunds, hi: रिफ़ंड, hinglish: refund}
+    words:
+      en: [refund, refunds]
+      hi: [रिफ़ंड, रिफंड, वापसी]
+      hinglish: [refund, wapsi]
+    keywords: [refund, reversal, rev-]
+    direction: credit
+  - id: other_income
+    names: {en: other income, hi: अन्य आय, hinglish: other income}
+    words:
+      en: [other income]
+      hi: [अन्य आय]
+      hinglish: [other income]
+    direction: credit
+  - id: uncategorised
+    names: {en: uncategorised, hi: बिना श्रेणी, hinglish: bina category}
+    words:
+      en: [uncategorised, uncategorized, other]
+      hi: [बिना श्रेणी, अन्य]
+      hinglish: [baaki, other]
+    direction: debit
+
+merchants:
+  swiggy: Swiggy
+  swiggy instamart: Swiggy Instamart
+  instamart: Swiggy Instamart
+  zomato: Zomato
+  blinkit: Blinkit
+  grofers: Blinkit
+  zepto: Zepto
+  bigbasket: BigBasket
+  amazon: Amazon
+  amzn: Amazon
+  amazon pay: Amazon
+  flipkart: Flipkart
+  myntra: Myntra
+  netflix: Netflix
+  spotify: Spotify
+  hotstar: JioHotstar
+  jiohotstar: JioHotstar
+  uber: Uber
+  ola: Ola
+  olacabs: Ola
+  rapido: Rapido
+  irctc: IRCTC
+  jio: Jio
+  reliance jio: Jio
+  airtel: Airtel
+  bescom: BESCOM
+  apollo pharmacy: Apollo Pharmacy
+  pharmeasy: PharmEasy
+  dmart: DMart
+  avenue supermarts: DMart

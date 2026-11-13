@@ -1,0 +1,71 @@
+# Indian equity trading charges, tax estimate rates, analytics thresholds and broker endpoints.
+# Read by backend/app/investment/config.py; reloaded when this file changes.
+# Every value is a decimal string (never a float). Percentages are written as percent (0.1 = 0.1 %).
+# Re-check charges against the broker's charges page every quarter and update `verified_on`.
+version: 1
+
+charges:
+  verified_on: "2026-11-12"
+  source: "https://zerodha.com/charges"
+  verification: official_doc_fetched   # research file docs/research/research-2026-11-12.json, finance-markets-india
+  note: >-
+    Zerodha equity schedule. Other brokers differ in brokerage and DP charge; statutory lines
+    (STT, exchange transaction charge, SEBI fee, stamp duty, GST) are the same for everyone.
+    Exchange transaction and SEBI rates should be re-checked against the exchange circulars.
+  gst_percent: "18"                    # on brokerage + exchange transaction charge + SEBI fee + DP charge
+  sebi_fee_per_crore: "10"             # Rs 10 per Rs 1 crore of turnover, both sides
+  exchange_transaction_percent:        # on turnover, both sides
+    NSE: "0.00307"
+    BSE: "0.00375"
+  delivery:
+    brokerage_percent: "0"
+    brokerage_max_per_order: null
+    stt_buy_percent: "0.1"
+    stt_sell_percent: "0.1"
+    stamp_duty_buy_percent: "0.015"
+    dp_charge_per_scrip_sell: "13.00"  # CDSL 3.50 + Zerodha 9.50, before 18 % GST (15.34 with GST)
+  intraday:
+    brokerage_percent: "0.03"
+    brokerage_max_per_order: "20"      # lower of 0.03 % or Rs 20 per executed order
+    stt_buy_percent: "0"
+    stt_sell_percent: "0.025"
+    stamp_duty_buy_percent: "0.003"
+    dp_charge_per_scrip_sell: "0"
+
+tax:
+  verified_on: "2026-11-12"
+  source: "https://zerodha.com/z-connect/business-updates/what-changes-for-investors-after-budget-2024"
+  verification: secondary_source       # not checked against the Finance Act text
+  note: >-
+    Listed equity with STT paid, transfers on or after 23 Jul 2024. Estimate only: cess, surcharge,
+    grandfathering, set-off of losses and intraday (speculative, slab rate) income are not modelled.
+  stcg_percent: "20"                   # held 12 months or less
+  ltcg_percent: "12.5"                 # held more than 12 months
+  ltcg_annual_exemption: "125000"
+  long_term_after_days: 365
+
+analytics:
+  trading_days_per_year: 252
+  risk_free_rate_percent: "6.5"        # assumption for Sharpe and Sortino; change to taste
+  unusual_window: 20                   # trailing bars used for the z-scores (current bar excluded)
+  unusual_return_z: "2.5"
+  unusual_volume_z: "3.0"
+  concentration_single_percent: "20"   # a single holding above this weight is flagged
+  var_confidence_percent: "95"
+
+providers:
+  kite:
+    title: "Zerodha Kite Connect"
+    api_base_url: "https://api.kite.trade"
+    login_url: "https://kite.zerodha.com/connect/login"
+    handoff_url: "https://kite.zerodha.com/"
+    docs_url: "https://kite.trade/docs/connect/v3/"
+    key_env: KITE_API_KEY
+    secret_env: KITE_API_SECRET
+  dhan:
+    title: "DhanHQ"
+    api_base_url: "https://api.dhan.co/v2"
+    handoff_url: "https://web.dhan.co/"
+    docs_url: "https://docs.dhanhq.co/api/v2/"
+    client_id_env: DHAN_CLIENT_ID
+    token_env: DHAN_ACCESS_TOKEN

@@ -1,0 +1,29 @@
+{
+  "kind": "photo_query",
+  "payload": {
+    "asset_ids": [],
+    "chips": [
+      {
+        "kind": "label",
+        "label": "elephant"
+      }
+    ],
+    "hits": [],
+    "indexed_count": 1204,
+    "limited_library": false,
+    "query": {
+      "colors": [],
+      "contains_text": null,
+      "date_from": null,
+      "date_to": null,
+      "labels": [
+        "elephant"
+      ],
+      "limit": 30,
+      "media": "any",
+      "text": "purple elephant"
+    },
+    "state": "empty"
+  },
+  "title": "Photos"
+}

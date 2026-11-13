@@ -1,0 +1,130 @@
+# ZORO shopping providers. Read by app/shopping/config.py.
+#
+# Facts come from docs/research/research-2026-11-12.json (topic india-commerce-payments) and from
+# the official pages named next to each entry. Nothing here is a price, a stock level or a fee.
+#
+# Handoff providers: the URL template only opens the provider's own page in its app or browser.
+# ZORO never fetches or scrapes these pages. `verified: false` means the URL format was not
+# confirmed in official documentation; the app shows it as "unverified link".
+version: 1
+
+# How long a price stays usable in a comparison, per provenance (minutes).
+staleness_minutes:
+  provider_api: 30
+  user_reported: 1440
+  user_screenshot_ocr: 720
+
+providers:
+  swiggy_instamart:
+    title: Swiggy Instamart
+    kind: mcp
+    category: quick_commerce
+    # Official MCP server (https://mcp.swiggy.com/builders/docs/start/what-is-swiggy-mcp/).
+    # OAuth 2.1 + PKCE + dynamic client registration; localhost redirect allowed for development,
+    # production access is invite-based (https://mcp.swiggy.com/builders/docs/start/developer/).
+    mcp_url: https://mcp.swiggy.com/im
+    docs_url: https://mcp.swiggy.com/builders/docs/reference/instamart/
+    # OAuth redirect: ZORO_PUBLIC_BASE_URL + /v1/shopping/providers/swiggy_instamart/oauth/callback
+    # unless set here. Swiggy needs an exact-match https URI (http://localhost allowed for development).
+    oauth_redirect_uri: null
+    # Logical operation -> Instamart tool name. Names confirmed on the official reference page
+    # (16 tools) on 2026-11-13. Validated against tools/list on every connect.
+    tool_map:
+      search_products: search_products
+      get_cart: get_cart
+      update_cart: update_cart
+      get_addresses: get_addresses
+      clear_cart: clear_cart
+    # Never called by ZORO: these place orders or touch payment. Payment finishes in Swiggy's app.
+    forbidden_tools: [checkout, confirm_order, check_payment_status, get_payment_options]
+    handoff:
+      url: https://www.swiggy.com/instamart
+      verified: false
+
+  flipkart_affiliate:
+    title: Flipkart (Affiliate API)
+    kind: flipkart_affiliate
+    category: marketplace
+    # https://affiliate.flipkart.com/api-docs/af_prod_ref.html (fetched 2026-11-13):
+    # GET {base}/1.0/search.json?query=&resultCount= (max 10), GET {base}/1.0/product.json?id=,
+    # headers Fk-Affiliate-Id and Fk-Affiliate-Token. API health was not checked with a token.
+    base_url: https://affiliate-api.flipkart.net/affiliate
+    endpoints_verified: true
+    credential_env: [FLIPKART_AFFILIATE_ID, FLIPKART_AFFILIATE_TOKEN]
+    handoff:
+      url: https://www.flipkart.com/search?q={query}
+      verified: false
+
+  amazon_creators:
+    title: Amazon (Creators API)
+    kind: partnership
+    category: marketplace
+    # https://affiliate-program.amazon.com/creatorsapi/docs/ : PA-API 5.0 is deprecated and replaced
+    # by the Creators API. Eligibility: Associates enrollment for the marketplace, at least 10
+    # qualifying sales in the past 30 days, registration in Associates Central. Operations named:
+    # SearchItems, GetItems, GetVariations, GetBrowseNodes. amazon.in support not confirmed.
+    partnership_note: >-
+      Needs Amazon Associates enrollment for the marketplace, at least 10 qualifying sales in the
+      past 30 days and Creators API registration in Associates Central. Support for amazon.in was
+      not confirmed.
+    docs_url: https://affiliate-program.amazon.com/creatorsapi/docs/
+    handoff:
+      url: https://www.amazon.in/s?k={query}
+      verified: false
+
+  zepto:
+    title: Zepto
+    kind: handoff
+    category: quick_commerce
+    handoff:
+      url: https://www.zeptonow.com/search?query={query}
+      verified: false
+  blinkit:
+    title: Blinkit
+    kind: handoff
+    category: quick_commerce
+    handoff:
+      url: https://blinkit.com/s/?q={query}
+      verified: false
+  bigbasket:
+    title: BigBasket
+    kind: handoff
+    category: quick_commerce
+    handoff:
+      url: https://www.bigbasket.com/ps/?q={query}
+      verified: false
+  flipkart_minutes:
+    title: Flipkart Minutes
+    kind: handoff
+    category: quick_commerce
+    handoff:
+      url: https://www.flipkart.com/search?q={query}&marketplace=HYPERLOCAL
+      verified: false
+  amazon_now:
+    title: Amazon Now
+    kind: handoff
+    category: quick_commerce
+    handoff:
+      url: https://www.amazon.in/s?k={query}
+      verified: false
+  amazon_in:
+    title: Amazon India
+    kind: handoff
+    category: marketplace
+    handoff:
+      url: https://www.amazon.in/s?k={query}
+      verified: false
+  flipkart_web:
+    title: Flipkart
+    kind: handoff
+    category: marketplace
+    handoff:
+      url: https://www.flipkart.com/search?q={query}
+      verified: false
+  myntra:
+    title: Myntra
+    kind: handoff
+    category: fashion
+    handoff:
+      url: https://www.myntra.com/{query_slug}
+      verified: false

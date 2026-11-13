@@ -1,0 +1,32 @@
+{
+  "kind": "finance_summary",
+  "title": "Finance: this year",
+  "payload": {
+    "period": {
+      "key": "this_year",
+      "start": "2026-01-01",
+      "end": "2026-12-31",
+      "label_en": "this year",
+      "label_hi": "इस महीने",
+      "label_hinglish": "is mahine"
+    },
+    "income": "170000.00",
+    "expense": "14000.75",
+    "net": "155999.25",
+    "savings_rate_pct": "91.8",
+    "months": [
+      {
+        "month": "2026-10",
+        "income": "85000.00",
+        "expense": "7000.25",
+        "net": "77999.75"
+      },
+      {
+        "month": "2026-11",
+        "income": "85000.00",
+        "expense": "7000.50",
+        "net": "77999.50"
+      }
+    ]
+  }
+}

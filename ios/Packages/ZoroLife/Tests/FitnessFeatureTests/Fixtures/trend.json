@@ -1,0 +1,27 @@
+{
+  "available": true,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "direction": "up",
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "mean": 7890.4,
+  "metric": "steps",
+  "min_points": 7,
+  "observations": [],
+  "points_used": 26,
+  "reason": null,
+  "slope_per_week": 312.5,
+  "unit": "steps",
+  "window_end": "2026-11-13",
+  "window_start": "2026-10-17"
+}

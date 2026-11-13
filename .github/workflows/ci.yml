@@ -1,0 +1,146 @@
+# ZORO continuous integration: backend (lint, types, tests on SQLite and on PostgreSQL + pgvector),
+# every Swift package (macOS tests plus an iOS compile of the package), web tests, release files.
+# Not run yet: written on a machine without GitHub access to Actions. First run will tell.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: backend (ruff, mypy, pytest)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: zoro
+          POSTGRES_DB: zoro
+          # Throwaway database inside the job container: no password at all rather than one in the repo.
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U zoro -d zoro"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - name: Python 3.12 and locked dependencies
+        run: |
+          uv python install 3.12
+          uv sync --frozen --python 3.12
+      - name: ruff check
+        run: uv run --no-sync ruff check .
+      - name: ruff format --check
+        run: uv run --no-sync ruff format --check .
+      - name: mypy
+        run: uv run --no-sync mypy app
+      - name: pytest (SQLite)
+        run: uv run --no-sync pytest -q
+      - name: pytest (whole suite on PostgreSQL 17 + pgvector)
+        env:
+          ZORO_TEST_DATABASE_URL: postgresql+psycopg://zoro@127.0.0.1:5432/zoro
+          PYTHONPATH: .
+        run: uv run --no-sync pytest -q -p tests.integration.platform.pg_everywhere
+
+  swift-packages:
+    name: swift packages (list)
+    runs-on: ubuntu-24.04
+    outputs:
+      packages: ${{ steps.list.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v6
+      - id: list
+        run: |
+          pkgs=$(for f in ios/Packages/*/Package.swift; do [ -f "$f" ] && basename "$(dirname "$f")"; done | jq -R . | jq -cs .)
+          echo "packages=$pkgs" >> "$GITHUB_OUTPUT"
+          echo "Swift packages: $pkgs"
+
+  swift:
+    name: swift ${{ matrix.package }}
+    needs: swift-packages
+    if: needs.swift-packages.outputs.packages != '[]'
+    runs-on: macos-26
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.swift-packages.outputs.packages) }}
+    env:
+      PKG_DIR: ios/Packages/${{ matrix.package }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Toolchain
+        run: |
+          sw_vers
+          xcodebuild -version
+          swift --version
+      - name: swift test (macOS host)
+        run: swift test --package-path "$PKG_DIR"
+      - name: iOS compile (generic iOS device, no signing)
+        # Compiles the #if os(iOS) code that the development Mac cannot compile.
+        working-directory: ${{ env.PKG_DIR }}
+        run: |
+          xcodebuild -list -json > "$RUNNER_TEMP/schemes.json"
+          scheme=$(jq -r --arg p "${{ matrix.package }}" '.workspace.schemes // .project.schemes // [] | if index($p + "-Package") then $p + "-Package" elif index($p) then $p else (.[0] // "") end' "$RUNNER_TEMP/schemes.json")
+          if [ -z "$scheme" ]; then echo "::error::no scheme found for ${{ matrix.package }}"; cat "$RUNNER_TEMP/schemes.json"; exit 1; fi
+          echo "scheme: $scheme"
+          xcodebuild build -scheme "$scheme" -destination "generic/platform=iOS" \
+            -derivedDataPath "$RUNNER_TEMP/dd" CODE_SIGNING_ALLOWED=NO
+
+  web:
+    name: web (node --test)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: node --test
+        run: |
+          if [ ! -d web ]; then echo "no web/ folder: nothing to test"; exit 0; fi
+          mapfile -d '' tests < <(find web -type f \( -name '*.test.js' -o -name '*.test.mjs' -o \
+            \( -path 'web/tests/*' \( -name '*.js' -o -name '*.mjs' \) \) \) \
+            -not -path '*/node_modules/*' -not -path 'web/tests/vectors/*' -not -path '*/fixtures/*' -print0 | sort -z)
+          if [ "${#tests[@]}" -eq 0 ]; then echo "web/ has no test files yet"; exit 0; fi
+          printf 'test file: %s\n' "${tests[@]}"
+          node --test "${tests[@]}"
+
+  release-files:
+    name: release files (scripts, property lists, privacy manifest)
+    runs-on: macos-26
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: bash -n on every shell script
+        run: |
+          rc=0
+          while IFS= read -r -d '' f; do bash -n "$f" || rc=1; done < <(find scripts ios/release -name '*.sh' -print0)
+          exit $rc
+      - name: plutil -lint
+        run: plutil -lint ios/release/*.plist ios/release/*.xcprivacy
+      - name: privacy manifest covers the required-reason APIs the Swift code uses
+        run: ios/release/tests/check_privacy_manifest.sh
+      - name: unsigned .ipa packaging
+        run: ios/release/tests/test_package_unsigned_ipa.sh

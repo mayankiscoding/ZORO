@@ -1,0 +1,246 @@
+# ZORO app builds on GitHub-hosted macOS runners (the owner's Mac has no Xcode).
+#
+# Job "unsigned": always. Generates the Xcode projects with XcodeGen, archives the iPhone app for a
+#   generic iOS device WITHOUT signing and packages ZORO-unsigned.ipa (bundles ad-hoc signed with their
+#   entitlements so a sideloading tool can re-sign it with the owner's Apple ID). Builds the Mac app too.
+# Job "testflight": only when the signing secrets exist. Archives with automatic signing through an
+#   App Store Connect API key and uploads the build to TestFlight.
+#
+# Secrets (Settings > Secrets and variables > Actions); none of them is ever stored in the repository:
+#   APPLE_TEAM_ID             10-character team ID of the paid Apple Developer Program team
+#   ASC_KEY_ID                App Store Connect API key ID
+#   ASC_ISSUER_ID             App Store Connect API issuer ID
+#   ASC_KEY_P8_BASE64         the .p8 private key, base64-encoded (base64 -i AuthKey_XXXX.p8 | pbcopy)
+#
+# Not run yet: written on a machine without access to GitHub Actions. The first run will tell.
+name: ios-build
+
+on:
+  workflow_dispatch:
+    inputs:
+      xcode:
+        description: "Xcode version on the macos-26 runner (see actions/runner-images macos-26-arm64 readme)"
+        required: false
+        default: "26.6"
+      upload_to_testflight:
+        description: "Also upload to TestFlight (needs the signing secrets)"
+        type: boolean
+        default: false
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  XCODEGEN_VERSION: "2.46.0"
+  # sha256 of xcodegen.zip from the XcodeGen GitHub release 2.46.0 (published 2026-07-16).
+  XCODEGEN_SHA256: "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806"
+  XCODE_VERSION: ${{ inputs.xcode || '26.6' }}
+  # Default scheme names; the build step falls back to the only app scheme it finds.
+  DEFAULT_IOS_SCHEME: ZORO
+  DEFAULT_MAC_SCHEME: ZOROMac
+
+jobs:
+  unsigned:
+    name: unsigned iPhone .ipa + Mac app
+    runs-on: macos-26
+    timeout-minutes: 60
+    outputs:
+      ios_scheme: ${{ steps.pick.outputs.ios_scheme }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Select Xcode ${{ env.XCODE_VERSION }}
+        run: |
+          app="/Applications/Xcode_${XCODE_VERSION}.app"
+          if [ ! -d "$app" ]; then
+            echo "::error::Xcode $XCODE_VERSION is not on this runner. Installed:"; ls -d /Applications/Xcode_*.app; exit 1
+          fi
+          echo "DEVELOPER_DIR=$app/Contents/Developer" >> "$GITHUB_ENV"
+          DEVELOPER_DIR="$app/Contents/Developer" xcodebuild -version
+          DEVELOPER_DIR="$app/Contents/Developer" xcrun --sdk iphoneos --show-sdk-version
+
+      - name: Install XcodeGen ${{ env.XCODEGEN_VERSION }} (pinned, checksum verified)
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/xcodegen.zip" \
+            "https://github.com/yonaskolb/XcodeGen/releases/download/${XCODEGEN_VERSION}/xcodegen.zip"
+          echo "${XCODEGEN_SHA256}  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 -c -
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/xcodegen/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/xcodegen/bin/xcodegen" --version
+
+      - name: Generate Xcode projects
+        run: |
+          for f in ios/project.yml macos/project.yml; do
+            [ -f "$f" ] || { echo "::error::$f does not exist yet: the app targets have not landed."; exit 1; }
+          done
+          scripts/gen_xcode.sh
+
+      - name: Pick projects and schemes
+        id: pick
+        run: |
+          pick() { # dir default-scheme -> "project|scheme"
+            local proj; proj=$(ls -d "$1"/*.xcodeproj | head -n1)
+            [ -n "$proj" ] || { echo "::error::no .xcodeproj in $1" >&2; return 1; }
+            xcodebuild -list -json -project "$proj" > "$RUNNER_TEMP/list.json"
+            local s; s=$(jq -r --arg d "$2" '.project.schemes as $s | if ($s | index($d)) then $d
+              else ([$s[] | select(test("(Tests|Widgets|-Package)$") | not)] | if length == 1 then .[0] else "" end) end' "$RUNNER_TEMP/list.json")
+            [ -n "$s" ] || { echo "::error::cannot pick a scheme in $proj:" >&2; jq -r '.project.schemes[]' "$RUNNER_TEMP/list.json" >&2; return 1; }
+            echo "$proj|$s"
+          }
+          ios=$(pick ios "$DEFAULT_IOS_SCHEME"); mac=$(pick macos "$DEFAULT_MAC_SCHEME")
+          echo "ios_scheme=${ios##*|}" >> "$GITHUB_OUTPUT"
+          echo "IOS_PROJECT=${ios%%|*}" >> "$GITHUB_ENV"; echo "IOS_SCHEME=${ios##*|}" >> "$GITHUB_ENV"
+          echo "MAC_PROJECT=${mac%%|*}" >> "$GITHUB_ENV"; echo "MAC_SCHEME=${mac##*|}" >> "$GITHUB_ENV"
+          echo "iOS: $ios"; echo "Mac: $mac"
+
+      - name: Archive iPhone app (generic iOS device, no signing)
+        run: |
+          set -o pipefail
+          xcodebuild archive -project "$IOS_PROJECT" -scheme "$IOS_SCHEME" -configuration Release \
+            -destination "generic/platform=iOS" -archivePath "$RUNNER_TEMP/ZORO.xcarchive" \
+            -derivedDataPath "$RUNNER_TEMP/dd-ios" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} | tee "$RUNNER_TEMP/ios-archive.log" | grep -E "error:|warning:|ARCHIVE" || true
+          test -d "$RUNNER_TEMP/ZORO.xcarchive/Products/Applications" || { tail -n 80 "$RUNNER_TEMP/ios-archive.log"; exit 1; }
+
+      - name: Package ZORO-unsigned.ipa
+        run: |
+          xcodebuild -showBuildSettings -json -project "$IOS_PROJECT" -scheme "$IOS_SCHEME" -configuration Release \
+            -destination "generic/platform=iOS" > "$RUNNER_TEMP/ios-settings.json"
+          ios/release/package_unsigned_ipa.sh "$RUNNER_TEMP/ZORO.xcarchive" "$RUNNER_TEMP/out/ZORO-unsigned.ipa" "$RUNNER_TEMP/ios-settings.json"
+          app=$(ls -d "$RUNNER_TEMP"/ZORO.xcarchive/Products/Applications/*.app | head -n1)
+          {
+            echo "### ZORO-unsigned.ipa"
+            echo "- Xcode: $(xcodebuild -version | head -n1), iOS SDK $(xcrun --sdk iphoneos --show-sdk-version)"
+            echo "- Version: $(plutil -extract CFBundleShortVersionString raw -o - "$app/Info.plist") ($(plutil -extract CFBundleVersion raw -o - "$app/Info.plist"))"
+            echo "- Bundle ID: $(plutil -extract CFBundleIdentifier raw -o - "$app/Info.plist")"
+            echo "- Size: $(du -h "$RUNNER_TEMP/out/ZORO-unsigned.ipa" | cut -f1)"
+            echo "- sha256: $(shasum -a 256 "$RUNNER_TEMP/out/ZORO-unsigned.ipa" | cut -d' ' -f1)"
+            echo
+            echo "Install: docs/setup/install-on-iphone.md, route C (Sideloadly, AltStore or SideStore with your Apple ID)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Build Mac app (no signing)
+        run: |
+          set -o pipefail
+          xcodebuild build -project "$MAC_PROJECT" -scheme "$MAC_SCHEME" -configuration Release \
+            -destination "generic/platform=macOS" -derivedDataPath "$RUNNER_TEMP/dd-mac" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} | tee "$RUNNER_TEMP/mac-build.log" | grep -E "error:|warning:|BUILD" || true
+          app=$(ls -d "$RUNNER_TEMP"/dd-mac/Build/Products/Release/*.app 2>/dev/null | head -n1)
+          [ -n "$app" ] || { tail -n 80 "$RUNNER_TEMP/mac-build.log"; exit 1; }
+          ditto -c -k --keepParent "$app" "$RUNNER_TEMP/out/ZORO-Mac-unsigned.zip"
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ZORO-unsigned-${{ github.run_number }}
+          path: |
+            ${{ runner.temp }}/out/ZORO-unsigned.ipa
+            ${{ runner.temp }}/out/ZORO-Mac-unsigned.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: build-logs-${{ github.run_number }}
+          path: ${{ runner.temp }}/*.log
+          retention-days: 7
+
+  signing-secrets:
+    name: signing secrets present?
+    runs-on: ubuntu-24.04
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - id: check
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ISSUER: ${{ secrets.ASC_ISSUER_ID }}
+          P8: ${{ secrets.ASC_KEY_P8_BASE64 }}
+        run: |
+          if [ -n "$TEAM" ] && [ -n "$KEY_ID" ] && [ -n "$ISSUER" ] && [ -n "$P8" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"; echo "Signing secrets are configured."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"; echo "Signing secrets are not configured: the TestFlight job is skipped."
+          fi
+
+  testflight:
+    name: signed build to TestFlight
+    needs: [signing-secrets, unsigned]
+    if: >-
+      needs.signing-secrets.outputs.ready == 'true' &&
+      (startsWith(github.ref, 'refs/tags/v') || inputs.upload_to_testflight)
+    runs-on: macos-26
+    timeout-minutes: 60
+    env:
+      IOS_SCHEME: ${{ needs.unsigned.outputs.ios_scheme }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Select Xcode ${{ env.XCODE_VERSION }}
+        run: |
+          app="/Applications/Xcode_${XCODE_VERSION}.app"
+          [ -d "$app" ] || { echo "::error::Xcode $XCODE_VERSION is not on this runner"; ls -d /Applications/Xcode_*.app; exit 1; }
+          echo "DEVELOPER_DIR=$app/Contents/Developer" >> "$GITHUB_ENV"
+
+      - name: Install XcodeGen ${{ env.XCODEGEN_VERSION }} and generate
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/xcodegen.zip" \
+            "https://github.com/yonaskolb/XcodeGen/releases/download/${XCODEGEN_VERSION}/xcodegen.zip"
+          echo "${XCODEGEN_SHA256}  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 -c -
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP"
+          export PATH="$RUNNER_TEMP/xcodegen/bin:$PATH"
+          scripts/gen_xcode.sh
+          proj=$(ls -d ios/*.xcodeproj | head -n1)
+          echo "IOS_PROJECT=$proj" >> "$GITHUB_ENV"
+
+      - name: Write the App Store Connect key (temporary file, removed at the end)
+        env:
+          P8: ${{ secrets.ASC_KEY_P8_BASE64 }}
+        run: |
+          umask 077
+          printf '%s' "$P8" | base64 --decode > "$RUNNER_TEMP/AuthKey.p8"
+          grep -q "BEGIN PRIVATE KEY" "$RUNNER_TEMP/AuthKey.p8" || { echo "::error::ASC_KEY_P8_BASE64 does not decode to a .p8 key"; exit 1; }
+
+      - name: Archive (automatic signing with the API key)
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ISSUER: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -o pipefail
+          xcodebuild archive -project "$IOS_PROJECT" -scheme "$IOS_SCHEME" -configuration Release \
+            -destination "generic/platform=iOS" -archivePath "$RUNNER_TEMP/ZORO-signed.xcarchive" \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/AuthKey.p8" -authenticationKeyID "$KEY_ID" -authenticationKeyIssuerID "$ISSUER" \
+            DEVELOPMENT_TEAM="$TEAM" CODE_SIGN_STYLE=Automatic \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} | tee "$RUNNER_TEMP/signed-archive.log" | grep -E "error:|warning:|ARCHIVE" || true
+          test -d "$RUNNER_TEMP/ZORO-signed.xcarchive/Products/Applications" || { tail -n 80 "$RUNNER_TEMP/signed-archive.log"; exit 1; }
+
+      - name: Export and upload to App Store Connect (TestFlight)
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ISSUER: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          cp ios/release/ExportOptions-AppStore.plist "$RUNNER_TEMP/ExportOptions.plist"
+          plutil -replace teamID -string "$TEAM" "$RUNNER_TEMP/ExportOptions.plist"
+          plutil -replace destination -string upload "$RUNNER_TEMP/ExportOptions.plist"
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/ZORO-signed.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/AuthKey.p8" -authenticationKeyID "$KEY_ID" -authenticationKeyIssuerID "$ISSUER"
+          echo "Uploaded build ${{ github.run_number }}. It appears in App Store Connect > TestFlight after processing." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Remove the key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/AuthKey.p8" "$RUNNER_TEMP/ExportOptions.plist"

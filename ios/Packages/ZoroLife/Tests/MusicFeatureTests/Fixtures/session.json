@@ -1,0 +1,20 @@
+{
+  "active_device": {
+    "id": "abc123",
+    "name": "Mac",
+    "type": "Computer"
+  },
+  "last_query": "focus music",
+  "last_track": {
+    "album": "Example album",
+    "artists": [
+      "Example artist"
+    ],
+    "played_at": "2026-11-13T11:55:00Z",
+    "title": "Example title",
+    "uri": "spotify:track:4uLU6hMCjMI75M1A2tKUQC"
+  },
+  "provider": "spotify",
+  "updated_at": "2026-11-13T12:00:00Z",
+  "updated_by": "dev-1"
+}

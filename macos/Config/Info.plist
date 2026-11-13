@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>ZORO</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>hi</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>app.zoro.links</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>zoro</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>ZORO plays, pauses and skips songs in Music and Spotify when you ask.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>ZORO plays and finds songs in Apple Music when you ask.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>ZORO adds and reads events when you ask.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>ZORO finds and saves contacts when you ask.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>ZORO uses your location only when you ask something that needs it.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ZORO listens only while the orb is listening, after you press or click.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>ZORO searches your photos on this Mac; they don't leave it.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>ZORO adds and reads reminders when you ask.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Your words are turned into text on this Mac.</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>app.zoro.conversation</string>
+	</array>
+</dict>
+</plist>

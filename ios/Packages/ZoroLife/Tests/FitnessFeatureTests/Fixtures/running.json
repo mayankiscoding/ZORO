@@ -1,0 +1,50 @@
+{
+  "available": true,
+  "avg_pace_s_per_km": 392.4,
+  "avg_pace_text": "6:32",
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "direction": "faster",
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "min_runs": 4,
+  "observations": [],
+  "pace_change_s_per_km_per_week": -3.2,
+  "reason": null,
+  "recent_pace_text": "6:18",
+  "runs": 14,
+  "total_km": 71.3,
+  "weekly": [
+    {
+      "km": 12.0,
+      "runs": 2,
+      "week_start": "2026-10-23"
+    },
+    {
+      "km": 15.5,
+      "runs": 3,
+      "week_start": "2026-10-30"
+    },
+    {
+      "km": 0.0,
+      "runs": 0,
+      "week_start": "2026-11-06"
+    },
+    {
+      "km": 18.2,
+      "runs": 3,
+      "week_start": "2026-11-13"
+    }
+  ],
+  "window_end": "2026-11-13",
+  "window_start": "2026-08-16"
+}

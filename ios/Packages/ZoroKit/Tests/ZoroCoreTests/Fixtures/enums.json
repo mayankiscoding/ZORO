@@ -1,0 +1,99 @@
+{
+ "AgentId": [
+  "supervisor",
+  "voice",
+  "personal_assistant",
+  "memory",
+  "finance",
+  "investment",
+  "shopping",
+  "product_research",
+  "vision",
+  "communication",
+  "fitness",
+  "music",
+  "device_control",
+  "document",
+  "browser_research",
+  "automation",
+  "security"
+ ],
+ "ApprovalLevel": [
+  "none",
+  "confirm",
+  "biometric"
+ ],
+ "CapabilityStatus": [
+  "working_native",
+  "working_local",
+  "working_integration",
+  "requires_credentials",
+  "requires_partnership",
+  "manual_user_step",
+  "restricted_by_ios",
+  "unavailable"
+ ],
+ "DataClass": [
+  "public",
+  "personal",
+  "sensitive",
+  "financial",
+  "health",
+  "secret"
+ ],
+ "DevicePlatform": [
+  "ios",
+  "macos"
+ ],
+ "IntegrationLevel": [
+  "fully_integrated",
+  "official_api",
+  "affiliate_search",
+  "deep_link_handoff",
+  "manual_fallback",
+  "unavailable"
+ ],
+ "Locality": [
+  "on_device",
+  "local",
+  "private_network",
+  "external"
+ ],
+ "MemoryCategory": [
+  "profile",
+  "episodic",
+  "financial",
+  "fitness",
+  "visual",
+  "knowledge",
+  "conversation_state"
+ ],
+ "PrivacyMode": [
+  "strict_private",
+  "cloud_intelligence"
+ ],
+ "RiskLevel": [
+  "low",
+  "medium",
+  "high",
+  "critical"
+ ],
+ "TaskClass": [
+  "realtime_voice",
+  "intent_classification",
+  "routine_chat",
+  "complex_reasoning",
+  "coding_research",
+  "financial_interpretation",
+  "summarization",
+  "embedding",
+  "tts"
+ ],
+ "TurnStatus": [
+  "running",
+  "suspended",
+  "completed",
+  "failed",
+  "cancelled"
+ ]
+}

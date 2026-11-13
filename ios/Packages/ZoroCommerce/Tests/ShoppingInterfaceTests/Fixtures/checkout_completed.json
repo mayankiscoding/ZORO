@@ -1,0 +1,27 @@
+{
+  "status": "completed",
+  "result": {
+    "status": "handoff",
+    "provider": "store_a",
+    "reason": "",
+    "checks": [
+      {
+        "check": "payable_matches",
+        "ok": true,
+        "detail": "₹113.00"
+      }
+    ],
+    "final_payable": "113.00",
+    "provider_to_pay": null,
+    "handoff": {
+      "provider": "store_a",
+      "title": "Open Store A",
+      "url": "https://example.invalid/a",
+      "verified": true,
+      "note": ""
+    },
+    "warnings": [],
+    "note": "Payment happens only in the provider's own app."
+  },
+  "approval": null
+}

@@ -1,0 +1,17 @@
+{
+  "name": "zoro-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ZORO for Safari: the companion web app served by the owner's ZORO server. No build step, no dependencies.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "icons": "node tools/make-icons.mjs",
+    "serve": "node tools/serve.mjs"
+  }
+}

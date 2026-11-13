@@ -1,0 +1,115 @@
+{
+  "generated_by": "web/tools/make_vectors.py using backend/app/security/crypto.py",
+  "auth": [
+    {
+      "device_id": "dev_01HZXK3V9Q",
+      "nonce": "n0nce-AbC_123",
+      "message": "zoro-auth-v1|dev_01HZXK3V9Q|n0nce-AbC_123"
+    },
+    {
+      "device_id": "dev_web_companion",
+      "nonce": "9f8e7d6c5b4a39281706f5e4d3c2b1a0",
+      "message": "zoro-auth-v1|dev_web_companion|9f8e7d6c5b4a39281706f5e4d3c2b1a0"
+    },
+    {
+      "device_id": "dev_देवनागरी",
+      "nonce": "nonce with spaces",
+      "message": "zoro-auth-v1|dev_देवनागरी|nonce with spaces"
+    }
+  ],
+  "approval": [
+    {
+      "approval_id": "apr_01HZXK3V9Q",
+      "action_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "approved": true,
+      "signed_at": "2026-11-13T06:30:00+00:00",
+      "message": "zoro-approval-v1|apr_01HZXK3V9Q|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa|1|2026-11-13T06:30:00Z"
+    },
+    {
+      "approval_id": "apr_01HZXK3V9Q",
+      "action_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "approved": false,
+      "signed_at": "2026-11-13T06:30:00+00:00",
+      "message": "zoro-approval-v1|apr_01HZXK3V9Q|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa|0|2026-11-13T06:30:00Z"
+    },
+    {
+      "approval_id": "apr_7c1d",
+      "action_digest": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "approved": true,
+      "signed_at": "2026-11-13T12:00:05.987654+05:30",
+      "message": "zoro-approval-v1|apr_7c1d|0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef|1|2026-11-13T06:30:05Z"
+    },
+    {
+      "approval_id": "apr_year_end",
+      "action_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "approved": false,
+      "signed_at": "2027-01-01T05:29:59.999999+05:30",
+      "message": "zoro-approval-v1|apr_year_end|ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff|0|2026-12-31T23:59:59Z"
+    }
+  ],
+  "action": [
+    {
+      "action": "set_privacy_mode",
+      "subject": "cloud_intelligence",
+      "signed_at": "2026-11-13T06:30:00+00:00",
+      "message": "zoro-action-v1|set_privacy_mode|cloud_intelligence|2026-11-13T06:30:00Z"
+    },
+    {
+      "action": "set_kill_switch",
+      "subject": "true",
+      "signed_at": "2026-11-13T12:00:05.987654+05:30",
+      "message": "zoro-action-v1|set_kill_switch|true|2026-11-13T06:30:05Z"
+    },
+    {
+      "action": "set_permission",
+      "subject": "finance.read=false",
+      "signed_at": "2026-12-31T23:59:59+00:00",
+      "message": "zoro-action-v1|set_permission|finance.read=false|2026-12-31T23:59:59Z"
+    },
+    {
+      "action": "revoke_device",
+      "subject": "dev_01HZXK3V9Q",
+      "signed_at": "2026-03-01T00:00:00+00:00",
+      "message": "zoro-action-v1|revoke_device|dev_01HZXK3V9Q|2026-03-01T00:00:00Z"
+    }
+  ],
+  "timestamps": [
+    {
+      "input": "2026-11-13T06:30:00+00:00",
+      "iso_seconds": "2026-11-13T06:30:00Z"
+    },
+    {
+      "input": "2026-11-13T12:00:05.987654+05:30",
+      "iso_seconds": "2026-11-13T06:30:05Z"
+    },
+    {
+      "input": "2026-12-31T23:59:59+00:00",
+      "iso_seconds": "2026-12-31T23:59:59Z"
+    },
+    {
+      "input": "2027-01-01T05:29:59.999999+05:30",
+      "iso_seconds": "2026-12-31T23:59:59Z"
+    },
+    {
+      "input": "2026-03-01T00:00:00+00:00",
+      "iso_seconds": "2026-03-01T00:00:00Z"
+    }
+  ],
+  "python_signed": {
+    "public_key_x963_b64": "BDnybkbpDyCHcTu5f3ewDbDyWwugL1kNtMUhpgKU+l/3FMOCwR7TjPIojPWYaevFNuBnhdseT+s1FcyfZbFg3xg=",
+    "signatures": [
+      {
+        "message": "zoro-auth-v1|dev_01HZXK3V9Q|n0nce-AbC_123",
+        "signature_der_b64": "MEQCIFPJNN8yZbeKKnFby5IegwADiVY74ECwyFtK7fmGPitSAiAlqEBzwREJ2AF39kvEtfhmOO8gIr0tLgglyKI9i9CIQg=="
+      },
+      {
+        "message": "zoro-approval-v1|apr_01HZXK3V9Q|aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa|1|2026-11-13T06:30:00Z",
+        "signature_der_b64": "MEUCIQDFWm3+5ciilWe268ypoOpHRqs+tvrroM/oCH/UoJqvRQIgfvrzZHuBYk9xG/HyG3cqcJ4F196QJ2zx+kh2Q955sMQ="
+      },
+      {
+        "message": "नमस्ते ZORO | ₹1,23,456.50",
+        "signature_der_b64": "MEYCIQCjrSCp28G9MHn/8p0Zt59AwJTU3tCc8GCulao7Ua6U0AIhAP4x9wJf40OLlMQlgHEoc3j/ye49jBUyya3MbJOFTNFN"
+      }
+    ]
+  }
+}

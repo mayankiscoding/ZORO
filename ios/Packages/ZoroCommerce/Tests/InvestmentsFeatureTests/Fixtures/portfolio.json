@@ -1,0 +1,78 @@
+{
+  "as_of": "2026-11-13T09:30:00Z",
+  "holdings": [
+    {
+      "symbol": "TESTA",
+      "exchange": "NSE",
+      "quantity": "10",
+      "average_price": "100.00",
+      "invested": "1000.00",
+      "last_price": "120.50",
+      "price_source": "csv",
+      "price_as_of": "2026-11-12T09:30:00Z",
+      "value": "1205.00",
+      "pnl": "205.00",
+      "pnl_percent": "20.50",
+      "weight_percent": "70.62",
+      "source": "csv"
+    },
+    {
+      "symbol": "TESTB",
+      "exchange": "NSE",
+      "quantity": "5",
+      "average_price": "110.00",
+      "invested": "550.00",
+      "last_price": "100.20",
+      "price_source": "csv",
+      "price_as_of": "2026-11-12T09:30:00Z",
+      "value": "501.00",
+      "pnl": "-49.00",
+      "pnl_percent": "-8.91",
+      "weight_percent": "29.38",
+      "source": "csv"
+    },
+    {
+      "symbol": "TESTC",
+      "exchange": "BSE",
+      "quantity": "2",
+      "average_price": "50.00",
+      "invested": "100.00",
+      "last_price": null,
+      "price_source": null,
+      "price_as_of": null,
+      "value": null,
+      "pnl": null,
+      "pnl_percent": null,
+      "weight_percent": null,
+      "source": "csv"
+    }
+  ],
+  "holdings_count": 3,
+  "priced_count": 2,
+  "invested": "1550.00",
+  "value": "1706.00",
+  "pnl": "156.00",
+  "pnl_percent": "10.06",
+  "hhi": "0.5851",
+  "effective_holdings": "1.71",
+  "concentration_flags": [
+    "TESTA is 70.6% of the priced portfolio"
+  ],
+  "top_holding": "TESTA",
+  "top_weight_percent": "70.62",
+  "risk": {
+    "status": "unavailable",
+    "reason": "fewer than 60 shared daily bars",
+    "annual_volatility_percent": null,
+    "var_1d_percent": null,
+    "var_1d_amount": null,
+    "observations": 0
+  },
+  "sources": [
+    "csv"
+  ],
+  "unpriced": [
+    "BSE:TESTC"
+  ],
+  "disclaimer": "This is information from your own data, not investment advice. Past performance does not predict future returns; markets can fall and you can lose money."
+}

@@ -1,0 +1,111 @@
+[
+  {
+    "chips": [
+      {
+        "kind": "date",
+        "label": "2026-11-12"
+      },
+      {
+        "kind": "color",
+        "label": "blue"
+      },
+      {
+        "kind": "label",
+        "label": "cap"
+      },
+      {
+        "kind": "label",
+        "label": "hat"
+      }
+    ],
+    "query": {
+      "colors": [
+        "blue"
+      ],
+      "contains_text": null,
+      "date_from": "2026-11-12",
+      "date_to": "2026-11-12",
+      "labels": [
+        "cap",
+        "hat"
+      ],
+      "limit": 30,
+      "media": "any",
+      "text": "photo from yesterday with my blue cap"
+    },
+    "text": "photo from yesterday with my blue cap"
+  },
+  {
+    "chips": [
+      {
+        "kind": "date",
+        "label": "2026-11-02 to 2026-11-08"
+      },
+      {
+        "kind": "text",
+        "label": "boarding pass"
+      },
+      {
+        "kind": "media",
+        "label": "screenshot"
+      }
+    ],
+    "query": {
+      "colors": [],
+      "contains_text": "boarding pass",
+      "date_from": "2026-11-02",
+      "date_to": "2026-11-08",
+      "labels": [],
+      "limit": 30,
+      "media": "screenshot",
+      "text": "screenshots from last week that say \"boarding pass\""
+    },
+    "text": "screenshots from last week that say \"boarding pass\""
+  },
+  {
+    "chips": [
+      {
+        "kind": "color",
+        "label": "red"
+      },
+      {
+        "kind": "label",
+        "label": "car"
+      },
+      {
+        "kind": "label",
+        "label": "vehicle"
+      }
+    ],
+    "query": {
+      "colors": [
+        "red"
+      ],
+      "contains_text": null,
+      "date_from": null,
+      "date_to": null,
+      "labels": [
+        "car",
+        "vehicle"
+      ],
+      "limit": 30,
+      "media": "any",
+      "text": "red car"
+    },
+    "text": "red car"
+  },
+  {
+    "chips": [],
+    "query": {
+      "colors": [],
+      "contains_text": null,
+      "date_from": null,
+      "date_to": null,
+      "labels": [],
+      "limit": 30,
+      "media": "any",
+      "text": "photos"
+    },
+    "text": "photos"
+  }
+]

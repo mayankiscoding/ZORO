@@ -1,0 +1,33 @@
+{
+  "kind": "fitness_summary",
+  "payload": {
+    "data_source": "Apple Health (synced from your iPhone)",
+    "external_model_allowed": true,
+    "freshness": {
+      "age_unit": "hours",
+      "age_value": 2,
+      "last_synced_at": "2026-11-13T10:00:00Z",
+      "latest_data_date": "2026-11-13",
+      "stale": false
+    },
+    "metrics": [
+      {
+        "change_pct": 20.1,
+        "label": "steps",
+        "previous": 7010.25,
+        "unit": "steps",
+        "value": 8421.5
+      },
+      {
+        "change_pct": -5.6,
+        "label": "sleep hours",
+        "previous": 7.1,
+        "unit": "hours",
+        "value": 6.7
+      }
+    ],
+    "observations": [],
+    "stale": false
+  },
+  "title": "This week"
+}

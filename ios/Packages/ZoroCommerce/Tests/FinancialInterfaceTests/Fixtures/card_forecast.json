@@ -1,0 +1,24 @@
+{
+  "kind": "finance_summary",
+  "title": "Finance",
+  "payload": {
+    "as_of": "2026-11-13",
+    "horizon_days": 30,
+    "start": "2026-11-14",
+    "end": "2026-12-13",
+    "expected_outflow": "7649.00",
+    "outflow_low": "6500.00",
+    "outflow_high": "9100.00",
+    "expected_inflow": "85000.00",
+    "net": "77351.00",
+    "method": "recurring payments plus trailing 90-day average of other spending",
+    "lines": [
+      {
+        "label": "Test streaming",
+        "direction": "debit",
+        "amount": "649.00",
+        "basis": "recurring:monthly"
+      }
+    ]
+  }
+}

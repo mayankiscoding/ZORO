@@ -1,0 +1,586 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "Agent activity": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "एजेंट गतिविधि"
+          }
+        }
+      }
+    },
+    "Ask ZORO": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO से पूछें"
+          }
+        }
+      }
+    },
+    "Asks ZORO and reads the answer. Approvals and device steps continue in the app.": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO से पूछकर जवाब सुनाता है। मंज़ूरी और डिवाइस के कदम ऐप में पूरे होते हैं।"
+          }
+        }
+      }
+    },
+    "Bills": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बिल"
+          }
+        }
+      }
+    },
+    "Category": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "श्रेणी"
+          }
+        }
+      }
+    },
+    "Check spending": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "खर्च देखें"
+          }
+        }
+      }
+    },
+    "Compare basket": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बास्केट की तुलना"
+          }
+        }
+      }
+    },
+    "Compare my basket": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मेरी बास्केट की तुलना"
+          }
+        }
+      }
+    },
+    "Conversation": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बातचीत"
+          }
+        }
+      }
+    },
+    "Device control": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "डिवाइस कंट्रोल"
+          }
+        }
+      }
+    },
+    "Eating out": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बाहर खाना"
+          }
+        }
+      }
+    },
+    "Entertainment": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मनोरंजन"
+          }
+        }
+      }
+    },
+    "Finance": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ाइनेंस"
+          }
+        }
+      }
+    },
+    "Find a photo": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोटो ढूँढें"
+          }
+        }
+      }
+    },
+    "Fitness": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़िटनेस"
+          }
+        }
+      }
+    },
+    "Food": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "खाना"
+          }
+        }
+      }
+    },
+    "For which period?": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "किस समय का?"
+          }
+        }
+      }
+    },
+    "Fuel": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पेट्रोल"
+          }
+        }
+      }
+    },
+    "Groceries": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "किराना"
+          }
+        }
+      }
+    },
+    "Health": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेहत"
+          }
+        }
+      }
+    },
+    "History": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इतिहास"
+          }
+        }
+      }
+    },
+    "Integrations": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इंटीग्रेशन"
+          }
+        }
+      }
+    },
+    "Investments": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "निवेश"
+          }
+        }
+      }
+    },
+    "Last month": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पिछले महीने"
+          }
+        }
+      }
+    },
+    "Last week": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पिछले हफ़्ते"
+          }
+        }
+      }
+    },
+    "Live voice": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लाइव वॉइस"
+          }
+        }
+      }
+    },
+    "Memory": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मेमोरी"
+          }
+        }
+      }
+    },
+    "Music": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "संगीत"
+          }
+        }
+      }
+    },
+    "On my Mac": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मेरे Mac पर"
+          }
+        }
+      }
+    },
+    "Open ZORO section": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO का हिस्सा खोलें"
+          }
+        }
+      }
+    },
+    "Open a ZORO conversation": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO की बातचीत खोलें"
+          }
+        }
+      }
+    },
+    "Open a ZORO section": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO का कोई हिस्सा खोलें"
+          }
+        }
+      }
+    },
+    "Open a section": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हिस्सा खोलें"
+          }
+        }
+      }
+    },
+    "Opens ZORO's live voice screen.": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO की लाइव वॉइस स्क्रीन खोलता है।"
+          }
+        }
+      }
+    },
+    "Period": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समय"
+          }
+        }
+      }
+    },
+    "Photo of": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "किसकी फ़ोटो"
+          }
+        }
+      }
+    },
+    "Photos": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोटो"
+          }
+        }
+      }
+    },
+    "Play music": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गाना चलाएँ"
+          }
+        }
+      }
+    },
+    "Private mode": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "प्राइवेट मोड"
+          }
+        }
+      }
+    },
+    "Remember this": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह याद रखें"
+          }
+        }
+      }
+    },
+    "Request": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अनुरोध"
+          }
+        }
+      }
+    },
+    "Section": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हिस्सा"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेटिंग"
+          }
+        }
+      }
+    },
+    "Shopping": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शॉपिंग"
+          }
+        }
+      }
+    },
+    "Talk to ZORO": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO से बात करें"
+          }
+        }
+      }
+    },
+    "This month": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस महीने"
+          }
+        }
+      }
+    },
+    "This week": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस हफ़्ते"
+          }
+        }
+      }
+    },
+    "This year": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस साल"
+          }
+        }
+      }
+    },
+    "Today": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आज"
+          }
+        }
+      }
+    },
+    "Transport": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आना-जाना"
+          }
+        }
+      }
+    },
+    "Travel": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यात्रा"
+          }
+        }
+      }
+    },
+    "Turn on private mode": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "प्राइवेट मोड चालू करें"
+          }
+        }
+      }
+    },
+    "What should I ask ZORO?": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO से क्या पूछना है?"
+          }
+        }
+      }
+    },
+    "What should ZORO play?": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO क्या चलाए?"
+          }
+        }
+      }
+    },
+    "What should ZORO remember?": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO को क्या याद रखना है?"
+          }
+        }
+      }
+    },
+    "What to remember": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "क्या याद रखना है"
+          }
+        }
+      }
+    },
+    "What's in the photo?": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोटो में क्या है?"
+          }
+        }
+      }
+    },
+    "ZORO section": {
+      "localizations": {
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZORO का हिस्सा"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,34 @@
+{
+  "kind": "finance_summary",
+  "title": "Finance: this month",
+  "payload": {
+    "period": {
+      "key": "this_month",
+      "start": "2026-11-01",
+      "end": "2026-11-30",
+      "label_en": "this month",
+      "label_hi": "इस महीने",
+      "label_hinglish": "is mahine"
+    },
+    "items": [
+      {
+        "category": "groceries",
+        "name": "Groceries",
+        "limit": "5000.00",
+        "spent": "4200.50",
+        "remaining": "799.50",
+        "used_pct": "84.0",
+        "state": "warning"
+      },
+      {
+        "category": "transport",
+        "name": "Transport",
+        "limit": "2000.00",
+        "spent": "2800.00",
+        "remaining": "-800.00",
+        "used_pct": "140.0",
+        "state": "exceeded"
+      }
+    ]
+  }
+}

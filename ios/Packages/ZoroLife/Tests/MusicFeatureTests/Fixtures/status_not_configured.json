@@ -1,0 +1,9 @@
+{
+  "apple_music": "Played by the device through device.music.control (needs a device online).",
+  "provider_in_use": "apple_music",
+  "recommendations": "Unavailable: Spotify removed recommendations for new apps; similar songs use search.",
+  "spotify": {
+    "detail": "Set SPOTIFY_CLIENT_ID on the server.",
+    "state": "not_configured"
+  }
+}

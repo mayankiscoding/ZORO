@@ -1,0 +1,258 @@
+# ZORO model gateway configuration. Reloaded on change; no rebuild needed.
+#
+# Source: docs/research/research-2026-11-12.json, topics "gemini" and "other-llms" (official docs fetched
+# 2026-11-12). Every model below carries verified_on; "context_window" values marked UNVERIFIED were not
+# on a fetched page and are set conservatively so trimming errs on the small side.
+# Prices: USD per 1M tokens, written as strings so they stay exact Decimals.
+# A provider is usable only when its key env var is set (or it is a keyless private-network server whose
+# base URL env var is set). allowed_data_classes is the provider ceiling; the owner's cloud.* grants
+# narrow it further at request time, and strict private mode sends nothing external.
+version: 1
+
+providers:
+  - id: gemini
+    kind: gemini
+    base_url: https://generativelanguage.googleapis.com/v1beta
+    api_key_env: GEMINI_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal, sensitive, financial, health]
+    verified_on: "2026-11-12"
+    # RISK: generateContent/streamGenerateContent are labelled "legacy" in the API reference; the
+    # Interactions API is recommended for new projects. Both still served as of 2026-11-12.
+
+  - id: openai
+    kind: openai_compatible
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal, sensitive, financial, health]
+    max_tokens_field: max_completion_tokens
+    verified_on: "2026-11-12"
+    # RISK: base URL and chat-completions tool calling were not shown on a fetched page (from memory).
+
+  - id: xai
+    kind: openai_compatible
+    base_url: https://api.x.ai/v1
+    api_key_env: XAI_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal]
+    verified_on: "2026-11-12"
+    # RISK: docs example uses the Responses API; chat/completions compatibility assumed via OpenAI SDK note.
+
+  - id: deepseek
+    kind: openai_compatible
+    base_url: https://api.deepseek.com
+    api_key_env: DEEPSEEK_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal]
+    verified_on: "2026-11-12"
+    # RISK: Bearer auth header is assumed (not stated on the fetched page).
+
+  - id: qwen
+    kind: openai_compatible
+    base_url_env: QWEN_BASE_URL   # workspace-specific, e.g. https://{WorkspaceId}.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
+    api_key_env: DASHSCOPE_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal]
+    verified_on: "2026-11-12"
+    # RISK: keys are region-bound (mismatch gives 401); docs say tools cannot be combined with streaming
+    # in compatible mode, and list only qwen-plus / qwen-max as tool-capable.
+
+  - id: kimi
+    kind: openai_compatible
+    base_url: https://api.moonshot.ai/v1
+    api_key_env: MOONSHOT_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal]
+    verified_on: "2026-11-12"
+
+  - id: groq
+    kind: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal]
+    verified_on: "2026-11-12"
+    # RISK: base URL inferred from the models endpoint; no Groq tool-use page was fetched.
+
+  - id: together
+    kind: openai_compatible
+    base_url: https://api.together.ai/v1
+    api_key_env: TOGETHER_API_KEY
+    locality: external
+    allowed_data_classes: [public, personal]
+    verified_on: "2026-11-12"
+
+  - id: ollama
+    kind: openai_compatible
+    base_url_env: OLLAMA_BASE_URL   # e.g. http://localhost:11434/v1 ; provider is off until this is set
+    keyless: true
+    locality: local
+    allowed_data_classes: [public, personal, sensitive, financial, health]
+    verified_on: "2026-11-12"
+    # RISK: /v1/chat/completions supports tools but not tool_choice. stream_options support not verified.
+
+models:
+  # ---- Gemini ----
+  - id: gemini-3.8-flash
+    provider: gemini
+    model_name: gemini-3.8-flash
+    context_window: 1000000   # UNVERIFIED (not on fetched page)
+    price_in: "0.75"          # RISK: doubles to 1.50 / 7.50 on 2027-01-01
+    price_out: "3.75"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: gemini-3.5-flash-lite
+    provider: gemini
+    model_name: gemini-3.5-flash-lite
+    context_window: 1000000   # UNVERIFIED
+    price_in: "0.30"
+    price_out: "2.50"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: gemini-3.1-pro-preview
+    provider: gemini
+    model_name: gemini-3.1-pro-preview
+    context_window: 200000    # priced as <=200k tier; above that input is $4.00 / output $18.00
+    price_in: "2.00"
+    price_out: "12.00"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+    # RISK: preview model (no status label); may be renamed or shut down at short notice.
+  - id: gemini-embedding-2
+    provider: gemini
+    model_name: gemini-embedding-2
+    context_window: 2048      # UNVERIFIED
+    price_in: "0.20"
+    price_out: "0"
+    capabilities: [embed]
+    verified_on: "2026-11-12"
+  - id: gemini-3.8-live
+    provider: gemini
+    model_name: gemini-3.8-live
+    context_window: 128000    # UNVERIFIED; Live API is WebSocket, used by the voice package, not chat()
+    price_in: "0.75"          # text in; audio in $3.00, audio out $12.00
+    price_out: "4.50"
+    capabilities: [realtime, audio]
+    verified_on: "2026-11-12"
+  - id: gemini-3.8-flash-lite-tts
+    provider: gemini
+    model_name: gemini-3.8-flash-lite-tts
+    context_window: 8000      # UNVERIFIED
+    price_in: "0.50"          # RISK: becomes 1.00 / 12.00 on 2027-01-01
+    price_out: "6.00"
+    capabilities: [tts, audio]
+    verified_on: "2026-11-12"
+
+  # ---- OpenAI ----
+  - id: gpt-6.1-sol
+    provider: openai
+    model_name: gpt-6.1-sol
+    context_window: 128000    # UNVERIFIED
+    price_in: "2"
+    price_out: "10"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: gpt-6.1-terra
+    provider: openai
+    model_name: gpt-6.1-terra
+    context_window: 128000    # UNVERIFIED
+    price_in: "1"
+    price_out: "5"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: gpt-6-luna
+    provider: openai
+    model_name: gpt-6-luna
+    context_window: 128000    # UNVERIFIED
+    price_in: "0.10"
+    price_out: "0.50"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: gpt-realtime-2.1-mini
+    provider: openai
+    model_name: gpt-realtime-2.1-mini
+    context_window: 32000     # UNVERIFIED; realtime WebRTC/WebSocket, used by the voice package
+    price_in: "0.60"          # text; audio $10 in / $20 out
+    price_out: "2.40"
+    capabilities: [realtime, audio]
+    verified_on: "2026-11-12"
+
+  # ---- Others (OpenAI-compatible) ----
+  - id: deepseek-flash
+    provider: deepseek
+    model_name: deepseek-flash
+    context_window: 128000    # UNVERIFIED
+    price_in: "0.30"          # peak price; off-peak is half
+    price_out: "1.20"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: deepseek-v4-pro
+    provider: deepseek
+    model_name: deepseek-v4-pro
+    context_window: 128000    # UNVERIFIED
+    price_in: "1.32"
+    price_out: "3.96"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: grok-4.7
+    provider: xai
+    model_name: grok-4.7
+    context_window: 200000    # priced as <200k tier ($4 / $12 above)
+    price_in: "2.00"
+    price_out: "6.00"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+  - id: qwen-plus
+    provider: qwen
+    model_name: qwen-plus
+    context_window: 256000
+    price_in: "0.4"
+    price_out: "1.2"
+    capabilities: [chat, tools, structured]   # no stream: tools + stream not combinable in compatible mode
+    verified_on: "2026-11-12"
+  - id: kimi-k3.1-pro
+    provider: kimi
+    model_name: kimi-k3.1-pro
+    context_window: 1048576
+    price_in: "0"             # RISK: price table could not be read; cost is under-reported until filled
+    price_out: "0"
+    capabilities: [chat, tools, stream]
+    verified_on: "2026-11-12"
+  - id: groq-gpt-oss-20b
+    provider: groq
+    model_name: openai/gpt-oss-20b
+    context_window: 128000    # UNVERIFIED
+    price_in: "0.075"
+    price_out: "0.30"
+    capabilities: [chat, tools, stream]
+    verified_on: "2026-11-12"
+  - id: together-gpt-oss-120b
+    provider: together
+    model_name: openai/gpt-oss-120b
+    context_window: 128000    # UNVERIFIED; price not on fetched page
+    price_in: "0"
+    price_out: "0"
+    capabilities: [chat, tools, stream]
+    verified_on: "2026-11-12"
+  - id: ollama-local
+    provider: ollama
+    model_name: "qwen3:8b"    # whatever model the owner pulled; change here
+    context_window: 8192      # Ollama's served context depends on the server's num_ctx setting
+    price_in: "0"
+    price_out: "0"
+    capabilities: [chat, tools, structured, stream]
+    verified_on: "2026-11-12"
+
+# Task -> ordered model ids. Gemini first on every cloud route; the local model last so private-mode
+# requests still have a permitted target when Ollama is configured.
+routes:
+  intent_classification: [gemini-3.5-flash-lite, deepseek-flash, groq-gpt-oss-20b, ollama-local]
+  routine_chat: [gemini-3.8-flash, gpt-6.1-terra, deepseek-flash, ollama-local]
+  complex_reasoning: [gemini-3.1-pro-preview, gemini-3.8-flash, gpt-6.1-sol, deepseek-v4-pro, grok-4.7, kimi-k3.1-pro, ollama-local]
+  coding_research: [gemini-3.1-pro-preview, gpt-6.1-sol, deepseek-v4-pro, kimi-k3.1-pro, together-gpt-oss-120b, ollama-local]
+  financial_interpretation: [gemini-3.8-flash, gpt-6.1-sol, ollama-local]
+  summarization: [gemini-3.5-flash-lite, gemini-3.8-flash, gpt-6-luna, qwen-plus, ollama-local]
+  embedding: [gemini-embedding-2]
+  realtime_voice: [gemini-3.8-live, gpt-realtime-2.1-mini]
+  tts: [gemini-3.8-flash-lite-tts]

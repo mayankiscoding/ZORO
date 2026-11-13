@@ -1,0 +1,65 @@
+# XcodeGen spec for the bundled, signed, sandboxed Mac companion. The same sources also build as the
+# SwiftPM executable in macos/Package.swift (scripts/swiftpm.sh macos build), which is what the host verifies.
+name: ZOROMac
+options:
+  bundleIdPrefix: app.zoro
+  deploymentTarget:
+    macOS: "15.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  xcodeVersion: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    SWIFT_UPCOMING_FEATURE_STRICT_CONCURRENCY: YES
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+packages:
+  ZoroComposition: { path: ../ios/Packages/ZoroComposition }
+  ZoroApp: { path: ../ios/Packages/ZoroApp }
+  ZoroKit: { path: ../ios/Packages/ZoroKit }
+  ZoroDesign: { path: ../ios/Packages/ZoroDesign }
+  ZoroDevice: { path: ../ios/Packages/ZoroDevice }
+targets:
+  ZOROMac:
+    type: application
+    platform: macOS
+    sources:
+      - path: ZOROMac
+      - path: Config/Localization
+        buildPhase: resources
+      - path: Config/Assets.xcassets
+    settings:
+      base:
+        PRODUCT_NAME: ZORO
+        PRODUCT_BUNDLE_IDENTIFIER: app.zoro.mac
+        INFOPLIST_FILE: Config/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Config/ZOROMac.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - package: ZoroComposition
+        product: ZoroComposition
+      - package: ZoroApp
+        product: ZoroAppUI
+      - package: ZoroKit
+        product: ZoroCore
+      - package: ZoroDesign
+        product: ZoroDesign
+      - package: ZoroDevice
+        product: NativeActionBroker
+schemes:
+  ZOROMac:
+    build:
+      targets:
+        ZOROMac: all
+    run:
+      config: Debug
+      commandLineArguments:
+        "--smoke-test": false

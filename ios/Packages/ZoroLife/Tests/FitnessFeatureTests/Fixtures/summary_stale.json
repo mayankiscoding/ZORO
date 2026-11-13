@@ -1,0 +1,26 @@
+{
+  "active_energy_kcal": null,
+  "available": true,
+  "avg_heart_rate_bpm": null,
+  "body_mass_kg": null,
+  "cycling_km": null,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "date": "2026-11-13",
+  "devices": [],
+  "distance_km": null,
+  "exercise_minutes": null,
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "days",
+    "age_value": 4,
+    "last_synced_at": "2026-11-09T12:00:00Z",
+    "latest_data_date": "2026-11-09",
+    "stale": true
+  },
+  "observations": [],
+  "reason": null,
+  "resting_heart_rate_bpm": null,
+  "sleep_hours": null,
+  "steps": 5000,
+  "workouts": []
+}

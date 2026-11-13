@@ -1,0 +1,18 @@
+{
+  "status": "needs_approval",
+  "result": null,
+  "approval": {
+    "approval_id": "ap-1",
+    "turn_id": null,
+    "tool": "shopping.prepare_checkout",
+    "agent": null,
+    "risk": "high",
+    "level": "confirm",
+    "title": "Prepare your Store A cart",
+    "summary": "Replace your Store A cart with this basket.",
+    "details": [],
+    "action_digest": "abababababababababababababababababababababababababababababababab",
+    "expires_at": "2026-11-13T09:35:00Z",
+    "tainted": false
+  }
+}

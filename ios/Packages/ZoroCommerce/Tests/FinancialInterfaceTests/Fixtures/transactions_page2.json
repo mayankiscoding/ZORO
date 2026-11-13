@@ -1,0 +1,35 @@
+{
+  "period": {
+    "key": "last_30_days",
+    "start": "2026-11-01",
+    "end": "2026-11-30",
+    "label_en": "the last 30 days",
+    "label_hi": "इस महीने",
+    "label_hinglish": "is mahine"
+  },
+  "total_debit": "300.75",
+  "total_credit": "0.00",
+  "count": 3,
+  "items": [
+    {
+      "id": "tx-3",
+      "account_id": "acc-1",
+      "date": "2026-11-03",
+      "value_date": null,
+      "narration": "UPI/TEST/3",
+      "counterparty": "Test merchant 3",
+      "vpa": null,
+      "upi_ref": null,
+      "channel": "upi",
+      "direction": "debit",
+      "amount": "100.25",
+      "balance": null,
+      "category": "groceries",
+      "category_source": "rule",
+      "confidence": 90,
+      "source_file": "statement.csv",
+      "duplicate_of": null
+    }
+  ],
+  "next_cursor": null
+}

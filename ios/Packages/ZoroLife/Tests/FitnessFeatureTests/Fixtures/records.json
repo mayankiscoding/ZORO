@@ -1,0 +1,48 @@
+{
+  "available": true,
+  "data_source": "Apple Health (synced from your iPhone)",
+  "devices": [
+    "Apple Watch",
+    "iPhone"
+  ],
+  "external_model_allowed": true,
+  "freshness": {
+    "age_unit": "hours",
+    "age_value": 2,
+    "last_synced_at": "2026-11-13T10:00:00Z",
+    "latest_data_date": "2026-11-13",
+    "stale": false
+  },
+  "note": "Whole-workout records; split times are not part of the Apple Health aggregates.",
+  "observations": [],
+  "reason": null,
+  "records": [
+    {
+      "display": "10.4",
+      "kind": "longest_run",
+      "on": "2026-11-04",
+      "source": "Apple Watch",
+      "unit": "km",
+      "value": 10.4,
+      "workout_id": "w9"
+    },
+    {
+      "display": "5:12",
+      "kind": "fastest_pace_run",
+      "on": "2026-10-24",
+      "source": null,
+      "unit": "min per km",
+      "value": 312.0,
+      "workout_id": null
+    },
+    {
+      "display": "18234",
+      "kind": "most_steps_day",
+      "on": "2026-10-14",
+      "source": null,
+      "unit": "steps",
+      "value": 18234.0,
+      "workout_id": null
+    }
+  ]
+}

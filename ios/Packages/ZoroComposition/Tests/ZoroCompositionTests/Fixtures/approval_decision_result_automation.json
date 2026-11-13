@@ -1,0 +1,12 @@
+{
+ "approval_id": "apr_1",
+ "owner": "automation",
+ "approved": true,
+ "status": "running",
+ "turn_id": null,
+ "run_id": "run_7",
+ "events": [],
+ "result": {
+  "queued": true
+ }
+}

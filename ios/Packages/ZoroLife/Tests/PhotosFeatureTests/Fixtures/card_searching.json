@@ -1,0 +1,43 @@
+{
+  "kind": "photo_query",
+  "payload": {
+    "asset_ids": [],
+    "assumptions": [],
+    "chips": [
+      {
+        "kind": "date",
+        "label": "2026-11-12"
+      },
+      {
+        "kind": "color",
+        "label": "blue"
+      },
+      {
+        "kind": "label",
+        "label": "cap"
+      },
+      {
+        "kind": "label",
+        "label": "hat"
+      }
+    ],
+    "hits": [],
+    "query": {
+      "colors": [
+        "blue"
+      ],
+      "contains_text": null,
+      "date_from": "2026-11-12",
+      "date_to": "2026-11-12",
+      "labels": [
+        "cap",
+        "hat"
+      ],
+      "limit": 30,
+      "media": "any",
+      "text": "photo from yesterday with my blue cap"
+    },
+    "state": "searching"
+  },
+  "title": "Photo search"
+}

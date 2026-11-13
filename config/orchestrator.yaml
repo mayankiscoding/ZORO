@@ -1,0 +1,21 @@
+# ZORO supervisor limits. Read only through app/core/runtime_config.py (`orchestrator_config`).
+# Values are bounded by the loader; a missing or malformed file falls back to the code defaults
+# shown here, which are the same numbers.
+version: 1
+
+turn_limits:
+  # LangGraph supersteps per run segment of one turn.
+  recursion_limit: 40
+  # Tool calls one turn may make, across every agent.
+  max_tool_calls: 24
+  # Model tokens (input + output) one turn may spend.
+  max_tokens: 60000
+  # Wall-clock seconds one turn segment may run.
+  max_seconds: 120
+
+routing:
+  # A local intent match at or above this confidence is used without asking a model.
+  confidence_threshold: 0.6
+  # Below the threshold but at or above this floor, the local match is kept as the fallback when no
+  # model is permitted or the routing call fails.
+  low_confidence_floor: 0.5

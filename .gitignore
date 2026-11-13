@@ -1,0 +1,38 @@
+# secrets and local state
+.env
+.env.*
+!.env.example
+.local/
+.cache/
+*.pem
+*.p8
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+
+# swift / xcode
+.build/
+.swiftpm/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# os / editors
+.DS_Store
+.idea/
+.vscode/
+
+# release artefacts and signing material
+dist/
+*.ipa
+*.xcarchive
+*.p12
+*.mobileprovision
+*.cer

@@ -1,0 +1,52 @@
+{
+  "kind": "fitness_summary",
+  "payload": {
+    "data_source": "Apple Health (synced from your iPhone)",
+    "external_model_allowed": true,
+    "freshness": {
+      "age_unit": "hours",
+      "age_value": 2,
+      "last_synced_at": "2026-11-13T10:00:00Z",
+      "latest_data_date": "2026-11-13",
+      "stale": false
+    },
+    "metrics": [
+      {
+        "label": "Steps",
+        "unit": "",
+        "value": 8421
+      },
+      {
+        "label": "Distance",
+        "unit": "km",
+        "value": 6.1
+      },
+      {
+        "label": "Active energy",
+        "unit": "kcal",
+        "value": 412
+      },
+      {
+        "label": "Exercise",
+        "unit": "min",
+        "value": 38
+      },
+      {
+        "label": "Resting heart rate",
+        "unit": "bpm",
+        "value": 58
+      },
+      {
+        "label": "Sleep",
+        "unit": "h",
+        "value": 6.7
+      }
+    ],
+    "observations": [
+      "Your resting heart rate over the last 3 days is 6 bpm above your recent average. That often goes with a hard training week or short sleep; an easy day is a common choice.",
+      "Your exercise minutes this week are 140 percent of your recent weekly average; a lighter day or two is a common way to absorb a jump like that."
+    ],
+    "stale": false
+  },
+  "title": "Today"
+}

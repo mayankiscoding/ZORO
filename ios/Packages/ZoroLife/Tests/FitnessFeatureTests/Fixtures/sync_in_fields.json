@@ -1,0 +1,32 @@
+{
+  "DayIn": [
+    "active_energy_kcal",
+    "avg_heart_rate_bpm",
+    "body_mass_kg",
+    "cycling_distance_m",
+    "date",
+    "exercise_minutes",
+    "resting_heart_rate_bpm",
+    "sleep_minutes",
+    "sources",
+    "steps",
+    "walking_running_distance_m"
+  ],
+  "SyncIn": [
+    "days",
+    "generated_at",
+    "workouts"
+  ],
+  "WorkoutIn": [
+    "active_energy_kcal",
+    "avg_heart_rate_bpm",
+    "avg_pace_s_per_km",
+    "distance_m",
+    "duration_s",
+    "end_at",
+    "id",
+    "source",
+    "start_at",
+    "type"
+  ]
+}

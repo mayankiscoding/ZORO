@@ -1,0 +1,34 @@
+# Codemagic recipe: builds ZORO for iPhone in the cloud and gives you ZORO-unsigned.ipa.
+# NOT YET RUN: written on a Mac without Xcode. Check the Xcode version against Codemagic's current list.
+#
+# How to use: push this repository to GitHub/GitLab/Bitbucket (private is fine), add it in Codemagic,
+# pick the "ios-unsigned" workflow, start the build, download the artifact. Then sign and install it
+# with your own Apple ID (see docs/setup/install-on-iphone.md).
+workflows:
+  ios-unsigned:
+    name: ZORO iPhone (unsigned .ipa)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      xcode: 26.2 # must include the iOS 26 SDK
+      vars:
+        IOS_PROJECT: ios/ZORO.xcodeproj
+        IOS_SCHEME: ZORO
+    scripts:
+      - name: Generate Xcode projects
+        script: |
+          brew install xcodegen
+          scripts/gen_xcode.sh
+      - name: Archive without signing
+        script: |
+          xcodebuild archive -project "$IOS_PROJECT" -scheme "$IOS_SCHEME" -configuration Release \
+            -destination generic/platform=iOS -archivePath "$CM_BUILD_DIR/ZORO.xcarchive" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+      - name: Package the .ipa
+        script: |
+          xcodebuild -showBuildSettings -json -project "$IOS_PROJECT" -scheme "$IOS_SCHEME" \
+            -configuration Release -destination generic/platform=iOS > "$CM_BUILD_DIR/settings.json"
+          ios/release/package_unsigned_ipa.sh "$CM_BUILD_DIR/ZORO.xcarchive" \
+            "$CM_BUILD_DIR/ZORO-unsigned.ipa" "$CM_BUILD_DIR/settings.json"
+    artifacts:
+      - ZORO-unsigned.ipa

@@ -1,0 +1,67 @@
+{
+  "symbol": "TESTA",
+  "exchange": "NSE",
+  "strategy": "sma_crossover",
+  "params": {
+    "fast": 20,
+    "slow": 50
+  },
+  "start": "2025-01-01",
+  "end": "2026-11-12",
+  "bars": 470,
+  "initial_capital": "100000.00",
+  "final_equity": "112345.67",
+  "total_return_percent": "12.35",
+  "total_costs": "845.20",
+  "slippage_bps": "5",
+  "product": "delivery",
+  "trades": [
+    {
+      "day": "2025-03-04",
+      "side": "buy",
+      "quantity": 800,
+      "price": "110.00",
+      "charges": "120.10",
+      "signal_day": "2025-03-03"
+    }
+  ],
+  "open_quantity": 800,
+  "metrics": {
+    "cagr_percent": 6.4,
+    "sharpe": 0.71,
+    "sortino": 0.95,
+    "max_drawdown_percent": -14.2,
+    "volatility_percent": 18.3,
+    "win_rate_percent": 50.0,
+    "round_trips": 2,
+    "turnover": 1.8,
+    "exposure_percent": 62.0
+  },
+  "tax_estimate": {
+    "short_term_gain": "0",
+    "long_term_gain": "0",
+    "stcg_tax": "0",
+    "ltcg_tax": "0",
+    "total_tax": "0",
+    "is_estimate": true,
+    "basis": "test basis"
+  },
+  "data_source": "csv",
+  "charges_source": "config/investment.yaml",
+  "charges_verified_on": "2026-11-01",
+  "assumptions": [
+    "Signals act on the next bar's open."
+  ],
+  "fingerprint": "ffffffffffffffff",
+  "equity_curve": [
+    {
+      "day": "2025-01-01",
+      "equity": "100000.00"
+    },
+    {
+      "day": "2026-11-12",
+      "equity": "112345.67"
+    }
+  ],
+  "disclaimer": "This is information from your own data, not investment advice. Past performance does not predict future returns; markets can fall and you can lose money."
+}

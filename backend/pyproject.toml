@@ -1,0 +1,76 @@
+[project]
+name = "zoro-backend"
+version = "0.1.0"
+description = "ZORO private assistant backend: model gateway, agents, tools, MCP gateway, memory"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.12",
+    "pydantic-settings>=2.4",
+    "sqlalchemy[asyncio]>=2.0.36",
+    "psycopg[binary,pool]>=3.2",
+    "aiosqlite>=0.20",
+    "alembic>=1.13",
+    "pgvector>=0.3",
+    "httpx>=0.27",
+    "langgraph>=1.2,<2",
+    "langgraph-checkpoint-sqlite>=3.1",
+    "langgraph-checkpoint-postgres>=3.2",
+    "mcp>=2.3,<3",
+    "cryptography>=43",
+    "pyjwt>=2.9",
+    "python-multipart>=0.0.9",
+    "pyyaml>=6",
+    "numpy>=2",
+    "pdfplumber>=0.11",
+    "openpyxl>=3.1",
+    "websockets>=13",
+]
+
+[project.optional-dependencies]
+redis = ["redis>=5"]
+objectstore = ["minio>=7.2"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "types-PyYAML",
+    "pip-audit",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+    "postgres: needs a real PostgreSQL + pgvector (set ZORO_TEST_DATABASE_URL)",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S", "ASYNC", "SIM", "RUF"]
+ignore = ["E501", "S101", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "S311"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+exclude = ["migrations/"]
+
+[[tool.mypy.overrides]]
+module = ["pdfplumber.*", "openpyxl.*", "pgvector.*", "yaml.*"]
+ignore_missing_imports = true

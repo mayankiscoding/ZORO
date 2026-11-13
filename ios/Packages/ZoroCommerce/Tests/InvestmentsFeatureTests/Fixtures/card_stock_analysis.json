@@ -1,0 +1,118 @@
+{
+  "kind": "stock_analysis",
+  "title": "TESTA analysis",
+  "payload": {
+    "symbol": "TESTA",
+    "exchange": "NSE",
+    "generated_at": "2026-11-13T09:30:00Z",
+    "last_bar": "2026-11-12",
+    "freshness": "Last daily bar 12 Nov 2026 (1 day old).",
+    "data_sources": [
+      "csv"
+    ],
+    "sections": [
+      {
+        "analyst": "fundamental",
+        "title": "Fundamental",
+        "status": "unavailable",
+        "findings": [],
+        "sources": [
+          "csv"
+        ],
+        "reason": "no fundamentals source configured"
+      },
+      {
+        "analyst": "technical",
+        "title": "Technical",
+        "status": "ok",
+        "findings": [
+          "technical finding"
+        ],
+        "sources": [
+          "csv"
+        ],
+        "reason": ""
+      },
+      {
+        "analyst": "news_sentiment",
+        "title": "News sentiment",
+        "status": "unavailable",
+        "findings": [],
+        "sources": [
+          "csv"
+        ],
+        "reason": "no fundamentals source configured"
+      },
+      {
+        "analyst": "quantitative",
+        "title": "Quantitative",
+        "status": "ok",
+        "findings": [
+          "quantitative finding"
+        ],
+        "sources": [
+          "csv"
+        ],
+        "reason": ""
+      },
+      {
+        "analyst": "risk",
+        "title": "Risk",
+        "status": "ok",
+        "findings": [
+          "risk finding"
+        ],
+        "sources": [
+          "csv"
+        ],
+        "reason": ""
+      },
+      {
+        "analyst": "portfolio_manager",
+        "title": "Portfolio manager",
+        "status": "ok",
+        "findings": [
+          "portfolio_manager finding"
+        ],
+        "sources": [
+          "csv"
+        ],
+        "reason": ""
+      },
+      {
+        "analyst": "verification",
+        "title": "Verification",
+        "status": "ok",
+        "findings": [
+          "verification finding"
+        ],
+        "sources": [
+          "csv"
+        ],
+        "reason": ""
+      }
+    ],
+    "facts": [
+      {
+        "key": "close",
+        "label": "Last close",
+        "value": "120.50",
+        "unit": "INR",
+        "source": "csv",
+        "as_of": "2026-11-12"
+      }
+    ],
+    "verification": {
+      "passed": true,
+      "numbers_checked": 4,
+      "problems": [],
+      "banned_phrases": []
+    },
+    "interpretation": {
+      "status": "not_requested",
+      "text": null,
+      "problems": []
+    },
+    "disclaimer": "This is information from your own data, not investment advice. Past performance does not predict future returns; markets can fall and you can lose money."
+  }
+}

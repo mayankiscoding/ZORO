@@ -1,0 +1,26 @@
+{
+  "movements": [
+    {
+      "symbol": "TESTA",
+      "exchange": "NSE",
+      "day": "2026-11-12",
+      "close": "120.50",
+      "return_percent": 6.2,
+      "return_z": 3.1,
+      "volume": 120000,
+      "volume_z": 2.4,
+      "reasons": [
+        "return 3.1 standard deviations above normal"
+      ],
+      "source": "csv"
+    }
+  ],
+  "checked": 3,
+  "missing_data": [
+    "BSE:TESTC"
+  ],
+  "return_z_threshold": "2.5",
+  "volume_z_threshold": "2.0",
+  "window": 60,
+  "disclaimer": "This is information from your own data, not investment advice. Past performance does not predict future returns; markets can fall and you can lose money."
+}

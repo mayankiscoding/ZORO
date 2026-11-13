@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  ZORO iPhone app privacy manifest (template: copy into the ZORO app target as PrivacyInfo.xcprivacy).
+
+  Required-reason APIs: declared from a search of every non-test Swift file under ios/Packages
+  (ios/release/tests/check_privacy_manifest.sh repeats that search and fails when it finds a
+  category that is not declared here). Codes from Apple's NSPrivacyAccessedAPIType reference:
+  https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitype
+
+  - UserDefaults (ZoroAppUI UserDefaultsPreferences, SystemFeatures UserDefaultsPreferences):
+    CA92.1 "read and write information that is only accessible to the app itself".
+    If a widget or other extension starts sharing defaults through an App Group
+    (UserDefaults(suiteName:)), add 1C8F.1 here and give that extension its own manifest.
+  - Not used on iOS (checked): file timestamps (FileAttributeKey.creationDate/modificationDate,
+    URLResourceKey.creationDateKey/contentModificationDateKey, stat family), system boot time
+    (ProcessInfo.systemUptime, mach_absolute_time), disk space, active keyboards.
+    PHAsset.creationDate is a Photos property, not the FileAttributeKey API Apple lists.
+
+  Tracking: none. Collected data types: none. ZORO talks only to the backend the owner runs on
+  their own machine; no analytics, advertising or third-party SDKs are linked. Apple defines
+  "collect" as transmitting data off the device so that you or third parties can access it
+  beyond servicing the request. If ZORO is ever distributed to people who do not run their own
+  backend, this section must be revisited.
+-->
+<plist version="1.0">
+<dict>
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

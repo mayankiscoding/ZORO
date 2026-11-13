@@ -1,0 +1,22 @@
+{
+ "type": "approval_required",
+ "approval": {
+  "approval_id": "apr_1",
+  "turn_id": null,
+  "tool": "automation.run_routine",
+  "agent": null,
+  "risk": "high",
+  "level": "confirm",
+  "title": "Run the evening routine",
+  "summary": "Turn off the lights and lock the door.",
+  "details": [
+   {
+    "label": "Routine",
+    "value": "Evening"
+   }
+  ],
+  "action_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "expires_at": "2030-01-01T00:00:00Z",
+  "tainted": true
+ }
+}

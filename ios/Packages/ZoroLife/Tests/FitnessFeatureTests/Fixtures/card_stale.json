@@ -1,0 +1,24 @@
+{
+  "kind": "fitness_summary",
+  "payload": {
+    "data_source": "Apple Health (synced from your iPhone)",
+    "external_model_allowed": true,
+    "freshness": {
+      "age_unit": "days",
+      "age_value": 4,
+      "last_synced_at": "2026-11-09T12:00:00Z",
+      "latest_data_date": "2026-11-09",
+      "stale": true
+    },
+    "metrics": [
+      {
+        "label": "Steps",
+        "unit": "",
+        "value": 5000
+      }
+    ],
+    "observations": [],
+    "stale": true
+  },
+  "title": "Today"
+}

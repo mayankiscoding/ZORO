@@ -1,0 +1,1292 @@
+{
+ "AgentFinished": {
+  "full": {
+   "agent": "security",
+   "duration_ms": 42,
+   "ok": true,
+   "type": "agent_finished"
+  },
+  "minimal": {
+   "agent": "security",
+   "duration_ms": 42,
+   "ok": true
+  }
+ },
+ "AgentStarted": {
+  "full": {
+   "agent": "security",
+   "task": "task-value",
+   "type": "agent_started"
+  },
+  "minimal": {
+   "agent": "security",
+   "task": "task-value"
+  }
+ },
+ "ApprovalDecision": {
+  "full": {
+   "action_digest": "action_digest-value",
+   "approval_id": "approval_id-value",
+   "approved": true,
+   "device_id": "device_id-value",
+   "signature_b64": "signature_b64-value",
+   "signed_at": "2026-11-12T09:30:15.123456Z"
+  },
+  "minimal": {
+   "action_digest": "action_digest-value",
+   "approval_id": "approval_id-value",
+   "approved": true,
+   "device_id": "device_id-value",
+   "signature_b64": "signature_b64-value",
+   "signed_at": "2026-11-12T09:30:15.123456Z"
+  }
+ },
+ "ApprovalRequest": {
+  "full": {
+   "action_digest": "action_digest-value",
+   "agent": "security",
+   "approval_id": "approval_id-value",
+   "details": [
+    {
+     "label": "label-value",
+     "value": "value-value"
+    }
+   ],
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "level": "biometric",
+   "risk": "critical",
+   "summary": "summary-value",
+   "title": "title-value",
+   "tool": "tool-value",
+   "turn_id": "turn_id-value"
+  },
+  "minimal": {
+   "action_digest": "action_digest-value",
+   "approval_id": "approval_id-value",
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "level": "biometric",
+   "risk": "critical",
+   "summary": "summary-value",
+   "title": "title-value",
+   "tool": "tool-value"
+  }
+ },
+ "ApprovalRequired": {
+  "full": {
+   "approval": {
+    "action_digest": "action_digest-value",
+    "agent": "security",
+    "approval_id": "approval_id-value",
+    "details": [
+     {
+      "label": "label-value",
+      "value": "value-value"
+     }
+    ],
+    "expires_at": "2026-11-12T15:00:15+05:30",
+    "level": "biometric",
+    "risk": "critical",
+    "summary": "summary-value",
+    "title": "title-value",
+    "tool": "tool-value",
+    "turn_id": "turn_id-value"
+   },
+   "type": "approval_required"
+  },
+  "minimal": {
+   "approval": {
+    "action_digest": "action_digest-value",
+    "agent": "security",
+    "approval_id": "approval_id-value",
+    "details": [
+     {
+      "label": "label-value",
+      "value": "value-value"
+     }
+    ],
+    "expires_at": "2026-11-12T15:00:15+05:30",
+    "level": "biometric",
+    "risk": "critical",
+    "summary": "summary-value",
+    "title": "title-value",
+    "tool": "tool-value",
+    "turn_id": "turn_id-value"
+   }
+  }
+ },
+ "AuditRecord": {
+  "full": {
+   "action": "action-value",
+   "actor": "actor-value",
+   "data_classes": [
+    "secret"
+   ],
+   "decision": "info",
+   "detail": "detail-value",
+   "hash": "hash-value",
+   "id": "id-value",
+   "prev_hash": "prev_hash-value",
+   "risk": "critical",
+   "tool": "tool-value",
+   "ts": "2026-11-12T09:30:15.123456Z"
+  },
+  "minimal": {
+   "action": "action-value",
+   "actor": "actor-value",
+   "decision": "info",
+   "hash": "hash-value",
+   "id": "id-value",
+   "prev_hash": "prev_hash-value",
+   "ts": "2026-11-12T09:30:15.123456Z"
+  }
+ },
+ "Capability": {
+  "full": {
+   "domain": "domain-value",
+   "id": "id-value",
+   "integration_level": "unavailable",
+   "note": "note-value",
+   "requires": [
+    "requires-value"
+   ],
+   "status": "unavailable",
+   "title": "title-value"
+  },
+  "minimal": {
+   "domain": "domain-value",
+   "id": "id-value",
+   "status": "unavailable",
+   "title": "title-value"
+  }
+ },
+ "CardEvent": {
+  "full": {
+   "card": {
+    "kind": "kind-value",
+    "payload": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    },
+    "title": "title-value"
+   },
+   "type": "card"
+  },
+  "minimal": {
+   "card": {
+    "kind": "kind-value",
+    "payload": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    },
+    "title": "title-value"
+   }
+  }
+ },
+ "ChallengeRequest": {
+  "full": {
+   "device_id": "device_id-value"
+  },
+  "minimal": {
+   "device_id": "device_id-value"
+  }
+ },
+ "ChallengeResponse": {
+  "full": {
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "nonce": "nonce-value"
+  },
+  "minimal": {
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "nonce": "nonce-value"
+  }
+ },
+ "ClientContext": {
+  "full": {
+   "app_state": {
+    "count": 2,
+    "nested_key": {
+     "inner_key": [
+      1,
+      "a"
+     ]
+    },
+    "selected_product_ref": "prod_1"
+   },
+   "capabilities": [
+    "capabilities-value"
+   ],
+   "locale": "locale-value",
+   "location_ref": "location_ref-value",
+   "platform": "macos",
+   "timezone": "timezone-value"
+  },
+  "minimal": {
+   "platform": "macos"
+  }
+ },
+ "ConversationSummary": {
+  "full": {
+   "id": "id-value",
+   "last_message_preview": "last_message_preview-value",
+   "message_count": 42,
+   "title": "title-value",
+   "updated_at": "2026-11-12T09:30:15.123456Z"
+  },
+  "minimal": {
+   "id": "id-value",
+   "title": "title-value",
+   "updated_at": "2026-11-12T09:30:15.123456Z"
+  }
+ },
+ "CostRow": {
+  "full": {
+   "audio_seconds": 12.5,
+   "avg_latency_ms": 12.5,
+   "cost_usd": "1234.50",
+   "error_rate": 1.0,
+   "input_tokens": 42,
+   "key": "key-value",
+   "output_tokens": 42,
+   "requests": 42
+  },
+  "minimal": {
+   "input_tokens": 42,
+   "key": "key-value",
+   "output_tokens": 42,
+   "requests": 42
+  }
+ },
+ "CostSummary": {
+  "full": {
+   "group_by": "day",
+   "items": [
+    {
+     "audio_seconds": 12.5,
+     "avg_latency_ms": 12.5,
+     "cost_usd": "1234.50",
+     "error_rate": 1.0,
+     "input_tokens": 42,
+     "key": "key-value",
+     "output_tokens": 42,
+     "requests": 42
+    }
+   ],
+   "total_cost_usd": "1234.50"
+  },
+  "minimal": {
+   "group_by": "day",
+   "items": [
+    {
+     "audio_seconds": 12.5,
+     "avg_latency_ms": 12.5,
+     "cost_usd": "1234.50",
+     "error_rate": 1.0,
+     "input_tokens": 42,
+     "key": "key-value",
+     "output_tokens": 42,
+     "requests": 42
+    }
+   ],
+   "total_cost_usd": "1234.50"
+  }
+ },
+ "DeviceActionEvent": {
+  "full": {
+   "action": {
+    "action_id": "action_id-value",
+    "args": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    },
+    "expires_at": "2026-11-12T15:00:15+05:30",
+    "requires_user_confirmation": true,
+    "risk": "critical",
+    "target_device_id": "target_device_id-value",
+    "tool": "tool-value",
+    "turn_id": "turn_id-value"
+   },
+   "type": "device_action"
+  },
+  "minimal": {
+   "action": {
+    "action_id": "action_id-value",
+    "args": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    },
+    "expires_at": "2026-11-12T15:00:15+05:30",
+    "requires_user_confirmation": true,
+    "risk": "critical",
+    "target_device_id": "target_device_id-value",
+    "tool": "tool-value",
+    "turn_id": "turn_id-value"
+   }
+  }
+ },
+ "DeviceActionRequest": {
+  "full": {
+   "action_id": "action_id-value",
+   "args": {
+    "count": 2,
+    "nested_key": {
+     "inner_key": [
+      1,
+      "a"
+     ]
+    },
+    "selected_product_ref": "prod_1"
+   },
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "requires_user_confirmation": true,
+   "risk": "critical",
+   "target_device_id": "target_device_id-value",
+   "tool": "tool-value",
+   "turn_id": "turn_id-value"
+  },
+  "minimal": {
+   "action_id": "action_id-value",
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "risk": "critical",
+   "tool": "tool-value"
+  }
+ },
+ "DeviceActionResult": {
+  "full": {
+   "action_id": "action_id-value",
+   "capability_status": "unavailable",
+   "error_code": "error_code-value",
+   "error_message": "error_message-value",
+   "executed_at": "2026-11-12T09:30:15.123456Z",
+   "ok": true,
+   "result": {
+    "count": 2,
+    "nested_key": {
+     "inner_key": [
+      1,
+      "a"
+     ]
+    },
+    "selected_product_ref": "prod_1"
+   }
+  },
+  "minimal": {
+   "action_id": "action_id-value",
+   "executed_at": "2026-11-12T09:30:15.123456Z",
+   "ok": true
+  }
+ },
+ "DeviceInfo": {
+  "full": {
+   "capabilities": [
+    "capabilities-value"
+   ],
+   "device_id": "device_id-value",
+   "last_seen_at": "2026-11-12T09:30:15.123456Z",
+   "name": "name-value",
+   "online": true,
+   "platform": "macos",
+   "revoked": true
+  },
+  "minimal": {
+   "device_id": "device_id-value",
+   "name": "name-value",
+   "platform": "macos"
+  }
+ },
+ "DeviceRevoke": {
+  "full": {
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  },
+  "minimal": {
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  }
+ },
+ "ErrorBody": {
+  "full": {
+   "code": "code-value",
+   "detail": {
+    "count": 2,
+    "nested_key": {
+     "inner_key": [
+      1,
+      "a"
+     ]
+    },
+    "selected_product_ref": "prod_1"
+   },
+   "message": "message-value",
+   "retryable": true
+  },
+  "minimal": {
+   "code": "code-value",
+   "message": "message-value"
+  }
+ },
+ "KillSwitchUpdate": {
+  "full": {
+   "enabled": true,
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  },
+  "minimal": {
+   "enabled": true,
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  }
+ },
+ "LabelValue": {
+  "full": {
+   "label": "label-value",
+   "value": "value-value"
+  },
+  "minimal": {
+   "label": "label-value",
+   "value": "value-value"
+  }
+ },
+ "LiveSessionGrant": {
+  "full": {
+   "ephemeral_token": "ephemeral_token-value",
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "input_sample_rate": 42,
+   "model": "model-value",
+   "output_sample_rate": 42,
+   "provider": "provider-value",
+   "system_instruction": "system_instruction-value",
+   "ws_url": "ws_url-value"
+  },
+  "minimal": {
+   "ephemeral_token": "ephemeral_token-value",
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "model": "model-value",
+   "provider": "provider-value",
+   "system_instruction": "system_instruction-value",
+   "ws_url": "ws_url-value"
+  }
+ },
+ "MemoryCategorySetting": {
+  "full": {
+   "category": "conversation_state",
+   "enabled": true,
+   "retention_days": 42
+  },
+  "minimal": {
+   "category": "conversation_state",
+   "enabled": true
+  }
+ },
+ "MemoryCreate": {
+  "full": {
+   "category": "conversation_state",
+   "sensitivity": "secret",
+   "text": "text-value"
+  },
+  "minimal": {
+   "category": "conversation_state",
+   "text": "text-value"
+  }
+ },
+ "MemoryDeleteCategoryRequest": {
+  "full": {
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  },
+  "minimal": {
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  }
+ },
+ "MemoryExportRequest": {
+  "full": {
+   "category": "conversation_state",
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  },
+  "minimal": {
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  }
+ },
+ "MemoryPatch": {
+  "full": {
+   "status": "archived",
+   "text": "text-value",
+   "verified": true
+  },
+  "minimal": {}
+ },
+ "MemoryRecord": {
+  "full": {
+   "category": "conversation_state",
+   "confidence": 1.0,
+   "created_at": "2026-11-12T09:30:15.123456Z",
+   "expires_at": "2026-11-12T09:30:15.123456Z",
+   "id": "id-value",
+   "last_verified_at": "2026-11-12T09:30:15.123456Z",
+   "sensitivity": "secret",
+   "source": "source-value",
+   "status": "archived",
+   "text": "text-value",
+   "user_editable": true
+  },
+  "minimal": {
+   "category": "conversation_state",
+   "confidence": 1.0,
+   "created_at": "2026-11-12T09:30:15.123456Z",
+   "id": "id-value",
+   "sensitivity": "secret",
+   "source": "source-value",
+   "text": "text-value"
+  }
+ },
+ "MemorySettings": {
+  "full": {
+   "categories": [
+    {
+     "category": "conversation_state",
+     "enabled": true,
+     "retention_days": 42
+    }
+   ],
+   "conversation_retention_days": 42
+  },
+  "minimal": {
+   "categories": [
+    {
+     "category": "conversation_state",
+     "enabled": true,
+     "retention_days": 42
+    }
+   ],
+   "conversation_retention_days": 42
+  }
+ },
+ "Message": {
+  "full": {
+   "agents": [
+    "security"
+   ],
+   "cards": [
+    {
+     "kind": "kind-value",
+     "payload": {
+      "count": 2,
+      "nested_key": {
+       "inner_key": [
+        1,
+        "a"
+       ]
+      },
+      "selected_product_ref": "prod_1"
+     },
+     "title": "title-value"
+    }
+   ],
+   "created_at": "2026-11-12T09:30:15.123456Z",
+   "id": "id-value",
+   "language": "language-value",
+   "role": "assistant",
+   "text": "text-value"
+  },
+  "minimal": {
+   "created_at": "2026-11-12T09:30:15.123456Z",
+   "id": "id-value",
+   "role": "assistant",
+   "text": "text-value"
+  }
+ },
+ "ModelRouteInfo": {
+  "full": {
+   "active_model": "active_model-value",
+   "locality": "external",
+   "models": [
+    "models-value"
+   ],
+   "reason": "reason-value",
+   "task": "tts"
+  },
+  "minimal": {
+   "active_model": "active_model-value",
+   "locality": "external",
+   "models": [
+    "models-value"
+   ],
+   "task": "tts"
+  }
+ },
+ "Money": {
+  "extra": [
+   {
+    "amount": "0.10",
+    "currency": "INR"
+   },
+   {
+    "amount": "-99999999999.99"
+   },
+   {
+    "amount": "1E+2"
+   }
+  ],
+  "full": {
+   "amount": "1234.50",
+   "currency": "currency-value"
+  },
+  "minimal": {
+   "amount": "1234.50"
+  }
+ },
+ "Page[ConversationSummary]": {
+  "full": {
+   "items": [
+    {
+     "id": "id-value",
+     "last_message_preview": "last_message_preview-value",
+     "message_count": 42,
+     "title": "title-value",
+     "updated_at": "2026-11-12T09:30:15.123456Z"
+    }
+   ],
+   "next_cursor": "cursor-2"
+  },
+  "minimal": {
+   "items": []
+  }
+ },
+ "Page[MemoryRecord]": {
+  "full": {
+   "items": [
+    {
+     "category": "conversation_state",
+     "confidence": 1.0,
+     "created_at": "2026-11-12T09:30:15.123456Z",
+     "expires_at": "2026-11-12T09:30:15.123456Z",
+     "id": "id-value",
+     "last_verified_at": "2026-11-12T09:30:15.123456Z",
+     "sensitivity": "secret",
+     "source": "source-value",
+     "status": "archived",
+     "text": "text-value",
+     "user_editable": true
+    }
+   ],
+   "next_cursor": "cursor-2"
+  },
+  "minimal": {
+   "items": []
+  }
+ },
+ "PairRequest": {
+  "full": {
+   "app_version": "app_version-value",
+   "approval_public_key_b64": "approval_public_key_b64-value",
+   "auth_public_key_b64": "auth_public_key_b64-value",
+   "capabilities": [
+    "capabilities-value"
+   ],
+   "device_name": "device_name-value",
+   "pairing_code": "pairing_code-value",
+   "platform": "macos"
+  },
+  "minimal": {
+   "approval_public_key_b64": "approval_public_key_b64-value",
+   "auth_public_key_b64": "auth_public_key_b64-value",
+   "device_name": "device_name-value",
+   "pairing_code": "pairing_code-value",
+   "platform": "macos"
+  }
+ },
+ "PairResponse": {
+  "full": {
+   "device_id": "device_id-value",
+   "server_name": "server_name-value",
+   "server_time": "2026-11-12T09:30:15.123456Z"
+  },
+  "minimal": {
+   "device_id": "device_id-value",
+   "server_name": "server_name-value",
+   "server_time": "2026-11-12T09:30:15.123456Z"
+  }
+ },
+ "PermissionGrant": {
+  "full": {
+   "granted": true,
+   "key": "key-value",
+   "title": "title-value",
+   "updated_at": "2026-11-12T09:30:15.123456Z"
+  },
+  "minimal": {
+   "granted": true,
+   "key": "key-value",
+   "title": "title-value"
+  }
+ },
+ "PermissionUpdate": {
+  "full": {
+   "granted": true,
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  },
+  "minimal": {
+   "granted": true,
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  }
+ },
+ "PrivacyModeUpdate": {
+  "full": {
+   "mode": "cloud_intelligence",
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  },
+  "minimal": {
+   "mode": "cloud_intelligence",
+   "proof": {
+    "device_id": "device_id-value",
+    "key": "auth",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   }
+  }
+ },
+ "ResumeRequest": {
+  "full": {
+   "approval": {
+    "action_digest": "action_digest-value",
+    "approval_id": "approval_id-value",
+    "approved": true,
+    "device_id": "device_id-value",
+    "signature_b64": "signature_b64-value",
+    "signed_at": "2026-11-12T15:00:15+05:30"
+   },
+   "device_result": {
+    "action_id": "action_id-value",
+    "capability_status": "unavailable",
+    "error_code": "error_code-value",
+    "error_message": "error_message-value",
+    "executed_at": "2026-11-12T15:00:15+05:30",
+    "ok": true,
+    "result": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    }
+   }
+  },
+  "minimal": {}
+ },
+ "RouteDecided": {
+  "full": {
+   "agents": [
+    "security"
+   ],
+   "data_classes": [
+    "secret"
+   ],
+   "engine": "cloud_model",
+   "reason": "reason-value",
+   "type": "route"
+  },
+  "minimal": {
+   "agents": [
+    "security"
+   ],
+   "data_classes": [
+    "secret"
+   ],
+   "engine": "cloud_model",
+   "reason": "reason-value"
+  }
+ },
+ "SecurityState": {
+  "full": {
+   "biometric_for_high_risk": true,
+   "devices": [
+    {
+     "capabilities": [
+      "capabilities-value"
+     ],
+     "device_id": "device_id-value",
+     "last_seen_at": "2026-11-12T09:30:15.123456Z",
+     "name": "name-value",
+     "online": true,
+     "platform": "macos",
+     "revoked": true
+    }
+   ],
+   "kill_switch": true,
+   "permissions": [
+    {
+     "granted": true,
+     "key": "key-value",
+     "title": "title-value",
+     "updated_at": "2026-11-12T09:30:15.123456Z"
+    }
+   ],
+   "privacy_mode": "cloud_intelligence",
+   "session_expires_at": "2026-11-12T09:30:15.123456Z",
+   "strict_allow_public_external": true
+  },
+  "minimal": {
+   "biometric_for_high_risk": true,
+   "devices": [
+    {
+     "capabilities": [
+      "capabilities-value"
+     ],
+     "device_id": "device_id-value",
+     "last_seen_at": "2026-11-12T09:30:15.123456Z",
+     "name": "name-value",
+     "online": true,
+     "platform": "macos",
+     "revoked": true
+    }
+   ],
+   "kill_switch": true,
+   "permissions": [
+    {
+     "granted": true,
+     "key": "key-value",
+     "title": "title-value",
+     "updated_at": "2026-11-12T09:30:15.123456Z"
+    }
+   ],
+   "privacy_mode": "cloud_intelligence",
+   "session_expires_at": "2026-11-12T09:30:15.123456Z",
+   "strict_allow_public_external": true
+  }
+ },
+ "SignedProof": {
+  "full": {
+   "device_id": "device_id-value",
+   "key": "auth",
+   "signature_b64": "signature_b64-value",
+   "signed_at": "2026-11-12T09:30:15.123456Z"
+  },
+  "minimal": {
+   "device_id": "device_id-value",
+   "signature_b64": "signature_b64-value",
+   "signed_at": "2026-11-12T09:30:15.123456Z"
+  }
+ },
+ "TTSRequest": {
+  "full": {
+   "language": "hinglish",
+   "text": "text-value",
+   "voice_id": "voice_id-value"
+  },
+  "minimal": {
+   "text": "text-value"
+  }
+ },
+ "TextDelta": {
+  "full": {
+   "text": "text-value",
+   "type": "text_delta"
+  },
+  "minimal": {
+   "text": "text-value"
+  }
+ },
+ "TokenRequest": {
+  "full": {
+   "device_id": "device_id-value",
+   "nonce": "nonce-value",
+   "signature_b64": "signature_b64-value"
+  },
+  "minimal": {
+   "device_id": "device_id-value",
+   "nonce": "nonce-value",
+   "signature_b64": "signature_b64-value"
+  }
+ },
+ "TokenResponse": {
+  "full": {
+   "access_token": "access_token-value",
+   "expires_in": 42,
+   "token_type": "token_type-value"
+  },
+  "minimal": {
+   "access_token": "access_token-value",
+   "expires_in": 42
+  }
+ },
+ "ToolFinished": {
+  "full": {
+   "call_id": "call_id-value",
+   "duration_ms": 42,
+   "ok": true,
+   "summary": "summary-value",
+   "type": "tool_finished"
+  },
+  "minimal": {
+   "call_id": "call_id-value",
+   "duration_ms": 42,
+   "ok": true
+  }
+ },
+ "ToolStarted": {
+  "full": {
+   "agent": "security",
+   "call_id": "call_id-value",
+   "risk": "critical",
+   "tool": "tool-value",
+   "type": "tool_started"
+  },
+  "minimal": {
+   "agent": "security",
+   "call_id": "call_id-value",
+   "risk": "critical",
+   "tool": "tool-value"
+  }
+ },
+ "TurnCompleted": {
+  "full": {
+   "cloud_voice_allowed": true,
+   "data_classes": [
+    "secret"
+   ],
+   "language": "language-value",
+   "message_id": "message_id-value",
+   "turn_id": "turn_id-value",
+   "type": "turn_completed",
+   "usage": {
+    "cost_usd": "1234.50",
+    "duration_ms": 42,
+    "input_tokens": 42,
+    "model_calls": 42,
+    "output_tokens": 42,
+    "tool_calls": 42
+   }
+  },
+  "minimal": {
+   "cloud_voice_allowed": true,
+   "data_classes": [
+    "secret"
+   ],
+   "language": "language-value",
+   "message_id": "message_id-value",
+   "turn_id": "turn_id-value",
+   "usage": {
+    "cost_usd": "1234.50",
+    "duration_ms": 42,
+    "input_tokens": 42,
+    "model_calls": 42,
+    "output_tokens": 42,
+    "tool_calls": 42
+   }
+  }
+ },
+ "TurnError": {
+  "full": {
+   "code": "code-value",
+   "message": "message-value",
+   "retryable": true,
+   "type": "error"
+  },
+  "minimal": {
+   "code": "code-value",
+   "message": "message-value"
+  }
+ },
+ "TurnInput": {
+  "full": {
+   "language_hint": "language_hint-value",
+   "modality": "voice",
+   "text": "text-value"
+  },
+  "minimal": {
+   "text": "text-value"
+  }
+ },
+ "TurnRequest": {
+  "full": {
+   "client": {
+    "app_state": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    },
+    "capabilities": [
+     "capabilities-value"
+    ],
+    "locale": "locale-value",
+    "location_ref": "location_ref-value",
+    "platform": "macos",
+    "timezone": "timezone-value"
+   },
+   "conversation_id": "conversation_id-value",
+   "input": {
+    "language_hint": "language_hint-value",
+    "modality": "voice",
+    "text": "text-value"
+   },
+   "privacy_mode": "cloud_intelligence"
+  },
+  "minimal": {
+   "client": {
+    "app_state": {
+     "count": 2,
+     "nested_key": {
+      "inner_key": [
+       1,
+       "a"
+      ]
+     },
+     "selected_product_ref": "prod_1"
+    },
+    "capabilities": [
+     "capabilities-value"
+    ],
+    "locale": "locale-value",
+    "location_ref": "location_ref-value",
+    "platform": "macos",
+    "timezone": "timezone-value"
+   },
+   "input": {
+    "language_hint": "language_hint-value",
+    "modality": "voice",
+    "text": "text-value"
+   }
+  }
+ },
+ "TurnStarted": {
+  "full": {
+   "conversation_id": "conversation_id-value",
+   "privacy_mode": "cloud_intelligence",
+   "turn_id": "turn_id-value",
+   "type": "turn_started"
+  },
+  "minimal": {
+   "conversation_id": "conversation_id-value",
+   "privacy_mode": "cloud_intelligence",
+   "turn_id": "turn_id-value"
+  }
+ },
+ "TurnSuspended": {
+  "full": {
+   "reason": "device_action",
+   "turn_id": "turn_id-value",
+   "type": "turn_suspended"
+  },
+  "minimal": {
+   "reason": "device_action",
+   "turn_id": "turn_id-value"
+  }
+ },
+ "UICard": {
+  "full": {
+   "kind": "kind-value",
+   "payload": {
+    "count": 2,
+    "nested_key": {
+     "inner_key": [
+      1,
+      "a"
+     ]
+    },
+    "selected_product_ref": "prod_1"
+   },
+   "title": "title-value"
+  },
+  "minimal": {
+   "kind": "kind-value"
+  }
+ },
+ "UsageSummary": {
+  "full": {
+   "cost_usd": "1234.50",
+   "duration_ms": 42,
+   "input_tokens": 42,
+   "model_calls": 42,
+   "output_tokens": 42,
+   "tool_calls": 42
+  },
+  "minimal": {}
+ },
+ "VoiceConfig": {
+  "full": {
+   "engines": [
+    {
+     "available": true,
+     "id": "id-value",
+     "reason": "reason-value"
+    }
+   ],
+   "settings": {
+    "activation": "wake_word_in_session",
+    "engine": "cloud",
+    "language": "hinglish",
+    "personality": "crisp",
+    "response_length": "detailed",
+    "speaking_rate": 1.0,
+    "voice_gender": "neutral",
+    "voice_id": "voice_id-value"
+   },
+   "voices": [
+    {
+     "engine": "engine-value",
+     "gender": "gender-value",
+     "id": "id-value",
+     "languages": [
+      "languages-value"
+     ],
+     "name": "name-value"
+    }
+   ]
+  },
+  "minimal": {
+   "engines": [
+    {
+     "available": true,
+     "id": "id-value",
+     "reason": "reason-value"
+    }
+   ],
+   "settings": {
+    "activation": "wake_word_in_session",
+    "engine": "cloud",
+    "language": "hinglish",
+    "personality": "crisp",
+    "response_length": "detailed",
+    "speaking_rate": 1.0,
+    "voice_gender": "neutral",
+    "voice_id": "voice_id-value"
+   },
+   "voices": [
+    {
+     "engine": "engine-value",
+     "gender": "gender-value",
+     "id": "id-value",
+     "languages": [
+      "languages-value"
+     ],
+     "name": "name-value"
+    }
+   ]
+  }
+ },
+ "VoiceEngineStatus": {
+  "full": {
+   "available": true,
+   "id": "id-value",
+   "reason": "reason-value"
+  },
+  "minimal": {
+   "available": true,
+   "id": "id-value"
+  }
+ },
+ "VoiceOption": {
+  "full": {
+   "engine": "engine-value",
+   "gender": "gender-value",
+   "id": "id-value",
+   "languages": [
+    "languages-value"
+   ],
+   "name": "name-value"
+  },
+  "minimal": {
+   "engine": "engine-value",
+   "gender": "gender-value",
+   "id": "id-value",
+   "languages": [
+    "languages-value"
+   ],
+   "name": "name-value"
+  }
+ },
+ "VoiceSettings": {
+  "full": {
+   "activation": "wake_word_in_session",
+   "engine": "cloud",
+   "language": "hinglish",
+   "personality": "crisp",
+   "response_length": "detailed",
+   "speaking_rate": 1.0,
+   "voice_gender": "neutral",
+   "voice_id": "voice_id-value"
+  },
+  "minimal": {}
+ }
+}

@@ -1,0 +1,58 @@
+# ZORO voice configuration: realtime voice session grant, text-to-speech engines and voices.
+# Model ids for Gemini come from config/models.yaml (routes realtime_voice and tts); everything else
+# about voice lives here. Each engine is enabled only when its key is present in the environment.
+#
+# Verification (docs fetched 2026-11-13 unless marked):
+#  - Gemini ephemeral token: POST {gemini base_url}/auth_tokens, x-goog-api-key, body fields uses,
+#    expireTime, newSessionExpireTime, liveConnectConstraints{model:"models/<id>", config}. VERIFIED
+#    (aistudio.google.com/docs/live-api/ephemeral-tokens). The token is the `name` field of the response.
+#  - The WebSocket URL below and the exact key names inside liveConnectConstraints.config for the system
+#    instruction and tool declaration (systemInstruction, tools[].functionDeclarations) are UNVERIFIED: the
+#    page does not show them. The client passes the token as the access_token query parameter (VERIFIED).
+#  - Gemini TTS: Interactions API POST {base}/interactions with stream:true, 24 kHz 16-bit mono PCM chunks.
+#    The streamed event field names are UNVERIFIED (only the SDK form was documented).
+#  - ElevenLabs: POST /v1/text-to-speech/{voice_id}/stream?output_format=pcm_24000, xi-api-key. VERIFIED.
+#    The voice id below is a premade voice id from memory: UNVERIFIED, replace with one from your account.
+#  - Google Chirp 3 HD: REST text:synthesize with an API key is UNVERIFIED (docs show client libraries and
+#    Application Default Credentials only). Voice naming <locale>-Chirp3-HD-<Voice> is VERIFIED.
+version: 1
+
+live:
+  provider: gemini                 # id of the provider in config/models.yaml that serves the realtime route
+  ws_url: wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContentConstrained
+  token_uses: 1                    # single use
+  session_ttl_seconds: 600         # expireTime: how long the token (and so the session) may live
+  new_session_ttl_seconds: 60      # newSessionExpireTime: how long the device has to start the session
+  input_sample_rate: 16000
+  output_sample_rate: 24000
+  tool_name: ask_zoro
+
+tts:
+  order: [gemini_tts, google_chirp, elevenlabs]
+  engines:
+    gemini_tts:
+      provider: gemini             # models.yaml provider (base URL and key); model from the `tts` route
+      sample_rate: 24000
+      voices:
+        - {id: Kore, name: Kore, gender: female, languages: [en, hi, hinglish]}
+        - {id: Zephyr, name: Zephyr, gender: female, languages: [en, hi, hinglish]}
+        - {id: Puck, name: Puck, gender: male, languages: [en, hi, hinglish]}
+        - {id: Charon, name: Charon, gender: male, languages: [en, hi, hinglish]}
+    google_chirp:
+      base_url: https://texttospeech.googleapis.com/v1
+      key_env: GOOGLE_TTS_API_KEY
+      sample_rate: 24000
+      locales: {en: en-IN, hi: hi-IN, hinglish: hi-IN}
+      voices:
+        - {id: Kore, name: Kore, gender: female, languages: [en, hi, hinglish]}
+        - {id: Aoede, name: Aoede, gender: female, languages: [en, hi, hinglish]}
+        - {id: Puck, name: Puck, gender: male, languages: [en, hi, hinglish]}
+        - {id: Charon, name: Charon, gender: male, languages: [en, hi, hinglish]}
+    elevenlabs:
+      base_url: https://api.elevenlabs.io
+      key_env: ELEVENLABS_API_KEY
+      model_id: eleven_flash_v2_5  # 32 languages incl. Hindi
+      output_format: pcm_24000
+      sample_rate: 24000
+      voices:
+        - {id: 21m00Tcm4TlvDq8ikWAM, name: Rachel, gender: female, languages: [en, hi, hinglish]}
