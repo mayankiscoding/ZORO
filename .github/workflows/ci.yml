@@ -105,8 +105,14 @@ jobs:
           scheme=$(jq -r --arg p "${{ matrix.package }}" '.workspace.schemes // .project.schemes // [] | if index($p + "-Package") then $p + "-Package" elif index($p) then $p else (.[0] // "") end' "$RUNNER_TEMP/schemes.json")
           if [ -z "$scheme" ]; then echo "::error::no scheme found for ${{ matrix.package }}"; cat "$RUNNER_TEMP/schemes.json"; exit 1; fi
           echo "scheme: $scheme"
+          zoro_annotate() { # log-file: publish compile errors as one readable annotation
+            local errs; errs=$(grep -E "(error|fatal error): " "$1" | sed -E 's#^.*/(ios|macos|Packages)/#\1/#' | sort -u | head -n 60)
+            [ -n "$errs" ] || errs=$(tail -n 40 "$1")
+            echo "::error title=Compile errors::$(printf '%s' "$errs" | sed -e 's/%/%25/g' | awk 'BEGIN{ORS="%0A"}{print}')"
+          }
           xcodebuild build -scheme "$scheme" -destination "generic/platform=iOS" \
-            -derivedDataPath "$RUNNER_TEMP/dd" CODE_SIGNING_ALLOWED=NO
+            -derivedDataPath "$RUNNER_TEMP/dd" CODE_SIGNING_ALLOWED=NO > "$RUNNER_TEMP/ios.log" 2>&1 \
+            || { tail -n 60 "$RUNNER_TEMP/ios.log"; zoro_annotate "$RUNNER_TEMP/ios.log"; exit 1; }
 
   web:
     name: web (node --test)

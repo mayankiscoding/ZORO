@@ -102,12 +102,17 @@ jobs:
       - name: Archive iPhone app (generic iOS device, no signing)
         run: |
           set -o pipefail
+          zoro_annotate() { # log-file: publish compile errors as one readable annotation
+            local errs; errs=$(grep -E "(error|fatal error): " "$1" | sed -E 's#^.*/(ios|macos|Packages)/#\1/#' | sort -u | head -n 60)
+            [ -n "$errs" ] || errs=$(tail -n 40 "$1")
+            echo "::error title=Compile errors::$(printf '%s' "$errs" | sed -e 's/%/%25/g' | awk 'BEGIN{ORS="%0A"}{print}')"
+          }
           xcodebuild archive -project "$IOS_PROJECT" -scheme "$IOS_SCHEME" -configuration Release \
             -destination "generic/platform=iOS" -archivePath "$RUNNER_TEMP/ZORO.xcarchive" \
             -derivedDataPath "$RUNNER_TEMP/dd-ios" \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
             CURRENT_PROJECT_VERSION=${{ github.run_number }} | tee "$RUNNER_TEMP/ios-archive.log" | grep -E "error:|warning:|ARCHIVE" || true
-          test -d "$RUNNER_TEMP/ZORO.xcarchive/Products/Applications" || { tail -n 80 "$RUNNER_TEMP/ios-archive.log"; exit 1; }
+          test -d "$RUNNER_TEMP/ZORO.xcarchive/Products/Applications" || { tail -n 80 "$RUNNER_TEMP/ios-archive.log"; zoro_annotate "$RUNNER_TEMP/ios-archive.log"; exit 1; }
 
       - name: Package ZORO-unsigned.ipa
         run: |

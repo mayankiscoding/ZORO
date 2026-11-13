@@ -26,7 +26,7 @@ pattern() {
 files_for() { # ios|macos
   local skipdir skipif
   if [ "$1" = ios ]; then skipdir="/Mac/"; skipif='^#if os\(macOS\)'; else skipdir="/iOS/"; skipif='^#if os\(iOS\)'; fi
-  find "$SRC" -name '*.swift' -not -path '*/Tests/*' -not -path '*/.build/*' -not -path '*/AppTargetTemplates/*' -print0 |
+  find "$SRC" -name '*.swift' -not -path '*/Tests/*' -not -path '*/.build/*' -not -path '*/AppTargetTemplates/*' -not -path '*Snapshots/*' -print0 |
     while IFS= read -r -d '' f; do
       case "$f" in *"$skipdir"*) continue ;; esac
       head -n 5 "$f" | grep -Eq "$skipif" && continue
