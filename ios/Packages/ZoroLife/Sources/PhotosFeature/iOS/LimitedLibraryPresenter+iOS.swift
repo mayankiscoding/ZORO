@@ -11,7 +11,8 @@ public struct PhotoKitLimitedLibraryPresenter: LimitedLibraryPresenting {
 
     @MainActor public func presentPicker() async -> Bool {
         guard let top = Self.topViewController() else { return false }
-        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: top)
+        // Async form (iOS 15+): returns once the owner closes the picker.
+        _ = await PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: top)
         return true
     }
 
