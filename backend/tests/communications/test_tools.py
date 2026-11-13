@@ -175,7 +175,9 @@ async def test_missing_contacts_ask_the_device_first(
     assert isinstance(out, DraftMessageOut) and out.status == "needs_contact_lookup"
     lookup, retry = out.follow_ups  # look the name up on the device, then draft again with the matches
     assert lookup.tool == "device.contacts.find" and lookup.args == {"query": "Priya"}
-    assert retry.tool == "communications.draft_message" and retry.args_from_previous == {"contacts": "matches"}
+    assert retry.tool == "communications.draft_message" and retry.args_from_previous == {
+        "contacts": "matches"
+    }
     assert retry.args["recipient_query"] == "Priya" and retry.args["text"] == "hi"
     # contacts the device returned earlier and the app showed are reused from the working set
     c = ctx_for(registry, device_id=paired_device.device_id)
@@ -426,9 +428,7 @@ async def test_send_message_refuses_a_number_that_is_not_the_drafts(
             ctx, f"mm{i}", paired_device.signer.sign_approval(pending.request)
         )
         assert (
-            isinstance(done, Completed)
-            and done.result.status == "draft_mismatch"
-            and done.follow_ups == ()
+            isinstance(done, Completed) and done.result.status == "draft_mismatch" and done.follow_ups == ()
         )  # type: ignore[attr-defined]
     unknown = await executor.execute(
         ctx,

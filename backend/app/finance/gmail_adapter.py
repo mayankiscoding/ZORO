@@ -21,7 +21,11 @@ class CommunicationsGmail:
             kind = getattr(exc, "kind", None)  # GoogleError: not_configured, not_connected, expired, ...
             if kind is None:
                 raise
-            code = "requires_credentials" if kind in ("not_configured", "not_connected", "expired") else str(kind)
+            code = (
+                "requires_credentials"
+                if kind in ("not_configured", "not_connected", "expired")
+                else str(kind)
+            )
             raise Unavailable("Gmail is not available right now.", code=code) from exc
 
     async def search(self, query: str, *, max_results: int = 50) -> list[GmailMessageRef]:

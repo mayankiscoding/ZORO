@@ -42,6 +42,7 @@ class Settings(BaseSettings):
         env_file=(".env", "../.env"),
         env_file_encoding="utf-8",
         extra="ignore",
+        env_ignore_empty=True,  # a blank line in .env means "use the default"
     )
 
     env: Literal["development", "test", "production"] = "development"

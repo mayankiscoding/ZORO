@@ -57,12 +57,25 @@ public struct ZoroAppIntentsPackage: AppIntentsPackage {}
 extension AppSection: AppEnum {
     public static let typeDisplayRepresentation: TypeDisplayRepresentation = "Section"
 
-    public static let caseDisplayRepresentations: [AppSection: DisplayRepresentation] = Dictionary(
-        uniqueKeysWithValues: AppSection.allCases.map { section in
-            (section, DisplayRepresentation(
-                title: LocalizedStringResource(stringLiteral: section.title),
-                image: DisplayRepresentation.Image(systemName: section.symbol)))
-        })
+    // A dictionary literal: the App Intents build step reads it at compile time and rejects computed values.
+    // Keep in step with AppSection.title and .symbol (checked by a test).
+    public static let caseDisplayRepresentations: [AppSection: DisplayRepresentation] = [
+        .home: DisplayRepresentation(title: "ZORO", image: .init(systemName: "circle.circle")),
+        .liveVoice: DisplayRepresentation(title: "Live voice", image: .init(systemName: "waveform")),
+        .history: DisplayRepresentation(title: "History", image: .init(systemName: "clock.arrow.circlepath")),
+        .activity: DisplayRepresentation(title: "Agent activity", image: .init(systemName: "point.3.connected.trianglepath.dotted")),
+        .shopping: DisplayRepresentation(title: "Shopping", image: .init(systemName: "basket")),
+        .finance: DisplayRepresentation(title: "Finance", image: .init(systemName: "indianrupeesign")),
+        .investments: DisplayRepresentation(title: "Investments", image: .init(systemName: "chart.pie")),
+        .fitness: DisplayRepresentation(title: "Fitness", image: .init(systemName: "figure.walk")),
+        .photos: DisplayRepresentation(title: "Photos", image: .init(systemName: "photo.on.rectangle")),
+        .music: DisplayRepresentation(title: "Music", image: .init(systemName: "music.note")),
+        .memory: DisplayRepresentation(title: "Memory", image: .init(systemName: "brain")),
+        .integrations: DisplayRepresentation(title: "Integrations", image: .init(systemName: "puzzlepiece.extension")),
+        .deviceControl: DisplayRepresentation(title: "Device control", image: .init(systemName: "iphone.gen3")),
+        .security: DisplayRepresentation(title: "Security and privacy", image: .init(systemName: "lock.shield")),
+        .settings: DisplayRepresentation(title: "Settings", image: .init(systemName: "gearshape")),
+    ]
 }
 
 /// "Ask ZORO …": runs a normal turn in the background and Siri speaks the answer, with a snippet of the

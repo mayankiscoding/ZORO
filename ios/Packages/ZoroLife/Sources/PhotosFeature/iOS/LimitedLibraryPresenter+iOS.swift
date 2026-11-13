@@ -1,6 +1,7 @@
 // UNVERIFIED-ON-HOST
 #if os(iOS)
 import Photos
+import PhotosUI
 import UIKit
 
 /// Shows the system picker that adds more photos to a limited library

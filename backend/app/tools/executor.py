@@ -385,7 +385,12 @@ class ToolExecutor:
             # Delivered, no answer: the device may have acted. Recorded as an unknown outcome and
             # kept in the journal, so this call is never run again automatically.
             await self._note(
-                ctx, tool.name, tool, "tool.run", "failed", f"device_timeout outcome_unknown target={target.id}"
+                ctx,
+                tool.name,
+                tool,
+                "tool.run",
+                "failed",
+                f"device_timeout outcome_unknown target={target.id}",
             )
             return Failed(
                 "device_timeout", call_id=call_id, tool=tool.name, retryable=False,

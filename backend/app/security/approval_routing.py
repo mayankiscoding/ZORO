@@ -63,6 +63,4 @@ class ApprovalRouter:
         for owner in self._owners:
             if await owner.claims(lookup):
                 return await owner.decide(decision, device, lookup)
-        raise Conflict(
-            "Nothing is waiting for this approval any more.", code="approval_owner_not_found"
-        )
+        raise Conflict("Nothing is waiting for this approval any more.", code="approval_owner_not_found")

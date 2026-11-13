@@ -198,7 +198,11 @@ async def test_external_tools_only_through_explicit_mapping(
     specs = exposed_specs(load_mcp_config(settings.config_dir / "mcp_servers.yaml"), clients)
     assert [s.name for s in specs] == ["mcpx.shop.search"]
     spec = specs[0]
-    assert spec.agents == frozenset({AgentId.SHOPPING}) and spec.mcp_group == "external-mcp" and spec.untrusted_output
+    assert (
+        spec.agents == frozenset({AgentId.SHOPPING})
+        and spec.mcp_group == "external-mcp"
+        and spec.untrusted_output
+    )
 
     reg = PluginRegistry()  # a fresh registry: the spec registers like any other tool
     reg.add_tool(spec)

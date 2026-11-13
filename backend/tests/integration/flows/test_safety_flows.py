@@ -38,7 +38,9 @@ async def run_the_journeys(phone: Phone) -> list[Any]:
         await phone.ask("set an alarm for 7 AM"),
         await phone.ask("find the photo from yesterday with my blue cap"),
         await phone.ask("play something relaxing on my Mac"),
-        await phone.approve(await phone.ask("send a WhatsApp message to Priya saying I'll be ten minutes late")),
+        await phone.approve(
+            await phone.ask("send a WhatsApp message to Priya saying I'll be ten minutes late")
+        ),
         await phone.ask("remember that my sister's birthday is on 4 March"),
         await phone.ask("what do you think about the future of electric scooters in India"),
     ]
@@ -66,7 +68,9 @@ async def test_strict_private_mode_makes_zero_external_model_calls_across_the_jo
     assert all(turn.of("route")[0]["engine"] == "deterministic" for turn in turns)
     # The open question has no deterministic answer; ZORO says so instead of asking a cloud model.
     assert "privacy mode" in turns[-1].text
-    egress = [r for r in (await registry.service("audit").list(limit=200)).items if r.action.startswith("egress")]
+    egress = [
+        r for r in (await registry.service("audit").list(limit=200)).items if r.action.startswith("egress")
+    ]
     assert all(record.decision != "allowed" for record in egress)
 
 
@@ -74,7 +78,9 @@ async def test_a_turn_may_ask_for_strict_mode_when_the_server_is_in_cloud_mode(
     phone: Phone, gateway: ExternalGateway, registry: PluginRegistry
 ) -> None:
     await registry.service("privacy_state").set_mode(PrivacyMode.CLOUD_INTELLIGENCE)
-    gateway.push({"agent": "personal_assistant", "intent": None, "confidence": 0.4, "reason": "open"}, "Scooters!")
+    gateway.push(
+        {"agent": "personal_assistant", "intent": None, "confidence": 0.4, "reason": "open"}, "Scooters!"
+    )
     cloud = await phone.ask("what do you think about the future of electric scooters in India")
     assert cloud.completed and len(gateway.requests) >= 1  # in cloud mode the model is asked
     asked = len(gateway.requests)
@@ -141,7 +147,9 @@ async def test_the_kill_switch_stops_everything(
     # Nothing ran: the approved-looking decision opened nothing, the Mac received nothing.
     assert phone.ran == ran_before and mac.ran == []
     executor = registry.service("tool_executor")
-    ctx = registry.tool_context(turn_id="turn_killed", agent=_agent("finance"), device_id=phone.device.device_id)
+    ctx = registry.tool_context(
+        turn_id="turn_killed", agent=_agent("finance"), device_id=phone.device.device_id
+    )
     outcome = await executor.execute(ctx, "finance.spending_summary", {"period": "last_month"}, call_id="k1")
     assert type(outcome).__name__ == "Denied" and outcome.reason == "kill_switch"
     assert gateway.requests == []
