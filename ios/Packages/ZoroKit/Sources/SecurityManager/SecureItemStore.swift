@@ -29,15 +29,28 @@ public struct KeychainStore: SecureItemStoring {
         self.accessGroup = accessGroup
     }
 
-    private func baseQuery(_ account: String) -> [String: Any] {
+    private func baseQuery(_ account: String, legacy: Bool = false) -> [String: Any] {
         var q: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
-            kSecUseDataProtectionKeychain as String: true,
         ]
+        if legacy { return q }
+        q[kSecUseDataProtectionKeychain as String] = true
         if let accessGroup { q[kSecAttrAccessGroup as String] = accessGroup }
         return q
+    }
+
+    /// Runs a keychain call against the data-protection keychain. On a Mac, an app signed without a
+    /// keychain entitlement (a command-line build, or an iPhone app re-signed by a sideloading tool)
+    /// is refused with errSecMissingEntitlement (-34018); there the call is retried against the
+    /// login keychain, which every Mac app may use.
+    private func withFallback(_ call: (_ legacy: Bool) -> OSStatus) -> OSStatus {
+        let status = call(false)
+        #if os(macOS)
+        if status == errSecMissingEntitlement { return call(true) }
+        #endif
+        return status
     }
 
     public func read(_ account: String) throws -> Data? {
@@ -45,12 +58,14 @@ public struct KeychainStore: SecureItemStoring {
     }
 
     func read(_ account: String, extra: [String: Any]) throws -> Data? {
-        var q = baseQuery(account)
-        q.merge(extra) { _, new in new }
-        q[kSecReturnData as String] = true
-        q[kSecMatchLimit as String] = kSecMatchLimitOne
         var out: CFTypeRef?
-        let status = SecItemCopyMatching(q as CFDictionary, &out)
+        let status = withFallback { legacy in
+            var q = baseQuery(account, legacy: legacy)
+            q.merge(extra) { _, new in new }
+            q[kSecReturnData as String] = true
+            q[kSecMatchLimit as String] = kSecMatchLimitOne
+            return SecItemCopyMatching(q as CFDictionary, &out)
+        }
         switch status {
         case errSecSuccess: return out as? Data
         case errSecItemNotFound: return nil
@@ -62,8 +77,7 @@ public struct KeychainStore: SecureItemStoring {
 
     public func write(_ data: Data, account: String, access: SecureItemAccess) throws {
         try delete(account)
-        var q = baseQuery(account)
-        q[kSecValueData as String] = data
+        var q: [String: Any] = [kSecValueData as String: data]
         switch access {
         case .afterFirstUnlockThisDeviceOnly:
             q[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
@@ -78,12 +92,18 @@ public struct KeychainStore: SecureItemStoring {
             }
             q[kSecAttrAccessControl as String] = ac
         }
-        let status = SecItemAdd(q as CFDictionary, nil)
+        let attributes = q
+        let status = withFallback { legacy in
+            var item = baseQuery(account, legacy: legacy)
+            item.merge(attributes) { _, new in new }
+            if legacy { item[kSecAttrAccessControl as String] = nil } // not supported by the login keychain
+            return SecItemAdd(item as CFDictionary, nil)
+        }
         guard status == errSecSuccess else { throw ZoroError.keyUnavailable("keychain write failed (\(status))") }
     }
 
     public func delete(_ account: String) throws {
-        let status = SecItemDelete(baseQuery(account) as CFDictionary)
+        let status = withFallback { legacy in SecItemDelete(baseQuery(account, legacy: legacy) as CFDictionary) }
         guard status == errSecSuccess || status == errSecItemNotFound else {
             throw ZoroError.keyUnavailable("keychain delete failed (\(status))")
         }
